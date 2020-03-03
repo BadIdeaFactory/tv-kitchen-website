@@ -88,7 +88,7 @@
     }
 
     main {
-      max-width: 35em;
+      max-width: 40em;
       margin: 0 auto;
       padding: 0 1em;
     }
@@ -137,16 +137,22 @@
     #subscribe {
       background-color: #0000C0;
       color: white;
-      max-width: 42em;
+      max-width: 40em;
       margin: 3em auto;
       padding: 1em;
       text-align: center;
       font-size: 1.3em;
-      transition: padding 250ms ease;
+      box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.25);
+      transition: transform 250ms ease;
+    }
+    @media screen and (min-width: 52em) {
+      #subscribe {
+        transform: rotate(-1deg);
+      }
     }
 
     #subscribe > form {
-      max-width: 27em;
+      max-width: 32em;
       margin: 0 auto;
     }
 
@@ -169,6 +175,7 @@
       color: #111;
       font-family: 'VT323', monospace;
       width: 10em;
+      margin: 0.1em 0;
     }
     #subscribe button {
       background-color: #00C000;
@@ -178,6 +185,7 @@
       box-shadow: 2px 2px 0 rgba(255, 255, 255, 0.4);
       font-family: 'VT323', monospace;
       text-transform: uppercase;
+      margin: 0.1em 0;
     }
     #subscribe a {
       color: white;
