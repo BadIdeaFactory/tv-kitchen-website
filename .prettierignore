@@ -1,0 +1,10 @@
+# Folders
+.cache
+node_modules
+public
+
+# Files
+package.json
+package-lock.json
+*.md
+*.mdx

@@ -1,0 +1,41 @@
+{
+  "name": "tvkitchen-site",
+  "private": true,
+  "description": "TV Kitchen Site",
+  "version": "0.1.0",
+  "license": "Apache License, version 2.0",
+  "author": "Bad Idea Factory <biffuddotcom@biffud.com>",
+  "contributors": [
+    "Piotr F. <github@piotrf.pl>"
+  ],
+  "scripts": {
+    "build": "gatsby build",
+    "clean": "gatsby clean",
+    "serve": "gatsby serve",
+    "start": "gatsby develop"
+  },
+  "dependencies": {
+    "@types/node": "14.0.27",
+    "@types/react": "16.9.44",
+    "@types/react-dom": "16.9.8",
+    "gatsby": "2.24.23",
+    "react": "16.13.1",
+    "react-dom": "16.13.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "3.7.1",
+    "@typescript-eslint/parser": "3.7.1",
+    "eslint": "7.6.0",
+    "eslint-config-prettier": "6.11.0",
+    "eslint-plugin-react": "^7.20.5",
+    "gatsby-cli": "2.12.68",
+    "typescript": "3.9.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tvkitchen/website.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tvkitchen/website/issues"
+  }
+}
