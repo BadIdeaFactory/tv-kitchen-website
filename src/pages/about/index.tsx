@@ -1,7 +1,7 @@
 import React from 'react';
 import { PageProps } from 'gatsby';
 
-export default function IndexRoute(props: PageProps) {
+export default function AboutRoute(props: PageProps) {
   console.log({ props });
-  return <h1>Home</h1>;
+  return <h1>About</h1>;
 }
