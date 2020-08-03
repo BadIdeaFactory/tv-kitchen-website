@@ -3,7 +3,23 @@ module.exports = {
     title: `TV Kitchen Site`,
   },
   plugins: [
-    `gatsby-plugin-mdx`,
+    `gatsby-plugin-sharp`,
+    `gatsby-remark-images`,
+    `gatsby-plugin-material-ui`,
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 1035,
+              sizeByPixelDensity: true,
+            },
+          },
+        ],
+      },
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
