@@ -1,8 +1,10 @@
 const path = require('path');
+const remarkNormalizeHeadings = require('remark-normalize-headings');
+const remarkSqueezeParagraphs = require('remark-squeeze-paragraphs');
 
 module.exports = {
   siteMetadata: {
-    title: `TV Kitchen Site`,
+    title: `TV Kitchen`,
   },
   plugins: [
     `gatsby-plugin-material-ui`,
@@ -23,6 +25,7 @@ module.exports = {
         defaultLayouts: {
           docs: require.resolve('./src/ui/templates/DocsTpl.js'),
         },
+        remarkPlugins: [remarkNormalizeHeadings, remarkSqueezeParagraphs],
         gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-remark-images`,

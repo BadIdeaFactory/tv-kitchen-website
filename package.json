@@ -17,20 +17,22 @@
   "dependencies": {
     "@material-ui/core": "4.11.0",
     "@material-ui/icons": "4.9.1",
-    "@material-ui/styles": "^4.10.0",
+    "@material-ui/styles": "4.10.0",
     "@mdx-js/mdx": "1.6.16",
     "@mdx-js/react": "1.6.16",
     "gatsby": "2.24.27",
-    "gatsby-plugin-alias-imports": "^1.0.5",
+    "gatsby-plugin-alias-imports": "1.0.5",
     "gatsby-plugin-material-ui": "2.1.10",
     "gatsby-plugin-mdx": "1.2.33",
     "gatsby-plugin-sharp": "2.6.24",
     "gatsby-plugin-tsconfig-paths": "1.0.2",
     "gatsby-remark-images": "3.3.24",
     "gatsby-source-filesystem": "2.3.23",
-    "lodash": "^4.17.19",
+    "lodash": "4.17.19",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "remark-normalize-headings": "2.0.0",
+    "remark-squeeze-paragraphs": "4.0.0"
   },
   "devDependencies": {
     "eslint": "7.6.0",
