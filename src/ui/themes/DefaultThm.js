@@ -5,5 +5,8 @@ export default createMuiTheme({
     MuiButtonBase: {
       disableRipple: true,
     },
+    MuiButton: {
+      disableElevation: true,
+    },
   },
 });

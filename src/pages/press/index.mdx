@@ -1,0 +1,27 @@
+---
+title: Press
+---
+
+Hello world
+
+export const pageQuery = graphql`
+  query {
+    allMediumPost {
+      edges {
+        node {
+          id
+          title
+          previewContent2 {
+            bodyModel {
+              paragraphs {
+                text
+              }
+            }
+          }
+          firstPublishedAt
+          uniqueSlug
+        }
+      }
+    }
+  }
+`

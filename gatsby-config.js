@@ -11,6 +11,12 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-remark-images`,
     {
+      resolve: `gatsby-source-medium`,
+      options: {
+        username: `storycopter-news`,
+      },
+    },
+    {
       resolve: `gatsby-plugin-alias-imports`,
       options: {
         alias: {
@@ -24,6 +30,7 @@ module.exports = {
       options: {
         defaultLayouts: {
           docs: require.resolve('./src/ui/templates/DocsTpl.js'),
+          press: require.resolve('./src/ui/templates/PressTpl.js'),
         },
         remarkPlugins: [remarkNormalizeHeadings, remarkSqueezeParagraphs],
         gatsbyRemarkPlugins: [
