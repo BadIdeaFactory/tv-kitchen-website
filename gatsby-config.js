@@ -21,7 +21,7 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         defaultLayouts: {
-          documentation: require.resolve('./src/ui/templates/DocumentationTpl.js'),
+          docs: require.resolve('./src/ui/templates/DocsTpl.js'),
         },
         gatsbyRemarkPlugins: [
           {
@@ -37,8 +37,8 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `documentation`,
-        path: `${__dirname}/src/pages/documentation`,
+        name: `docs`,
+        path: `${__dirname}/src/pages/docs`,
       },
     },
     {

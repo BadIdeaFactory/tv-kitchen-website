@@ -39,8 +39,8 @@ export default function ElevateAppBar(props) {
             <Link component={GatsbyLink} variant="h6" to="/">
               TV Kitchen
             </Link>
-            <Link component={GatsbyLink} variant="body2" to="/documentation/">
-              Documentation
+            <Link component={GatsbyLink} variant="body2" to="/docs/">
+              Docs
             </Link>
             <Link component={GatsbyLink} variant="body2" to="/partners/">
               Partners

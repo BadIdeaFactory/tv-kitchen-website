@@ -1,0 +1,70 @@
+---
+score: 2000
+section: Recipe Book
+title: A recipe with score 2000
+---
+
+# <span children={props.pageContext.frontmatter.title} />
+
+Skip to content
+Search…
+Material-UI
+v4.11.0
+Diamond Sponsors
+Container API
+The API documentation of the Container React component. Learn more about the props and the CSS customization points.
+ads via Carbon
+Learn from leading industry experts. Customize your study in one of 8 specializations. Online and on campus.
+ads via Carbon
+
+Import
+import Container from '@material-ui/core/Container';
+// or
+import { Container } from '@material-ui/core';
+You can learn more about the difference by reading this guide.
+
+Component name
+The MuiContainer name can be used for providing default props or style overrides at the theme level.
+
+Props
+Name	Type	Default	Description
+classes	object		Override or extend the styles applied to the component. See CSS API below for more details.
+component	elementType	'div'	The component used for the root node. Either a string to use a HTML element or a component.
+disableGutters	bool	false	If true, the left and right padding is removed.
+fixed	bool	false	Set the max-width to match the min-width of the current breakpoint. This is useful if you'd prefer to design for a fixed set of sizes instead of trying to accommodate a fully fluid viewport. It's fluid by default.
+maxWidth	'lg'
+| 'md'
+| 'sm'
+| 'xl'
+| 'xs'
+| false	'lg'	Determine the max-width of the container. The container width grows with the size of the screen. Set to false to disable maxWidth.
+The ref is forwarded to the root element.
+
+Any other props supplied will be provided to the root element (native element).
+
+CSS
+Rule name	Global class	Description
+root	.MuiContainer-root	Styles applied to the root element.
+disableGutters	.MuiContainer-disableGutters	Styles applied to the root element if disableGutters={true}.
+fixed	.MuiContainer-fixed	Styles applied to the root element if fixed={true}.
+maxWidthXs	.MuiContainer-maxWidthXs	Styles applied to the root element if maxWidth="xs".
+maxWidthSm	.MuiContainer-maxWidthSm	Styles applied to the root element if maxWidth="sm".
+maxWidthMd	.MuiContainer-maxWidthMd	Styles applied to the root element if maxWidth="md".
+maxWidthLg	.MuiContainer-maxWidthLg	Styles applied to the root element if maxWidth="lg".
+maxWidthXl	.MuiContainer-maxWidthXl	Styles applied to the root element if maxWidth="xl".
+You can override the style of the component thanks to one of these customization points:
+
+With a rule name of the classes object prop.
+With a global class name.
+With a theme and an overrides property.
+If that's not sufficient, you can check the implementation of the component for more detail.
+
+Demos
+Container
+Contents
+
+Import
+Component name
+Props
+CSS
+Demos

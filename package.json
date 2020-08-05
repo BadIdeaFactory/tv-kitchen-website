@@ -28,6 +28,7 @@
     "gatsby-plugin-tsconfig-paths": "1.0.2",
     "gatsby-remark-images": "3.3.24",
     "gatsby-source-filesystem": "2.3.23",
+    "lodash": "^4.17.19",
     "react": "16.13.1",
     "react-dom": "16.13.1"
   },
