@@ -5,7 +5,6 @@ import AppBar from '@material-ui/core/AppBar';
 import Link from '@material-ui/core/Link';
 import PropTypes from 'prop-types';
 import Toolbar from '@material-ui/core/Toolbar';
-// import Typography from '@material-ui/core/Typography';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -29,7 +28,7 @@ ElevationScroll.propTypes = {
   children: PropTypes.element.isRequired,
 };
 
-export default function ElevateAppBar(props) {
+export default function Topbar(props) {
   const classes = useStyles();
   return (
     <>
@@ -39,17 +38,17 @@ export default function ElevateAppBar(props) {
             <Link component={GatsbyLink} variant="h6" to="/">
               TV Kitchen
             </Link>
-            <Link component={GatsbyLink} variant="body2" to="/docs/">
-              Docs
+            <Link component={GatsbyLink} variant="body2" to="/about/">
+              About
             </Link>
             <Link component={GatsbyLink} variant="body2" to="/partners/">
               Partners
             </Link>
+            <Link component={GatsbyLink} variant="body2" to="/docs/">
+              Docs
+            </Link>
             <Link component={GatsbyLink} variant="body2" to="/help/">
               Help
-            </Link>
-            <Link component={GatsbyLink} variant="body2" to="/about/">
-              About
             </Link>
           </Toolbar>
         </AppBar>
