@@ -30,6 +30,7 @@ module.exports = {
       options: {
         defaultLayouts: {
           docs: require.resolve('./src/ui/templates/DocsTpl.js'),
+          partners: require.resolve('./src/ui/templates/PartnersTpl.js'),
           press: require.resolve('./src/ui/templates/PressTpl.js'),
         },
         remarkPlugins: [remarkNormalizeHeadings, remarkSqueezeParagraphs],
@@ -70,6 +71,13 @@ module.exports = {
       options: {
         name: `partners`,
         path: `${__dirname}/src/pages/partners`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `press`,
+        path: `${__dirname}/src/pages/press`,
       },
     },
   ],
