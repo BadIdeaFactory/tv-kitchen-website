@@ -1,7 +1,8 @@
 import React from 'react';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/core/styles/makeStyles';
+import { ThemeProvider } from '@material-ui/core/styles';
 
 import DefaultThm from '@ui/themes/DefaultThm';
 import Foobar from '@ui/components/Foobar';
@@ -21,8 +22,8 @@ export default function Layout(props) {
       <Topbar />
       <div className={classes.toolbar} />
       {children}
-      <div className={classes.toolbar} />
       <Foobar />
+      <div className={classes.toolbar} />
       <Navbar />
     </ThemeProvider>
   );

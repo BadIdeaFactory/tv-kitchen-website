@@ -5,8 +5,8 @@ import AppBar from '@material-ui/core/AppBar';
 import Link from '@material-ui/core/Link';
 import PropTypes from 'prop-types';
 import Toolbar from '@material-ui/core/Toolbar';
+import makeStyles from '@material-ui/core/styles/makeStyles';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
-import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   toolbar: theme.mixins.toolbar,

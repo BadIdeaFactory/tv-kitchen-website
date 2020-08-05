@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React from 'react';
 import { Link as GatsbyLink } from 'gatsby';
 
 import BottomNavigation from '@material-ui/core/BottomNavigation';
@@ -10,8 +10,8 @@ import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import MenuBookOutlinedIcon from '@material-ui/icons/MenuBookOutlined';
 import Slide from '@material-ui/core/Slide';
+import makeStyles from '@material-ui/core/styles/makeStyles';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
-import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   root: {
