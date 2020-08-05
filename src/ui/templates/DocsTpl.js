@@ -3,8 +3,6 @@ import _ from 'lodash';
 import { Link as GatsbyLink } from 'gatsby';
 import { StaticQuery, graphql } from 'gatsby';
 
-import Layout from '@ui/components/Layout';
-
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Collapse from '@material-ui/core/Collapse';
 import Container from '@material-ui/core/Container';
@@ -16,7 +14,10 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import SwipeableDrawer from '@material-ui/core/Drawer';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
+import makeStyles from '@material-ui/core/styles/makeStyles';
+
+import Copy from '@ui/components/Copy';
+import Layout from '@ui/components/Layout';
 
 const drawerWidth = 240;
 
@@ -25,23 +26,23 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
   },
   drawer: {
-    width: drawerWidth,
     flexShrink: 0,
+    width: drawerWidth,
     zIndex: 0,
   },
   drawerPaper: {
     width: drawerWidth,
   },
-  // necessary for content to be below app bar
   toolbar: theme.mixins.toolbar,
+  nested: {
+    paddingLeft: theme.spacing(4),
+  },
 }));
 
-export default function DocsTpl({ children, ...props }) {
+export default function DocsTpl({ children, pageContext, ...props }) {
   const classes = useStyles();
 
-  const pageFrontmatter = props.pageContext.frontmatter;
-
-  const [open, setOpen] = useState(pageFrontmatter.section || null);
+  const [open, setOpen] = useState(pageContext.frontmatter.section || null);
 
   return (
     <StaticQuery
@@ -52,6 +53,7 @@ export default function DocsTpl({ children, ...props }) {
               node {
                 id
                 path
+                componentPath
                 context {
                   frontmatter {
                     score
@@ -62,18 +64,43 @@ export default function DocsTpl({ children, ...props }) {
               }
             }
           }
+          allSite {
+            edges {
+              node {
+                siteMetadata {
+                  title
+                }
+              }
+            }
+          }
         }
       `}
       render={data => {
         const {
-          allSitePage: { edges: allDocsPages },
+          allSitePage: { edges: pages },
+          allSite: { edges: allSite },
         } = data;
 
-        const sections = _.groupBy(allDocsPages, o => o.node.context.frontmatter.section);
+        const order = array => {
+          return _.orderBy(
+            array,
+            [({ node: { context } }) => context.frontmatter.score || 0, ({ node: { context } }) => context.path],
+            ['desc', 'asc']
+          );
+        };
+
+        const rootPagePath = 'pages/docs/index.mdx';
+        const chapters = _.groupBy(pages, ({ node }) => node.context.frontmatter.section);
+        const loosePages = order(_.filter(chapters.null, ({ node }) => !node.componentPath.endsWith(rootPagePath)));
+        const rootPage = _.find(pages, ({ node }) => node.componentPath.endsWith(rootPagePath));
 
         console.group('DocsTpl');
-        console.log({ sections });
         console.log({ props });
+        console.log({ pageContext });
+        console.log({ loosePages });
+        console.log({ loosePages });
+        console.log(order(loosePages));
+        console.log({ rootPage });
         console.groupEnd();
 
         return (
@@ -86,45 +113,58 @@ export default function DocsTpl({ children, ...props }) {
                 variant="permanent">
                 <div className={classes.toolbar} />
                 <List>
-                  {Object.keys(sections).map((section, i) => {
-                    const pages = _.orderBy(sections[section], o => o.node.context.score || 0, 'desc');
+                  <ListItem button component={GatsbyLink} to={rootPage.node.path}>
+                    <ListItemText primary={rootPage.node.context.frontmatter.title} />
+                  </ListItem>
+                  {loosePages.map(page => {
+                    return (
+                      <ListItem button component={GatsbyLink} to={page.node.path} key={page.node.path}>
+                        <ListItemText primary={page.node.context.frontmatter.title} />
+                      </ListItem>
+                    );
+                  })}
+                  {Object.keys(chapters).map((section, i) => {
+                    if (section === 'null') return null;
+                    const chapterPages = order(chapters[section]);
+                    const list = (
+                      <List component="div" disablePadding key={`z${i}`}>
+                        {chapterPages.map(({ node }) => {
+                          const { frontmatter } = node.context;
+                          if (node.path === '/docs/') return null;
+                          return (
+                            <ListItem
+                              className={classes.nested}
+                              button
+                              component={GatsbyLink}
+                              key={node.path}
+                              to={node.path}>
+                              <ListItemText
+                                inset={false}
+                                primary={frontmatter.title}
+                                primaryTypographyProps={{
+                                  variant: 'body2',
+                                  noWrap: true,
+                                }}
+                              />
+                            </ListItem>
+                          );
+                        })}
+                      </List>
+                    );
                     return [
-                      section !== 'null' ? (
-                        <ListItem
-                          button
-                          key={`x${i}`}
-                          onClick={() =>
-                            setOpen(prevState => {
-                              return prevState === section ? null : section;
-                            })
-                          }>
-                          <ListItemText primary={section} />
-                          {open === section ? <ExpandLess /> : <ExpandMore />}
-                        </ListItem>
-                      ) : null,
+                      <ListItem
+                        button
+                        key={`x${i}`}
+                        onClick={() =>
+                          setOpen(prevState => {
+                            return prevState === section ? null : section;
+                          })
+                        }>
+                        <ListItemText primary={section} />
+                        {open === section ? <ExpandLess /> : <ExpandMore />}
+                      </ListItem>,
                       <Collapse in={open === section} timeout="auto" unmountOnExit key={`y${i}`}>
-                        <List component="div" disablePadding>
-                          {pages.map(({ node }) => {
-                            const { frontmatter } = node.context;
-                            return (
-                              <ListItem
-                                button
-                                className={classes.nested}
-                                component={GatsbyLink}
-                                key={node.path}
-                                to={node.path}>
-                                <ListItemText
-                                  inset={false}
-                                  primary={frontmatter.title}
-                                  primaryTypographyProps={{
-                                    variant: 'body2',
-                                    noWrap: true,
-                                  }}
-                                />
-                              </ListItem>
-                            );
-                          })}
-                        </List>
+                        {list}
                       </Collapse>,
                     ];
                   })}
@@ -133,32 +173,22 @@ export default function DocsTpl({ children, ...props }) {
               <Container component="main" maxWidth="md">
                 <Breadcrumbs aria-label="breadcrumb">
                   <Link component={GatsbyLink} color="inherit" to="/">
-                    TV Kitchen
+                    {allSite[0].node.siteMetadata.title}
                   </Link>
-                  <Link component={GatsbyLink} color="inherit" to="/docs/">
+                  <Link component={GatsbyLink} color="inherit" to={rootPage.node.path}>
                     Docs
                   </Link>
-                  {pageFrontmatter.section ? (
+                  {pageContext.frontmatter.section ? (
                     <Link
                       component={GatsbyLink}
                       color="inherit"
-                      to={
-                        _.orderBy(
-                          sections[pageFrontmatter.section],
-                          o => o.node.context.frontmatter.score || 0,
-                          'desc'
-                        )[0].node.path
-                      }>
-                      {console.log(
-                        'SORTER',
-                        _.orderBy(sections[pageFrontmatter.section], o => o.node.context.frontmatter.score, 'asc')
-                      )}
-                      {pageFrontmatter.section}
+                      to={order(chapters[pageContext.frontmatter.section])[0].node.path}>
+                      {pageContext.frontmatter.section}
                     </Link>
                   ) : null}
-                  <Typography color="textPrimary">{pageFrontmatter.title}</Typography>
+                  <Typography color="textPrimary">{pageContext.frontmatter.title}</Typography>
                 </Breadcrumbs>
-                {children}
+                <Copy>{children}</Copy>
               </Container>
             </div>
           </Layout>
