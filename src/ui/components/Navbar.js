@@ -10,6 +10,7 @@ import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import MenuBookOutlinedIcon from '@material-ui/icons/MenuBookOutlined';
 import Slide from '@material-ui/core/Slide';
+import SubjectIcon from '@material-ui/icons/Subject';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 
@@ -53,6 +54,7 @@ export default function Navbar(props) {
         <BottomNavigationAction component={GatsbyLink} to="/partners" label="Partners" icon={<FavoriteBorderIcon />} />
         <BottomNavigationAction component={GatsbyLink} to="/docs" label="Docs" icon={<MenuBookOutlinedIcon />} />
         <BottomNavigationAction component={GatsbyLink} to="/help" label="Help" icon={<HelpOutlineIcon />} />
+        <BottomNavigationAction component={GatsbyLink} to="/press" label="Press" icon={<SubjectIcon />} />
       </BottomNavigation>
     </>
   );
