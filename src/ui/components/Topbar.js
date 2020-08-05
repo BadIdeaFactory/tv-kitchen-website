@@ -66,14 +66,14 @@ export default function Topbar(props) {
                   <Link component={GatsbyLink} variant="body2" to="/partners/">
                     Partners
                   </Link>
+                  <Link component={GatsbyLink} variant="body2" to="/press/">
+                    Press
+                  </Link>
                   <Link component={GatsbyLink} variant="body2" to="/docs/">
                     Docs
                   </Link>
                   <Link component={GatsbyLink} variant="body2" to="/help/">
                     Help
-                  </Link>
-                  <Link component={GatsbyLink} variant="body2" to="/press/">
-                    Press
                   </Link>
                 </div>
               </Grid>

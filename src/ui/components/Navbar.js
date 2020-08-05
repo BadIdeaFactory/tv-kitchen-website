@@ -52,9 +52,9 @@ export default function Navbar(props) {
         <BottomNavigationAction component={GatsbyLink} to="/" label="Home" icon={<HomeOutlinedIcon />} />
         <BottomNavigationAction component={GatsbyLink} to="/about" label="About" icon={<InfoOutlinedIcon />} />
         <BottomNavigationAction component={GatsbyLink} to="/partners" label="Partners" icon={<FavoriteBorderIcon />} />
+        <BottomNavigationAction component={GatsbyLink} to="/press" label="Press" icon={<SubjectIcon />} />
         <BottomNavigationAction component={GatsbyLink} to="/docs" label="Docs" icon={<MenuBookOutlinedIcon />} />
         <BottomNavigationAction component={GatsbyLink} to="/help" label="Help" icon={<HelpOutlineIcon />} />
-        <BottomNavigationAction component={GatsbyLink} to="/press" label="Press" icon={<SubjectIcon />} />
       </BottomNavigation>
     </>
   );
