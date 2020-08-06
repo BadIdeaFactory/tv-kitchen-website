@@ -20,14 +20,14 @@
     "@material-ui/styles": "4.10.0",
     "@mdx-js/mdx": "1.6.16",
     "@mdx-js/react": "1.6.16",
-    "gatsby": "2.24.27",
+    "gatsby": "2.24.32",
     "gatsby-plugin-alias-imports": "1.0.5",
     "gatsby-plugin-material-ui": "2.1.10",
-    "gatsby-plugin-mdx": "1.2.33",
-    "gatsby-plugin-sharp": "2.6.24",
+    "gatsby-plugin-mdx": "1.2.34",
+    "gatsby-plugin-sharp": "2.6.25",
     "gatsby-plugin-tsconfig-paths": "1.0.2",
-    "gatsby-remark-images": "3.3.24",
-    "gatsby-source-filesystem": "2.3.23",
+    "gatsby-remark-images": "3.3.25",
+    "gatsby-source-filesystem": "2.3.24",
     "gatsby-source-medium": "^2.3.10",
     "lodash": "4.17.19",
     "react": "16.13.1",
@@ -39,7 +39,7 @@
     "eslint": "7.6.0",
     "eslint-config-prettier": "6.11.0",
     "eslint-plugin-react": "7.20.5",
-    "gatsby-cli": "2.12.72"
+    "gatsby-cli": "2.12.77"
   },
   "repository": {
     "type": "git",
