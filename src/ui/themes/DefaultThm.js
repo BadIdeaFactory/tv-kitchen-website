@@ -4,6 +4,12 @@ import { createMuiTheme } from '@material-ui/core/styles';
 
 import setType from '@ui/mixins/setType';
 
+export const fonts = {
+  body: 'Roboto, Helvetica, Arial, sans-serif',
+  head: 'Work Sans, Helvetica, Arial, sans-serif',
+  foot: 'Roboto Mono, Helvetica, Arial, sans-serif',
+};
+
 export const colors = {
   black: darken(0.48, '#7e7e7e'),
   blue: '#193EB7',
@@ -104,6 +110,14 @@ export default createMuiTheme({
         border: `4px solid ${mui.palette.divider}`,
       },
     },
+    MuiTooltip: {
+      tooltip: {
+        ...setType(100),
+        backgroundColor: colors.mono[900],
+        color: colors.mono[100],
+        fontFamily: fonts.foot,
+      },
+    },
   },
   palette: {
     background: {
@@ -143,29 +157,20 @@ export default createMuiTheme({
   },
   typography: {
     ...setType(400),
-    fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
+    fontFamily: fonts.body,
     fontWeight: '500',
     body1: {},
     body2: {},
-    button: {
-      ...setType(200),
-      fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
-      fontWeight: '700',
-      letterSpacing: '0.2em',
-    },
-    h1: { ...setType(900), fontFamily: 'Work Sans, Helvetica, Arial, sans-serif', fontWeight: '600' },
-    h2: { ...setType(800), fontFamily: 'Work Sans, Helvetica, Arial, sans-serif', fontWeight: '600' },
-    h3: { ...setType(700), fontFamily: 'Work Sans, Helvetica, Arial, sans-serif', fontWeight: '600' },
-    h4: { ...setType(600), fontFamily: 'Work Sans, Helvetica, Arial, sans-serif', fontWeight: '600' },
-    h5: { ...setType(500), fontFamily: 'Work Sans, Helvetica, Arial, sans-serif', fontWeight: '600' },
-    h6: { ...setType(400), fontFamily: 'Work Sans, Helvetica, Arial, sans-serif', fontWeight: '600' },
-    overline: {
-      ...setType(100),
-      fontFamily: 'Roboto Mono, Helvetica, Arial, sans-serif',
-      fontWeight: 'normal',
-      letterSpacing: '0.4em',
-    },
-    subtitle1: { ...setType(400), fontFamily: 'Work Sans, Helvetica, Arial, sans-serif', fontWeight: '600' },
-    subtitle2: { ...setType(400), fontFamily: 'Work Sans, Helvetica, Arial, sans-serif', fontWeight: '600' },
+    button: { ...setType(200), fontFamily: fonts.foot, fontWeight: '600', letterSpacing: '0.15em' },
+    h1: { ...setType(900), fontFamily: fonts.head, fontWeight: '600' },
+    h2: { ...setType(800), fontFamily: fonts.head, fontWeight: '600' },
+    h3: { ...setType(700), fontFamily: fonts.head, fontWeight: '600' },
+    h4: { ...setType(600), fontFamily: fonts.head, fontWeight: '600' },
+    h5: { ...setType(500), fontFamily: fonts.head, fontWeight: '600' },
+    h6: { ...setType(400), fontFamily: fonts.head, fontWeight: '600' },
+    overline: { ...setType(100), fontFamily: fonts.foot, fontWeight: 'normal', letterSpacing: '0.4em' },
+    caption: { ...setType(200), fontFamily: fonts.caption, fontWeight: '600' },
+    subtitle1: { ...setType(400), fontFamily: fonts.head, fontWeight: '600' },
+    subtitle2: { ...setType(400), fontFamily: fonts.head, fontWeight: '600' },
   },
 });

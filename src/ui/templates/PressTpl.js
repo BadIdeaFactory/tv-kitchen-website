@@ -6,6 +6,7 @@ import Link from '@material-ui/core/Link';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import makeStyles from '@material-ui/core/styles/makeStyles';
+import OpenInNewIcon from '@material-ui/icons/OpenInNew';
 
 import Layout from '@ui/components/Layout';
 
@@ -60,8 +61,8 @@ export default function PressTpl({ children, pageContext, data: { allMediumPost 
                 <Typography className={classes.text} display="block" variant="body1">
                   {paragraphs.map((paragraph, i) => (i > 0 ? `${paragraph.text} ` : null))}
                 </Typography>
-                <Button href={url} variant="outlined">
-                  Continue on Medium.com
+                <Button href={url} variant="outlined" target="_blank" endIcon={<OpenInNewIcon fontSize="inherit" />}>
+                  Read on Medium
                 </Button>
               </article>
             );

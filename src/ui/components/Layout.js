@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import { ThemeProvider } from '@material-ui/core/styles';
@@ -24,11 +25,13 @@ export default function Layout(props) {
   return (
     <ThemeProvider theme={DefaultThm}>
       <CssBaseline />
-      <Topbar {...props} />
-      <div className={classes.toolbar} />
-      {children}
-      <Foobar {...props} />
-      <div className={classes.toolbar} />
+      <Container maxWidth="lg">
+        <Topbar {...props} />
+        <div className={classes.toolbar} />
+        {children}
+        <Foobar {...props} />
+        <div className={classes.toolbar} />
+      </Container>
       <Navbar />
     </ThemeProvider>
   );

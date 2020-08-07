@@ -13,7 +13,6 @@ import Tooltip from '@material-ui/core/Tooltip';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
-import useTheme from '@material-ui/core/styles/useTheme';
 
 import TVKitchenLogo from '@ui/assets/tv-kitchen-logo.svg';
 
@@ -70,7 +69,6 @@ const useStyles = makeStyles(theme => ({
 
 export default function Topbar({ location: { pathname }, ...props }) {
   const classes = useStyles();
-  const theme = useTheme();
   const trigger = useScrollTrigger();
 
   console.group('Topbar.js');
