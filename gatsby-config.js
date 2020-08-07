@@ -11,6 +11,14 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-remark-images`,
     {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: path.resolve(__dirname, 'src/ui/assets'),
+        },
+      },
+    },
+    {
       resolve: `gatsby-source-medium`,
       options: {
         username: `storycopter-news`,
