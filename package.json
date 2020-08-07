@@ -12,6 +12,7 @@
     "build": "gatsby build",
     "clean": "gatsby clean",
     "serve": "gatsby serve",
+    "stage": "gatsby build && netlify deploy --dir=public --prod",
     "start": "gatsby develop"
   },
   "dependencies": {
@@ -20,7 +21,7 @@
     "@material-ui/styles": "4.10.0",
     "@mdx-js/mdx": "1.6.16",
     "@mdx-js/react": "1.6.16",
-    "gatsby": "2.24.32",
+    "gatsby": "2.24.34",
     "gatsby-plugin-alias-imports": "1.0.5",
     "gatsby-plugin-material-ui": "2.1.10",
     "gatsby-plugin-mdx": "1.2.34",
@@ -39,7 +40,7 @@
     "eslint": "7.6.0",
     "eslint-config-prettier": "6.11.0",
     "eslint-plugin-react": "7.20.5",
-    "gatsby-cli": "2.12.77"
+    "gatsby-cli": "2.12.78"
   },
   "repository": {
     "type": "git",
