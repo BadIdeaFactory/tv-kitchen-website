@@ -79,18 +79,7 @@ export default function Topbar({ location: { pathname }, ...props }) {
 
   return (
     <>
-      <AppBar
-        color="inherit"
-        elevation={0}
-        className={classes.root}
-        style={
-          trigger
-            ? {
-                borderBottom: `3px solid black`,
-                boxShadow: `0 3px 0 3px ${theme.palette.primary.main}20`,
-              }
-            : null
-        }>
+      <AppBar className={classes.root} color="inherit" style={trigger ? { borderBottom: `3px solid black` } : null}>
         <Toolbar>
           <Grid
             alignContent="stretch"

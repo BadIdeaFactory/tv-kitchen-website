@@ -125,6 +125,9 @@ export default createMuiTheme({
     },
   },
   props: {
+    MuiAppBar: {
+      elevation: 0,
+    },
     MuiButtonBase: {
       disableRipple: true,
     },
@@ -132,7 +135,6 @@ export default createMuiTheme({
       disableElevation: true,
     },
     MuiPaper: {
-      outlined: true,
       square: true,
     },
   },
@@ -150,7 +152,6 @@ export default createMuiTheme({
       fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
       fontWeight: '700',
       letterSpacing: '0.2em',
-      // textTransform: 'none',
     },
     h1: { ...setType(900), fontFamily: 'Work Sans, Helvetica, Arial, sans-serif', fontWeight: '600' },
     h2: { ...setType(800), fontFamily: 'Work Sans, Helvetica, Arial, sans-serif', fontWeight: '600' },
