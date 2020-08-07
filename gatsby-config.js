@@ -19,6 +19,13 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [`work sans\:400,500,600,700`, `roboto\:400,400i,700`, `roboto mono\:400`],
+        display: 'swap',
+      },
+    },
+    {
       resolve: `gatsby-source-medium`,
       options: {
         username: `storycopter-news`,
