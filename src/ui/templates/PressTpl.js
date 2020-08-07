@@ -1,5 +1,4 @@
 import React from 'react';
-import _ from 'lodash';
 
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
@@ -11,7 +10,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 import Layout from '@ui/components/Layout';
 
 const useStyles = makeStyles(theme => ({
-  PressTpl: {},
+  root: {},
   article: { '&:not(:last-child)': { marginBottom: theme.spacing(16) } },
   title: { marginBottom: theme.spacing(2) },
   text: { marginBottom: theme.spacing(2) },
@@ -26,7 +25,7 @@ export default function PressTpl({ children, pageContext, data: { allMediumPost 
   console.groupEnd();
 
   return (
-    <Layout className={classes.PressTpl}>
+    <Layout {...props} className={classes.root}>
       <Container component="main" maxWidth="sm">
         {allMediumPost.edges.map(
           ({
@@ -36,25 +35,32 @@ export default function PressTpl({ children, pageContext, data: { allMediumPost 
               previewContent2: {
                 bodyModel: { paragraphs },
               },
+              firstPublishedAt,
               uniqueSlug,
             },
           }) => {
+            const date = Intl.DateTimeFormat('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            }).format(Date.parse(firstPublishedAt));
+            const url = `https://medium.com/storycopter-news/${uniqueSlug}`;
             return (
               <article className={classes.article} key={id}>
                 <Tooltip title="Read on Medium.com">
-                  <Link
-                    className={classes.title}
-                    display="block"
-                    href={`https://medium.com/storycopter-news/${uniqueSlug}`}>
+                  <Link className={classes.title} display="block" href={url}>
                     <Typography component="span" variant="h2">
                       {title}
                     </Typography>
                   </Link>
                 </Tooltip>
+                <Typography display="block" gutterBottom variant="overline" aria-label="Published on">
+                  {date}
+                </Typography>
                 <Typography className={classes.text} display="block" variant="body1">
                   {paragraphs.map((paragraph, i) => (i > 0 ? `${paragraph.text} ` : null))}
                 </Typography>
-                <Button href="https://medium.com" variant="contained">
+                <Button href={url} variant="outlined">
                   Continue on Medium.com
                 </Button>
               </article>

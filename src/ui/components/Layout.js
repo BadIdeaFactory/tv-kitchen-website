@@ -16,13 +16,18 @@ const useStyles = makeStyles(theme => ({
 export default function Layout(props) {
   const classes = useStyles();
   const { children } = props;
+
+  console.group('Layout.js');
+  console.log({ props });
+  console.groupEnd();
+
   return (
     <ThemeProvider theme={DefaultThm}>
       <CssBaseline />
-      <Topbar />
+      <Topbar {...props} />
       <div className={classes.toolbar} />
       {children}
-      <Foobar />
+      <Foobar {...props} />
       <div className={classes.toolbar} />
       <Navbar />
     </ThemeProvider>

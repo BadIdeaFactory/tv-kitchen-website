@@ -6,13 +6,13 @@ import { StaticQuery, graphql } from 'gatsby';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Collapse from '@material-ui/core/Collapse';
 import Container from '@material-ui/core/Container';
+import Drawer from '@material-ui/core/Drawer';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import Link from '@material-ui/core/Link';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import SwipeableDrawer from '@material-ui/core/Drawer';
 import Typography from '@material-ui/core/Typography';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 
@@ -22,6 +22,7 @@ import Layout from '@ui/components/Layout';
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
+  DocsTpl: {},
   root: {
     display: 'flex',
   },
@@ -104,9 +105,9 @@ export default function DocsTpl({ children, pageContext, ...props }) {
         console.groupEnd();
 
         return (
-          <Layout>
+          <Layout {...props} className={classes.DocsTpl}>
             <div className={classes.root}>
-              <SwipeableDrawer
+              <Drawer
                 anchor="left"
                 className={classes.drawer}
                 classes={{ paper: classes.drawerPaper }}
@@ -169,7 +170,7 @@ export default function DocsTpl({ children, pageContext, ...props }) {
                     ];
                   })}
                 </List>
-              </SwipeableDrawer>
+              </Drawer>
               <Container component="main" maxWidth="md">
                 <Breadcrumbs aria-label="breadcrumb">
                   <Link component={GatsbyLink} color="inherit" to="/">
