@@ -44,7 +44,9 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         defaultLayouts: {
+          about: require.resolve('./src/ui/templates/AboutTpl.js'),
           docs: require.resolve('./src/ui/templates/DocsTpl.js'),
+          help: require.resolve('./src/ui/templates/HelpTpl.js'),
           partners: require.resolve('./src/ui/templates/PartnersTpl.js'),
           press: require.resolve('./src/ui/templates/PressTpl.js'),
         },

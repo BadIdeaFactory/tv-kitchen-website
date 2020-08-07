@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => ({
   root: {},
 }));
 
-export default function PartnersTpl(props) {
+export default function HelpTpl(props) {
   const classes = useStyles();
 
   return (
