@@ -4,9 +4,12 @@ import { Link as GatsbyLink } from 'gatsby';
 
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
+import Slide from '@material-ui/core/Slide';
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 import makeStyles from '@material-ui/core/styles/makeStyles';
+import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 
+import defaultTheme from '@ui/themes/defaultTheme';
 import sections from '@ui/config/sections';
 
 const useStyles = makeStyles(theme => ({
@@ -36,45 +39,48 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function Navbar({ location: { pathname }, ...props }) {
+export default function Navbar({ uri, ...props }) {
   const classes = useStyles();
   const mui = createMuiTheme();
+  const trigger = useScrollTrigger();
 
   // console.group('Navbar.js');
   // console.log(props);
   // console.groupEnd();
 
-  const { color } = _.find(sections, o => o.slug.startsWith(props.uri));
+  const { color } = _.find(sections, o => uri.startsWith(o.slug)) || defaultTheme.palette.primary.main;
 
   return (
     <>
       <div className={classes.toolbar} />
-      <BottomNavigation className={classes.root} component="nav" showLabels>
-        {Object.keys(sections).map(key => {
-          const { title, slug, Icon } = sections[key];
-          return (
-            <BottomNavigationAction
-              classes={{
-                label: classes.actionLabel,
-              }}
-              className={classes.action}
-              style={
-                pathname.startsWith(slug)
-                  ? {
-                      background: color,
-                      color: mui.palette.getContrastText(color),
-                    }
-                  : null
-              }
-              component={GatsbyLink}
-              icon={<Icon fontSize="small" className={classes.actionIcon} />}
-              key={key}
-              label={title}
-              to={slug}
-            />
-          );
-        })}
-      </BottomNavigation>
+      <Slide appear={false} direction="up" in={!trigger}>
+        <BottomNavigation className={classes.root} component="nav" showLabels>
+          {Object.keys(sections).map(key => {
+            const { title, slug, Icon } = sections[key];
+            return (
+              <BottomNavigationAction
+                classes={{
+                  label: classes.actionLabel,
+                }}
+                className={classes.action}
+                style={
+                  uri.startsWith(slug)
+                    ? {
+                        background: color,
+                        color: mui.palette.getContrastText(color),
+                      }
+                    : null
+                }
+                component={GatsbyLink}
+                icon={<Icon fontSize="small" className={classes.actionIcon} />}
+                key={key}
+                label={title}
+                to={slug}
+              />
+            );
+          })}
+        </BottomNavigation>
+      </Slide>
     </>
   );
 }
