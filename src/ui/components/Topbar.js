@@ -8,6 +8,7 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import Link from '@material-ui/core/Link';
+import Slide from '@material-ui/core/Slide';
 import Toolbar from '@material-ui/core/Toolbar';
 import Tooltip from '@material-ui/core/Tooltip';
 import TwitterIcon from '@material-ui/icons/Twitter';
@@ -18,7 +19,7 @@ import TVKitchenLogo from '@ui/assets/tv-kitchen-logo.svg';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    borderBottom: `3px solid transparent`,
+    borderBottom: `3px solid ${theme.palette.divider}`,
   },
   toolbar: theme.mixins.toolbar,
   inner: {
@@ -48,6 +49,9 @@ const useStyles = makeStyles(theme => ({
       marginRight: theme.spacing(1),
     },
   },
+  menuItem: {
+    borderColor: 'transparent',
+  },
   social: {},
   socialButton: {
     '&:first-child': {
@@ -73,64 +77,70 @@ export default function Topbar({ location: { pathname }, ...props }) {
 
   console.group('Topbar.js');
   console.log({ props });
+  console.log({ trigger });
   console.groupEnd();
+
+  const sections = {
+    0: { title: 'About', slug: '/about' },
+    1: { title: 'Partners', slug: '/partners' },
+    2: { title: 'Press', slug: '/press' },
+    3: { title: 'Docs', slug: '/docs' },
+    4: { title: 'Help', slug: '/help' },
+  };
 
   return (
     <>
-      <AppBar className={classes.root} color="inherit" style={trigger ? { borderBottom: `3px solid black` } : null}>
-        <Toolbar>
-          <Grid
-            alignContent="stretch"
-            alignItems="center"
-            container
-            direction="row"
-            justify="space-between"
-            spacing={4}>
-            <Grid item className={`${classes.logo} ${classes.inner}`}>
-              <Link component={GatsbyLink} variant="h6" to="/">
-                <TVKitchenLogo className={classes.brandmark} />
-              </Link>
+      <Slide appear={false} direction="down" in={!trigger}>
+        <AppBar className={classes.root} color="inherit">
+          <Toolbar>
+            <Grid
+              alignContent="stretch"
+              alignItems="center"
+              container
+              direction="row"
+              justify="space-between"
+              spacing={4}>
+              <Grid item className={`${classes.logo} ${classes.inner}`}>
+                <Link component={GatsbyLink} variant="h6" to="/">
+                  <TVKitchenLogo className={classes.brandmark} />
+                </Link>
+              </Grid>
+              <Grid item xs className={`${classes.menu} ${classes.inner}`}>
+                {Object.keys(sections).map(key => {
+                  const { slug, title } = sections[key];
+                  return (
+                    <Button
+                      className={!pathname.startsWith(slug) ? classes.menuItem : ''}
+                      component={GatsbyLink}
+                      key={key}
+                      to={slug}
+                      variant="outlined">
+                      {title}
+                    </Button>
+                  );
+                })}
+              </Grid>
+              <Grid item className={`${classes.social} ${classes.inner}`}>
+                <Tooltip title="Follow us on Twitter">
+                  <IconButton color="inherit" href="https://twitter.com/biffud" className={classes.socialButton}>
+                    <TwitterIcon fontSize="small" />
+                  </IconButton>
+                </Tooltip>
+                <Tooltip title="Visit TV Kitchen Github">
+                  <IconButton color="inherit" href="https://github.com/tvkitchen" className={classes.socialButton}>
+                    <GitHubIcon fontSize="small" />
+                  </IconButton>
+                </Tooltip>
+                <Tooltip title="Join our Tiny Newsletter">
+                  <IconButton color="inherit" href="https://tinyletter.com/tvkitchen" className={classes.socialButton}>
+                    <EmailIcon fontSize="small" />
+                  </IconButton>
+                </Tooltip>
+              </Grid>
             </Grid>
-            <Grid item xs className={`${classes.menu} ${classes.inner}`}>
-              <Button color={pathname.startsWith('/about') ? 'primary' : 'inherit'} component={GatsbyLink} to="/about/">
-                About
-              </Button>
-              <Button
-                color={pathname.startsWith('/partners') ? 'primary' : 'inherit'}
-                component={GatsbyLink}
-                to="/partners/">
-                Partners
-              </Button>
-              <Button color={pathname.startsWith('/press') ? 'primary' : 'inherit'} component={GatsbyLink} to="/press/">
-                Press
-              </Button>
-              <Button color={pathname.startsWith('/docs') ? 'primary' : 'inherit'} component={GatsbyLink} to="/docs/">
-                Docs
-              </Button>
-              <Button color={pathname.startsWith('/help') ? 'primary' : 'inherit'} component={GatsbyLink} to="/help/">
-                Help
-              </Button>
-            </Grid>
-            <Grid item className={`${classes.social} ${classes.inner}`}>
-              <Tooltip title="Follow us on Twitter">
-                <IconButton color="inherit" href="https://twitter.com/biffud" className={classes.socialButton}>
-                  <TwitterIcon fontSize="small" />
-                </IconButton>
-              </Tooltip>
-              <Tooltip title="Visit TV Kitchen Github">
-                <IconButton color="inherit" href="https://github.com/tvkitchen" className={classes.socialButton}>
-                  <GitHubIcon fontSize="small" />
-                </IconButton>
-              </Tooltip>
-              <Tooltip title="Email us">
-                <IconButton color="inherit" href="mailto:tvkitchen@biffud.com" className={classes.socialButton}>
-                  <EmailIcon fontSize="small" />
-                </IconButton>
-              </Tooltip>
-            </Grid>
-          </Grid>
-        </Toolbar>
-      </AppBar>
+          </Toolbar>
+        </AppBar>
+      </Slide>
       <div className={classes.toolbar} />
     </>
   );
