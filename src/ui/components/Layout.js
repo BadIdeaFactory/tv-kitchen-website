@@ -30,7 +30,7 @@ export default function Layout(props) {
         <Foobar {...props} />
         <div className={classes.toolbar} />
       </Container>
-      <Navbar />
+      <Navbar {...props} />
     </>
   );
 }

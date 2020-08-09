@@ -16,6 +16,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 
 import TVKitchenLogo from '@ui/assets/tv-kitchen-logo.svg';
+import sections from '@ui/config/sections';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -79,14 +80,6 @@ export default function Topbar({ location: { pathname }, ...props }) {
   // console.log({ props });
   // console.log({ trigger });
   // console.groupEnd();
-
-  const sections = {
-    0: { title: 'About', slug: '/about' },
-    1: { title: 'Partners', slug: '/partners' },
-    2: { title: 'Press', slug: '/press' },
-    3: { title: 'Docs', slug: '/docs' },
-    4: { title: 'Help', slug: '/help' },
-  };
 
   return (
     <>

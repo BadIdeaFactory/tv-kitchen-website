@@ -110,7 +110,6 @@ export default createMuiTheme({
     borderRadius: 0,
   },
   typography: {
-    ...setType(400),
     fontFamily: fonts.body,
     fontWeight: '500',
     body1: {},

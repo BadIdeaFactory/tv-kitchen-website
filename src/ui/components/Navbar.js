@@ -1,60 +1,79 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import _ from 'lodash';
 import { Link as GatsbyLink } from 'gatsby';
 
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
-import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
-import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
-import MenuBookOutlinedIcon from '@material-ui/icons/MenuBookOutlined';
-import Slide from '@material-ui/core/Slide';
-import SubjectIcon from '@material-ui/icons/Subject';
+import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import useScrollTrigger from '@material-ui/core/useScrollTrigger';
+
+import sections from '@ui/config/sections';
 
 const useStyles = makeStyles(theme => ({
   root: {
+    borderTop: `3px solid ${theme.palette.divider}`,
+    bottom: 0,
     left: 0,
+    margin: 0,
+    height: 'auto',
     position: 'fixed',
     right: 0,
     top: 'auto',
-    bottom: 0,
     [theme.breakpoints.up('md')]: {
       display: 'none',
     },
   },
   toolbar: theme.mixins.toolbar,
+  action: {
+    paddingTop: theme.spacing(1.5),
+    paddingBottom: theme.spacing(1.5),
+  },
+  actionIcon: {
+    marginBottom: theme.spacing(0.5),
+  },
+  actionLabel: {
+    ...theme.typography.caption,
+  },
 }));
 
-function HideOnScroll(props) {
-  const { children } = props;
-  const trigger = useScrollTrigger();
-
-  return (
-    <Slide appear={false} direction="up" in={!trigger}>
-      {children}
-    </Slide>
-  );
-}
-
-HideOnScroll.propTypes = {
-  children: PropTypes.element.isRequired,
-};
-
-export default function Navbar(props) {
+export default function Navbar({ location: { pathname }, ...props }) {
   const classes = useStyles();
+  const mui = createMuiTheme();
+
+  // console.group('Navbar.js');
+  // console.log(props);
+  // console.groupEnd();
+
+  const { color } = _.find(sections, o => o.slug.startsWith(props.uri));
+
   return (
     <>
       <div className={classes.toolbar} />
-      <BottomNavigation className={classes.root} showLabels>
-        <BottomNavigationAction component={GatsbyLink} to="/" label="Home" icon={<HomeOutlinedIcon />} />
-        <BottomNavigationAction component={GatsbyLink} to="/about" label="About" icon={<InfoOutlinedIcon />} />
-        <BottomNavigationAction component={GatsbyLink} to="/partners" label="Partners" icon={<FavoriteBorderIcon />} />
-        <BottomNavigationAction component={GatsbyLink} to="/press" label="Press" icon={<SubjectIcon />} />
-        <BottomNavigationAction component={GatsbyLink} to="/docs" label="Docs" icon={<MenuBookOutlinedIcon />} />
-        <BottomNavigationAction component={GatsbyLink} to="/help" label="Help" icon={<HelpOutlineIcon />} />
+      <BottomNavigation className={classes.root} component="nav" showLabels>
+        {Object.keys(sections).map(key => {
+          const { title, slug, Icon } = sections[key];
+          return (
+            <BottomNavigationAction
+              classes={{
+                label: classes.actionLabel,
+              }}
+              className={classes.action}
+              style={
+                pathname.startsWith(slug)
+                  ? {
+                      background: color,
+                      color: mui.palette.getContrastText(color),
+                    }
+                  : null
+              }
+              component={GatsbyLink}
+              icon={<Icon fontSize="small" className={classes.actionIcon} />}
+              key={key}
+              label={title}
+              to={slug}
+            />
+          );
+        })}
       </BottomNavigation>
     </>
   );

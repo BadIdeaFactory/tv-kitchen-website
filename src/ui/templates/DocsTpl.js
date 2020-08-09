@@ -18,7 +18,6 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 
 import Copy from '@ui/components/Copy';
 import Layout from '@ui/components/Layout';
-import colors from '@ui/themes/colors';
 import withTheme from '@ui/themes/withTheme';
 
 const drawerWidth = 240;
@@ -200,4 +199,4 @@ const DocsTpl = ({ children, pageContext, ...props }) => {
   );
 };
 
-export default withTheme(DocsTpl, colors.purple);
+export default withTheme(DocsTpl);

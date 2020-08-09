@@ -9,7 +9,6 @@ import Typography from '@material-ui/core/Typography';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 
 import Layout from '@ui/components/Layout';
-import colors from '@ui/themes/colors';
 import withTheme from '@ui/themes/withTheme';
 
 const useStyles = makeStyles(theme => ({
@@ -75,4 +74,4 @@ const PressTpl = ({ children, pageContext, data: { allMediumPost }, ...props }) 
   );
 };
 
-export default withTheme(PressTpl, colors.green);
+export default withTheme(PressTpl);
