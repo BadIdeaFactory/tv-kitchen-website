@@ -11,7 +11,6 @@ export default function Head(props) {
   return (
     <Helmet encodeSpecialCharacters={true} titleTemplate={`%s ⋅ ${meta.title}`} defaultTitle={meta.title}>
       <html lang="en" />
-      <title>My Plain Title or {`dynamic`} title</title>
 
       {/* <link href="/assets/images/favicon.ico" type="image/png" rel="icon"> */}
       <link rel="canonical" href={meta.url} />
@@ -28,7 +27,7 @@ export default function Head(props) {
       <meta name="rating" content="General" />
       <meta name="revist-after" content="after 1 days" />
       <meta name="robots" content="index,follow" />
-      <meta name="title" content={`My Plain Title or ${'dynamic'} title`} />
+      <meta name="title" content={meta.title} />
       <meta
         name="viewport"
         content="width=device-width, minimum-scale = 1.0, initial-scale = 1.0, maximum-scale = 1.0, user-scalable=yes, shrink-to-fit=no"
