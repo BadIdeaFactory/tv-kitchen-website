@@ -3,12 +3,14 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
+import OpenInNewIcon from '@material-ui/icons/OpenInNew';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import OpenInNewIcon from '@material-ui/icons/OpenInNew';
 
 import Layout from '@ui/components/Layout';
+import colors from '@ui/themes/colors';
+import withTheme from '@ui/themes/withTheme';
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -17,13 +19,13 @@ const useStyles = makeStyles(theme => ({
   text: { marginBottom: theme.spacing(2) },
 }));
 
-export default function PressTpl({ children, pageContext, data: { allMediumPost }, ...props }) {
+const PressTpl = ({ children, pageContext, data: { allMediumPost }, ...props }) => {
   const classes = useStyles();
 
-  console.group('PressTpl');
-  console.log({ allMediumPost });
-  console.log({ props });
-  console.groupEnd();
+  // console.group('PressTpl');
+  // console.log({ allMediumPost });
+  // console.log({ props });
+  // console.groupEnd();
 
   return (
     <Layout {...props} className={classes.root}>
@@ -61,7 +63,7 @@ export default function PressTpl({ children, pageContext, data: { allMediumPost 
                 <Typography className={classes.text} display="block" variant="body1">
                   {paragraphs.map((paragraph, i) => (i > 0 ? `${paragraph.text} ` : null))}
                 </Typography>
-                <Button href={url} variant="outlined" target="_blank" endIcon={<OpenInNewIcon fontSize="inherit" />}>
+                <Button href={url} variant="outlined" target="_blank" endIcon={<OpenInNewIcon fontSize="small" />}>
                   Read on Medium
                 </Button>
               </article>
@@ -71,4 +73,6 @@ export default function PressTpl({ children, pageContext, data: { allMediumPost 
       </Container>
     </Layout>
   );
-}
+};
+
+export default withTheme(PressTpl, colors.green);

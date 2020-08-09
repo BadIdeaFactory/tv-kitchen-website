@@ -4,12 +4,14 @@ import Container from '@material-ui/core/Container';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 
 import Layout from '@ui/components/Layout';
+import colors from '@ui/themes/colors';
+import withTheme from '@ui/themes/withTheme';
 
 const useStyles = makeStyles(theme => ({
   root: {},
 }));
 
-export default function HelpTpl(props) {
+const HelpTpl = props => {
   const classes = useStyles();
 
   return (
@@ -19,4 +21,6 @@ export default function HelpTpl(props) {
       </Container>
     </Layout>
   );
-}
+};
+
+export default withTheme(HelpTpl, colors.red);

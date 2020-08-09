@@ -18,11 +18,12 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 
 import Copy from '@ui/components/Copy';
 import Layout from '@ui/components/Layout';
+import colors from '@ui/themes/colors';
+import withTheme from '@ui/themes/withTheme';
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
-  DocsTpl: {},
   root: {
     display: 'flex',
   },
@@ -40,7 +41,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function DocsTpl({ children, pageContext, ...props }) {
+const DocsTpl = ({ children, pageContext, ...props }) => {
   const classes = useStyles();
 
   const [open, setOpen] = useState(pageContext.frontmatter.section || null);
@@ -105,7 +106,7 @@ export default function DocsTpl({ children, pageContext, ...props }) {
         console.groupEnd();
 
         return (
-          <Layout {...props} className={classes.DocsTpl}>
+          <Layout {...props}>
             <div className={classes.root}>
               <Drawer
                 anchor="left"
@@ -197,4 +198,6 @@ export default function DocsTpl({ children, pageContext, ...props }) {
       }}
     />
   );
-}
+};
+
+export default withTheme(DocsTpl, colors.purple);

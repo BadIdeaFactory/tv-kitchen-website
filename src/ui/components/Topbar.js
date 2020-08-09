@@ -75,10 +75,10 @@ export default function Topbar({ location: { pathname }, ...props }) {
   const classes = useStyles();
   const trigger = useScrollTrigger();
 
-  console.group('Topbar.js');
-  console.log({ props });
-  console.log({ trigger });
-  console.groupEnd();
+  // console.group('Topbar.js');
+  // console.log({ props });
+  // console.log({ trigger });
+  // console.groupEnd();
 
   const sections = {
     0: { title: 'About', slug: '/about' },
