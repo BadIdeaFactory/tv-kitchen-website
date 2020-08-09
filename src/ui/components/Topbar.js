@@ -1,4 +1,5 @@
 import React from 'react';
+import _ from 'lodash';
 import { Link as GatsbyLink } from 'gatsby';
 
 import AppBar from '@material-ui/core/AppBar';
@@ -99,13 +100,13 @@ export default function Topbar({ location: { pathname }, ...props }) {
                 </Link>
               </Grid>
               <Grid item xs className={`${classes.menu} ${classes.inner}`}>
-                {Object.keys(sections).map(key => {
-                  const { slug, title } = sections[key];
+                {_.orderBy(sections, o => o.order).map(section => {
+                  const { id, slug, title } = section;
                   return (
                     <Button
                       className={!pathname.startsWith(slug) ? classes.menuItem : ''}
                       component={GatsbyLink}
-                      key={key}
+                      key={id}
                       to={slug}
                       variant="outlined">
                       {title}

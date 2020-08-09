@@ -26,6 +26,7 @@
     "gatsby-plugin-google-fonts": "^1.0.1",
     "gatsby-plugin-material-ui": "2.1.10",
     "gatsby-plugin-mdx": "1.2.34",
+    "gatsby-plugin-react-helmet": "^3.3.10",
     "gatsby-plugin-react-svg": "^3.0.0",
     "gatsby-plugin-sharp": "2.6.25",
     "gatsby-plugin-tsconfig-paths": "1.0.2",
@@ -36,6 +37,7 @@
     "polished": "^3.6.5",
     "react": "16.13.1",
     "react-dom": "16.13.1",
+    "react-helmet": "^6.1.0",
     "remark-normalize-headings": "2.0.0",
     "remark-squeeze-paragraphs": "4.0.0"
   },

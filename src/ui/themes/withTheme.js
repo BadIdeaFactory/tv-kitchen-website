@@ -11,7 +11,8 @@ import sections from '@ui/config/sections';
 export default function withTheme(Component) {
   class HOC extends React.Component {
     render() {
-      const { color } = _.find(sections, o => this.props.uri.startsWith(o.slug) || defaultTheme.palette.primary.main);
+      const color =
+        _.find(sections, o => this.props.uri.startsWith(o.slug))?.color || defaultTheme.palette.primary.main;
 
       const theme = {
         ...defaultTheme,

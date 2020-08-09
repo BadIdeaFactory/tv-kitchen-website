@@ -4,7 +4,6 @@ import { Link as GatsbyLink } from 'gatsby';
 
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import Slide from '@material-ui/core/Slide';
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
@@ -48,39 +47,37 @@ export default function Navbar({ uri, ...props }) {
   // console.log(props);
   // console.groupEnd();
 
-  const { color } = _.find(sections, o => uri.startsWith(o.slug)) || defaultTheme.palette.primary.main;
+  const color = _.find(sections, o => uri.startsWith(o.slug))?.color || defaultTheme.palette.primary.main;
 
   return (
     <>
       <div className={classes.toolbar} />
-      <Slide appear={false} direction="up" in={!trigger}>
-        <BottomNavigation className={classes.root} component="nav" showLabels>
-          {Object.keys(sections).map(key => {
-            const { title, slug, Icon } = sections[key];
-            return (
-              <BottomNavigationAction
-                classes={{
-                  label: classes.actionLabel,
-                }}
-                className={classes.action}
-                style={
-                  uri.startsWith(slug)
-                    ? {
-                        background: color,
-                        color: mui.palette.getContrastText(color),
-                      }
-                    : null
-                }
-                component={GatsbyLink}
-                icon={<Icon fontSize="small" className={classes.actionIcon} />}
-                key={key}
-                label={title}
-                to={slug}
-              />
-            );
-          })}
-        </BottomNavigation>
-      </Slide>
+      <BottomNavigation className={classes.root} component="nav" showLabels>
+        {_.orderBy(sections, o => o.order).map(section => {
+          const { id, title, slug, Icon } = section;
+          return (
+            <BottomNavigationAction
+              classes={{
+                label: classes.actionLabel,
+              }}
+              className={classes.action}
+              style={
+                uri.startsWith(slug)
+                  ? {
+                      background: color,
+                      color: mui.palette.getContrastText(color),
+                    }
+                  : null
+              }
+              component={GatsbyLink}
+              icon={<Icon className={classes.actionIcon} />}
+              key={id}
+              label={!trigger ? title : null}
+              to={slug}
+            />
+          );
+        })}
+      </BottomNavigation>
     </>
   );
 }

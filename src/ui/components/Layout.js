@@ -5,6 +5,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 
 import Foobar from '@ui/components/Foobar';
+import Head from '@ui/components/Head';
 import Navbar from '@ui/components/Navbar';
 import Topbar from '@ui/components/Topbar';
 
@@ -22,6 +23,7 @@ export default function Layout(props) {
 
   return (
     <>
+      <Head {...props} />
       <CssBaseline />
       <Container maxWidth="lg">
         <Topbar {...props} />

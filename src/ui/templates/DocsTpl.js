@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import _ from 'lodash';
+import { Helmet } from 'react-helmet';
 import { Link as GatsbyLink } from 'gatsby';
 import { StaticQuery, graphql } from 'gatsby';
 
@@ -18,6 +19,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 
 import Copy from '@ui/components/Copy';
 import Layout from '@ui/components/Layout';
+import sections from '@ui/config/sections';
 import withTheme from '@ui/themes/withTheme';
 
 const drawerWidth = 240;
@@ -95,17 +97,20 @@ const DocsTpl = ({ children, pageContext, ...props }) => {
         const loosePages = order(_.filter(chapters.null, ({ node }) => !node.componentPath.endsWith(rootPagePath)));
         const rootPage = _.find(pages, ({ node }) => node.componentPath.endsWith(rootPagePath));
 
-        console.group('DocsTpl');
-        console.log({ props });
-        console.log({ pageContext });
-        console.log({ loosePages });
-        console.log({ loosePages });
-        console.log(order(loosePages));
-        console.log({ rootPage });
-        console.groupEnd();
+        // console.group('DocsTpl');
+        // console.log({ props });
+        // console.log({ pageContext });
+        // console.log({ loosePages });
+        // console.log({ loosePages });
+        // console.log(order(loosePages));
+        // console.log({ rootPage });
+        // console.groupEnd();
 
         return (
           <Layout {...props}>
+            <Helmet>
+              <title>{`${_.find(sections, o => o.id === 'docs')?.title}: ${pageContext.frontmatter.title}`}</title>
+            </Helmet>
             <div className={classes.root}>
               <Drawer
                 anchor="left"

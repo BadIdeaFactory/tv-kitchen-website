@@ -1,15 +1,22 @@
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
-import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
-import MenuBookOutlinedIcon from '@material-ui/icons/MenuBookOutlined';
+import HelpIcon from '@material-ui/icons/Help';
+import SupervisedUserCircleIcon from '@material-ui/icons/SupervisedUserCircle';
 import SubjectIcon from '@material-ui/icons/Subject';
+import LocalLibraryIcon from '@material-ui/icons/LocalLibrary';
+import InfoIcon from '@material-ui/icons/Info';
 
 import colors from '@ui/themes/colors';
 
 export default {
-  0: { title: 'About', slug: '/about', Icon: InfoOutlinedIcon, color: colors.yellow },
-  1: { title: 'Partners', slug: '/partners', Icon: FavoriteBorderIcon, color: colors.cyan },
-  2: { title: 'Press', slug: '/press', Icon: SubjectIcon, color: colors.green },
-  3: { title: 'Docs', slug: '/docs', Icon: MenuBookOutlinedIcon, color: colors.purple },
-  4: { title: 'Help', slug: '/help', Icon: HelpOutlineIcon, color: colors.red },
+  about: { id: 'about', order: 0, title: 'About', slug: '/about', Icon: InfoIcon, color: colors.yellow },
+  partners: {
+    id: 'partners',
+    order: 1,
+    title: 'Partners',
+    slug: '/partners',
+    Icon: SupervisedUserCircleIcon,
+    color: colors.cyan,
+  },
+  press: { id: 'press', order: 2, title: 'Press', slug: '/press', Icon: SubjectIcon, color: colors.green },
+  docs: { id: 'docs', order: 3, title: 'Docs', slug: '/docs', Icon: LocalLibraryIcon, color: colors.purple },
+  help: { id: 'help', order: 4, title: 'Help', slug: '/help', Icon: HelpIcon, color: colors.red },
 };

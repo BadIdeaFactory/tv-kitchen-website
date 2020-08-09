@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
@@ -12,7 +13,6 @@ import Layout from '@ui/components/Layout';
 import withTheme from '@ui/themes/withTheme';
 
 const useStyles = makeStyles(theme => ({
-  root: {},
   article: { '&:not(:last-child)': { marginBottom: theme.spacing(16) } },
   title: { marginBottom: theme.spacing(2) },
   text: { marginBottom: theme.spacing(2) },
@@ -27,7 +27,10 @@ const PressTpl = ({ children, pageContext, data: { allMediumPost }, ...props }) 
   // console.groupEnd();
 
   return (
-    <Layout {...props} className={classes.root}>
+    <Layout {...props}>
+      <Helmet>
+        <title>{pageContext.frontmatter.title}</title>
+      </Helmet>
       <Container component="main" maxWidth="sm">
         {allMediumPost.edges.map(
           ({
