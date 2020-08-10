@@ -1,19 +1,13 @@
 import React from 'react';
-import _ from 'lodash';
 import { darken, lighten } from 'polished';
 
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 import defaultTheme from '@ui/themes/defaultTheme';
 import { ThemeProvider } from '@material-ui/core/styles';
 
-import sections from '@ui/config/sections';
-
-export default function withTheme(Component) {
+export default function withTheme(Component, color) {
   class HOC extends React.Component {
     render() {
-      const color =
-        _.find(sections, o => this.props.uri.startsWith(o.slug))?.color || defaultTheme.palette.primary.main;
-
       const theme = {
         ...defaultTheme,
         palette: {

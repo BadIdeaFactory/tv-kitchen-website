@@ -58,7 +58,7 @@ export default function Head(props) {
 
       <style>
         {`
-          html, body { background: ${theme.palette.background.paper}}
+          html, body { background: ${theme.palette.background.paper} !important }
         `}
       </style>
     </Helmet>

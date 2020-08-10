@@ -4,7 +4,6 @@ import { Link as GatsbyLink } from 'gatsby';
 
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
-import EmailIcon from '@material-ui/icons/Email';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
@@ -98,7 +97,7 @@ export default function Topbar({ location: { pathname }, ...props }) {
                   <TVKitchenLogo className={classes.brandmark} />
                 </Link>
               </Grid>
-              <Grid item xs className={`${classes.menu} ${classes.inner}`} xs={6} justify="center">
+              <Grid item className={`${classes.menu} ${classes.inner}`} xs={6} justify="center">
                 {_.orderBy(sections, o => o.order).map(section => {
                   const { id, slug, title } = section;
                   return (

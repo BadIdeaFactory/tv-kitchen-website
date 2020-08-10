@@ -64,21 +64,11 @@ const DocsTpl = ({ children, pageContext, ...props }) => {
               }
             }
           }
-          allSite {
-            edges {
-              node {
-                siteMetadata {
-                  title
-                }
-              }
-            }
-          }
         }
       `}
       render={data => {
         const {
           allSitePage: { edges: pages },
-          allSite: { edges: allSite },
         } = data;
 
         const order = array => {
@@ -200,4 +190,4 @@ const DocsTpl = ({ children, pageContext, ...props }) => {
   );
 };
 
-export default withTheme(DocsTpl);
+export default withTheme(DocsTpl, sections.docs.color);

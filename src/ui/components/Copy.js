@@ -7,10 +7,9 @@ const useStyles = makeStyles(theme => ({
     '& > *:first-child': { marginTop: 0 },
     '& > h1': theme.typography.h3,
     '& > h2': theme.typography.h4,
-    '& > h2': theme.typography.h5,
-    '& > h3': theme.typography.h6,
-    '& > h4': theme.typography.subtitle1,
-    '& > h5': theme.typography.subtitle2,
+    '& > h3': theme.typography.h5,
+    '& > h4': theme.typography.h6,
+    '& > h5': theme.typography.subtitle1,
     '& > p': theme.typography.body1,
     '& a': {
       color: theme.palette.primary.main,

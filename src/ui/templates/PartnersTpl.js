@@ -5,6 +5,7 @@ import Container from '@material-ui/core/Container';
 // import makeStyles from '@material-ui/core/styles/makeStyles';
 
 import Layout from '@ui/components/Layout';
+import sections from '@ui/config/sections';
 import withTheme from '@ui/themes/withTheme';
 
 // const useStyles = makeStyles(theme => ({}));
@@ -24,4 +25,4 @@ const PartnersTpl = ({ children, pageContext, ...props }) => {
   );
 };
 
-export default withTheme(PartnersTpl);
+export default withTheme(PartnersTpl, sections.partners.color);
