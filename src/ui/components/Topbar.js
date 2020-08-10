@@ -28,7 +28,6 @@ const useStyles = makeStyles(theme => ({
     alignContent: 'center',
     alignItems: 'center',
     display: 'flex',
-    justifyContent: 'center',
     minHeight: theme.spacing(8),
     [theme.breakpoints.up('md')]: {
       minHeight: theme.spacing(10),
@@ -94,12 +93,12 @@ export default function Topbar({ location: { pathname }, ...props }) {
               direction="row"
               justify="space-between"
               spacing={4}>
-              <Grid item className={`${classes.logo} ${classes.inner}`}>
+              <Grid item className={`${classes.logo} ${classes.inner}`} xs={3}>
                 <Link component={GatsbyLink} variant="h6" to="/">
                   <TVKitchenLogo className={classes.brandmark} />
                 </Link>
               </Grid>
-              <Grid item xs className={`${classes.menu} ${classes.inner}`}>
+              <Grid item xs className={`${classes.menu} ${classes.inner}`} xs={6} justify="center">
                 {_.orderBy(sections, o => o.order).map(section => {
                   const { id, slug, title } = section;
                   return (
@@ -114,7 +113,7 @@ export default function Topbar({ location: { pathname }, ...props }) {
                   );
                 })}
               </Grid>
-              <Grid item className={`${classes.social} ${classes.inner}`}>
+              <Grid item className={`${classes.social} ${classes.inner}`} xs={3} justify="flex-end">
                 <Tooltip title="Follow us on Twitter">
                   <IconButton color="inherit" href="https://twitter.com/biffud" className={classes.socialButton}>
                     <TwitterIcon fontSize="small" />
@@ -125,11 +124,11 @@ export default function Topbar({ location: { pathname }, ...props }) {
                     <GitHubIcon fontSize="small" />
                   </IconButton>
                 </Tooltip>
-                <Tooltip title="Join our Tiny Newsletter">
+                {/* <Tooltip title="Join our Tiny Newsletter">
                   <IconButton color="inherit" href="https://tinyletter.com/tvkitchen" className={classes.socialButton}>
                     <EmailIcon fontSize="small" />
                   </IconButton>
-                </Tooltip>
+                </Tooltip> */}
               </Grid>
             </Grid>
           </Toolbar>

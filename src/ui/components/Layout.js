@@ -29,6 +29,7 @@ export default function Layout(props) {
         <Topbar {...props} />
         <div className={classes.toolbar} />
         {children}
+        <div className={classes.toolbar} />
         <Foobar {...props} />
         <div className={classes.toolbar} />
       </Container>

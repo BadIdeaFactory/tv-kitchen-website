@@ -13,9 +13,18 @@ import Layout from '@ui/components/Layout';
 import withTheme from '@ui/themes/withTheme';
 
 const useStyles = makeStyles(theme => ({
-  article: { '&:not(:last-child)': { marginBottom: theme.spacing(16) } },
-  title: { marginBottom: theme.spacing(2) },
-  text: { marginBottom: theme.spacing(2) },
+  article: {
+    '&:not(:last-child)': {
+      marginBottom: theme.spacing(16),
+    },
+    '&:not(:first-child)': {
+      marginTop: theme.spacing(16),
+    },
+  },
+  title: {},
+  date: { marginTop: theme.spacing(1.5) },
+  text: { marginTop: theme.spacing(3) },
+  action: { marginTop: theme.spacing(3) },
 }));
 
 const PressTpl = ({ children, pageContext, data: { allMediumPost }, ...props }) => {
@@ -52,21 +61,31 @@ const PressTpl = ({ children, pageContext, data: { allMediumPost }, ...props }) 
             const url = `https://medium.com/storycopter-news/${uniqueSlug}`;
             return (
               <article className={classes.article} key={id}>
-                <Tooltip title="Read on Medium.com">
+                <Tooltip title="Continue on Medium…">
                   <Link className={classes.title} display="block" href={url}>
-                    <Typography component="span" variant="h2">
+                    <Typography className={classes.title} component="span" variant="h2">
                       {title}
                     </Typography>
                   </Link>
                 </Tooltip>
-                <Typography display="block" gutterBottom variant="overline" aria-label="Published on">
+                <Typography
+                  aria-label="Published on"
+                  className={classes.date}
+                  display="block"
+                  gutterBottom
+                  variant="overline">
                   {date}
                 </Typography>
-                <Typography className={classes.text} display="block" variant="body1">
+                <Typography className={classes.text} display="block" gutterBottom variant="body1">
                   {paragraphs.map((paragraph, i) => (i > 0 ? `${paragraph.text} ` : null))}
                 </Typography>
-                <Button href={url} variant="outlined" target="_blank" endIcon={<OpenInNewIcon fontSize="small" />}>
-                  Read on Medium
+                <Button
+                  className={classes.action}
+                  href={url}
+                  variant="contained"
+                  target="_blank"
+                  endIcon={<OpenInNewIcon fontSize="small" />}>
+                  Continue on Medium
                 </Button>
               </article>
             );
