@@ -1,12 +1,13 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
-import Container from '@material-ui/core/Container';
 // import makeStyles from '@material-ui/core/styles/makeStyles';
 
-import Layout from '@ui/components/Layout';
-import sections from '@ui/config/sections';
-import withTheme from '@ui/themes/withTheme';
+import Layout from '@uises/withTheme';
+
+import About from './ofAbout/About';
+import Funding from './ofAbout/Team';
+import Team from './ofAbout/Funding';
 
 // const useStyles = makeStyles(theme => ({}));
 
@@ -18,9 +19,12 @@ const AboutTpl = ({ children, pageContext, ...props }) => {
       <Helmet>
         <title>{pageContext.frontmatter.title}</title>
       </Helmet>
-      <Container component="main" maxWidth="md">
+      <main>
         {children}
-      </Container>
+        <About />
+        <Team />
+        <Funding />
+      </main>
     </Layout>
   );
 };

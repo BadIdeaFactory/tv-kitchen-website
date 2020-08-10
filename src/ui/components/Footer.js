@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function Foobar(props) {
+export default function Footer(props) {
   const classes = useStyles();
   return (
     <Container component="footer" className={classes.root}>
@@ -32,11 +32,10 @@ export default function Foobar(props) {
             Get our newsletter
           </Typography>
           <Typography variant="body1" gutterBottom>
-            Every now and then wesend out emails to our faithful followers. If you wish to get our news, sign up to our
-            newsletter bla.
+            Occasionally we send out emails to our faithful followers. Sign up to our newsletter bla bla.
           </Typography>
           <Button href="https://tinyletter.com/tvkitchen" variant="outlined" className={classes.button}>
-            Sign up
+            Tune in
           </Button>
         </Grid>
         <Grid item xs={12} md={4}>

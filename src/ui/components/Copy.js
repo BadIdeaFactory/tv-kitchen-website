@@ -12,7 +12,9 @@ const useStyles = makeStyles(theme => ({
     '& > h5': theme.typography.subtitle1,
     '& > p': theme.typography.body1,
     '& a': {
-      color: theme.palette.primary.main,
+      background: theme.palette.primary.light,
+      color: 'inherit',
+      textDecoration: 'none',
     },
     '& code': theme.typography.code,
     '& pre': {

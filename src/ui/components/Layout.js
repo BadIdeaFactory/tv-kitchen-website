@@ -4,7 +4,7 @@ import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 
-import Foobar from '@ui/components/Foobar';
+import Footer from '@ui/components/Footer';
 import Head from '@ui/components/Head';
 import Navbar from '@ui/components/Navbar';
 import Topbar from '@ui/components/Topbar';
@@ -30,7 +30,7 @@ export default function Layout(props) {
         <div className={classes.toolbar} />
         {children}
         <div className={classes.toolbar} />
-        <Foobar {...props} />
+        <Footer {...props} />
         <div className={classes.toolbar} />
       </Container>
       <Navbar {...props} />
