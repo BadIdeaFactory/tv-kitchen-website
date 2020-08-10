@@ -59,6 +59,10 @@ export default function Head(props) {
       <style>
         {`
           html, body { background: ${theme.palette.background.paper} !important }
+          button:active,
+          a:active {
+            color: inherit !important;
+          }
           button:focus,
           a:focus {
             background: ${theme.palette.text.primary};
