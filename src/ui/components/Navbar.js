@@ -25,7 +25,12 @@ const useStyles = makeStyles(theme => ({
       display: 'none',
     },
   },
-  toolbar: theme.mixins.toolbar,
+  toolbar: {
+    ...theme.mixins.toolbar,
+    [theme.breakpoints.up('md')]: {
+      display: 'none',
+    },
+  },
   action: {
     paddingTop: theme.spacing(1.5),
     paddingBottom: theme.spacing(1.5),

@@ -75,7 +75,7 @@ export default createMuiTheme({
   },
   palette: {
     background: {
-      default: colors.white,
+      default: colors.mono[100],
       paper: colors.white,
     },
     divider: '#000',
@@ -125,5 +125,6 @@ export default createMuiTheme({
     caption: { ...setType(200), fontFamily: fonts.caption, fontWeight: '600' },
     subtitle1: { ...setType(400), fontFamily: fonts.head, fontWeight: '600' },
     subtitle2: { ...setType(400), fontFamily: fonts.head, fontWeight: '600' },
+    code: { fontSize: 'inherit', fontFamily: fonts.foot, fontWeight: 400 },
   },
 });

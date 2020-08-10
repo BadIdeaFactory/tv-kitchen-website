@@ -4,17 +4,14 @@ import { Helmet } from 'react-helmet';
 import { Link as GatsbyLink } from 'gatsby';
 import { StaticQuery, graphql } from 'gatsby';
 
-import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import Collapse from '@material-ui/core/Collapse';
 import Container from '@material-ui/core/Container';
-import Drawer from '@material-ui/core/Drawer';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
-import Link from '@material-ui/core/Link';
+import Grid from '@material-ui/core/Grid';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import Typography from '@material-ui/core/Typography';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 
 import Copy from '@ui/components/Copy';
@@ -112,89 +109,88 @@ const DocsTpl = ({ children, pageContext, ...props }) => {
               <title>{`${_.find(sections, o => o.id === 'docs')?.title}: ${pageContext.frontmatter.title}`}</title>
             </Helmet>
             <div className={classes.root}>
-              <Drawer
-                anchor="left"
-                className={classes.drawer}
-                classes={{ paper: classes.drawerPaper }}
-                variant="permanent">
-                <div className={classes.toolbar} />
-                <List>
-                  <ListItem button component={GatsbyLink} to={rootPage.node.path}>
-                    <ListItemText primary={rootPage.node.context.frontmatter.title} />
-                  </ListItem>
-                  {loosePages.map(page => {
-                    return (
-                      <ListItem button component={GatsbyLink} to={page.node.path} key={page.node.path}>
-                        <ListItemText primary={page.node.context.frontmatter.title} />
-                      </ListItem>
-                    );
-                  })}
-                  {Object.keys(chapters).map((section, i) => {
-                    if (section === 'null') return null;
-                    const chapterPages = order(chapters[section]);
-                    const list = (
-                      <List component="div" disablePadding key={`z${i}`}>
-                        {chapterPages.map(({ node }) => {
-                          const { frontmatter } = node.context;
-                          if (node.path === '/docs/') return null;
-                          return (
-                            <ListItem
-                              className={classes.nested}
-                              button
-                              component={GatsbyLink}
-                              key={node.path}
-                              to={node.path}>
-                              <ListItemText
-                                inset={false}
-                                primary={frontmatter.title}
-                                primaryTypographyProps={{
-                                  variant: 'body2',
-                                  noWrap: true,
-                                }}
-                              />
-                            </ListItem>
-                          );
-                        })}
-                      </List>
-                    );
-                    return [
-                      <ListItem
-                        button
-                        key={`x${i}`}
-                        onClick={() =>
-                          setOpen(prevState => {
-                            return prevState === section ? null : section;
-                          })
-                        }>
-                        <ListItemText primary={section} />
-                        {open === section ? <ExpandLess /> : <ExpandMore />}
-                      </ListItem>,
-                      <Collapse in={open === section} timeout="auto" unmountOnExit key={`y${i}`}>
-                        {list}
-                      </Collapse>,
-                    ];
-                  })}
-                </List>
-              </Drawer>
               <Container component="main" maxWidth="md">
-                <Breadcrumbs aria-label="breadcrumb">
-                  <Link component={GatsbyLink} color="inherit" to="/">
-                    {allSite[0].node.siteMetadata.title}
-                  </Link>
-                  <Link component={GatsbyLink} color="inherit" to={rootPage.node.path}>
-                    Docs
-                  </Link>
-                  {pageContext.frontmatter.section ? (
-                    <Link
-                      component={GatsbyLink}
-                      color="inherit"
-                      to={order(chapters[pageContext.frontmatter.section])[0].node.path}>
-                      {pageContext.frontmatter.section}
-                    </Link>
-                  ) : null}
-                  <Typography color="textPrimary">{pageContext.frontmatter.title}</Typography>
-                </Breadcrumbs>
-                <Copy>{children}</Copy>
+                <Grid container spacing={4} wrap="nowrap">
+                  <Grid item xs={4}>
+                    <List>
+                      <ListItem button component={GatsbyLink} to={rootPage.node.path}>
+                        <ListItemText primary={rootPage.node.context.frontmatter.title} />
+                      </ListItem>
+                      {loosePages.map(page => {
+                        return (
+                          <ListItem button component={GatsbyLink} to={page.node.path} key={page.node.path}>
+                            <ListItemText primary={page.node.context.frontmatter.title} />
+                          </ListItem>
+                        );
+                      })}
+                      {Object.keys(chapters).map((section, i) => {
+                        if (section === 'null') return null;
+                        const chapterPages = order(chapters[section]);
+                        const list = (
+                          <List component="div" disablePadding key={`z${i}`}>
+                            {chapterPages.map(({ node }) => {
+                              const { frontmatter } = node.context;
+                              if (node.path === '/docs/') return null;
+                              return (
+                                <ListItem
+                                  className={classes.nested}
+                                  button
+                                  component={GatsbyLink}
+                                  key={node.path}
+                                  to={node.path}>
+                                  <ListItemText
+                                    inset={false}
+                                    primary={frontmatter.title}
+                                    primaryTypographyProps={{
+                                      variant: 'body2',
+                                      noWrap: true,
+                                    }}
+                                  />
+                                </ListItem>
+                              );
+                            })}
+                          </List>
+                        );
+                        return [
+                          <ListItem
+                            button
+                            key={`x${i}`}
+                            onClick={() =>
+                              setOpen(prevState => {
+                                return prevState === section ? null : section;
+                              })
+                            }>
+                            <ListItemText primary={section} />
+                            {open === section ? <ExpandLess /> : <ExpandMore />}
+                          </ListItem>,
+                          <Collapse in={open === section} timeout="auto" unmountOnExit key={`y${i}`}>
+                            {list}
+                          </Collapse>,
+                        ];
+                      })}
+                    </List>
+                  </Grid>
+                  <Grid item xs={8}>
+                    {/* <Breadcrumbs aria-label="breadcrumb">
+                      <Link component={GatsbyLink} color="inherit" to="/">
+                        {allSite[0].node.siteMetadata.title}
+                      </Link>
+                      <Link component={GatsbyLink} color="inherit" to={rootPage.node.path}>
+                        Docs
+                      </Link>
+                      {pageContext.frontmatter.section ? (
+                        <Link
+                          component={GatsbyLink}
+                          color="inherit"
+                          to={order(chapters[pageContext.frontmatter.section])[0].node.path}>
+                          {pageContext.frontmatter.section}
+                        </Link>
+                      ) : null}
+                      <Typography color="textPrimary">{pageContext.frontmatter.title}</Typography>
+                    </Breadcrumbs> */}
+                    <Copy>{children}</Copy>
+                  </Grid>
+                </Grid>
               </Container>
             </div>
           </Layout>

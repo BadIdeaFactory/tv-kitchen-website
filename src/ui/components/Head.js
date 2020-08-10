@@ -1,12 +1,16 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
+import useTheme from '@material-ui/core/styles/useTheme';
+
 import meta from '@ui/config/meta';
 
 export default function Head(props) {
   // console.group('Head.js');
   // console.log({ props });
   // console.groupEnd();
+
+  const theme = useTheme();
 
   return (
     <Helmet encodeSpecialCharacters={true} titleTemplate={`%s ⋅ ${meta.title}`} defaultTitle={meta.title}>
@@ -51,6 +55,12 @@ export default function Head(props) {
         property="og:image:secure_url"
         content="<?php echo thumb($site->coverimage()->toFile(), array('width' => 1200, 'height' => 630, 'crop' => true ))->url() ?>"
       /> */}
+
+      <style>
+        {`
+          html, body { background: ${theme.palette.background.paper}}
+        `}
+      </style>
     </Helmet>
   );
 }
