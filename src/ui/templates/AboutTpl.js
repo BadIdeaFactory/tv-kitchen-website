@@ -3,16 +3,19 @@ import { Helmet } from 'react-helmet';
 
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
+import makeStyles from '@material-ui/core/styles/makeStyles';
 
-import withTheme from '@ui/themes/withTheme';
 import Copy from '@ui/components/Copy';
 import Layout from '@ui/components/Layout';
 import sections from '@ui/config/sections';
+import withTheme from '@ui/themes/withTheme';
 
-// const useStyles = makeStyles(theme => ({}));
+const useStyles = makeStyles(theme => ({
+  toolbar: theme.mixins.toolbar,
+}));
 
 const AboutTpl = ({ children, pageContext, ...props }) => {
-  // const classes = useStyles();
+  const classes = useStyles();
 
   return (
     <Layout {...props}>
@@ -20,7 +23,6 @@ const AboutTpl = ({ children, pageContext, ...props }) => {
         <title>{pageContext.frontmatter.title}</title>
       </Helmet>
       <main>
-        {children}
         <Container maxWidth="sm">
           <Typography align="center" gutterBottom variant="h1">
             TV What?
@@ -73,6 +75,7 @@ const AboutTpl = ({ children, pageContext, ...props }) => {
             </p>
           </Copy>
         </Container>
+        <div className={classes.toolbar} />
         <Container maxWidth="lg">
           <Typography align="center" component="h2" variant="h1">
             Team
@@ -85,6 +88,7 @@ const AboutTpl = ({ children, pageContext, ...props }) => {
             </p>
           </Copy>
         </Container>
+        <div className={classes.toolbar} />
         <Container maxWidth="lg">
           <Typography align="center" component="h2" variant="h1">
             Funding

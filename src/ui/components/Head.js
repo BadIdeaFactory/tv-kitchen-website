@@ -59,6 +59,13 @@ export default function Head(props) {
       <style>
         {`
           html, body { background: ${theme.palette.background.paper} !important }
+          button:focus,
+          a:focus {
+            background: ${theme.palette.text.primary};
+            box-shadow: 0 0 0 2px ${theme.palette.text.primary};
+            color: ${theme.palette.background.paper};
+            outline: none;
+          }
         `}
       </style>
     </Helmet>

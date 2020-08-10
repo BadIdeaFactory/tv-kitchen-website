@@ -112,8 +112,8 @@ export default createMuiTheme({
   typography: {
     fontFamily: fonts.body,
     fontWeight: '500',
-    body1: {},
-    body2: {},
+    body1: { ...setType(400) },
+    body2: { ...setType(300) },
     button: { ...setType(200), fontFamily: fonts.foot, fontWeight: '600', letterSpacing: '0.15em' },
     h1: { ...setType(900), fontFamily: fonts.head, fontWeight: '600' },
     h2: { ...setType(800), fontFamily: fonts.head, fontWeight: '600' },
