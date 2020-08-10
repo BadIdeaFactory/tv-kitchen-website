@@ -3,7 +3,9 @@ import { Helmet } from 'react-helmet';
 
 // import makeStyles from '@material-ui/core/styles/makeStyles';
 
-import Layout from '@uises/withTheme';
+import withTheme from '@ui/themes/withTheme';
+import Layout from '@ui/themes/withTheme';
+import sections from '@ui/config/sections';
 
 import About from './ofAbout/About';
 import Funding from './ofAbout/Team';
