@@ -2,16 +2,16 @@ import React from 'react';
 import { darken, lighten } from 'polished';
 
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
-import defaultTheme from '@ui/themes/defaultTheme';
+import lightTheme from '@ui/themes/lightTheme';
 import { ThemeProvider } from '@material-ui/core/styles';
 
 export default function withTheme(Component, color) {
   class HOC extends React.Component {
     render() {
       const theme = {
-        ...defaultTheme,
+        ...lightTheme,
         palette: {
-          ...defaultTheme.palette,
+          ...lightTheme.palette,
           primary: {
             contrastText: createMuiTheme().palette.getContrastText(color),
             dark: darken(0.2, color),

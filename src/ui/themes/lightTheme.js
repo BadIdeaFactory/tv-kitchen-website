@@ -79,9 +79,6 @@ export default createMuiTheme({
       paper: colors.white,
     },
     divider: '#000',
-    shape: {
-      borderRadius: 'none',
-    },
     text: {
       primary: colors.black,
     },

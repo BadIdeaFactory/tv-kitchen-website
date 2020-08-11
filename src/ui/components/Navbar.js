@@ -8,7 +8,7 @@ import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 
-import defaultTheme from '@ui/themes/defaultTheme';
+import lightTheme from '@ui/themes/lightTheme';
 import sections from '@ui/config/sections';
 
 const useStyles = makeStyles(theme => ({
@@ -52,7 +52,7 @@ export default function Navbar({ uri, ...props }) {
   // console.log(props);
   // console.groupEnd();
 
-  const color = _.find(sections, o => uri.startsWith(o.slug))?.color || defaultTheme.palette.primary.main;
+  const color = _.find(sections, o => uri.startsWith(o.slug))?.color || lightTheme.palette.primary.main;
 
   return (
     <>
