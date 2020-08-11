@@ -9,8 +9,9 @@ module.exports = {
   plugins: [
     `gatsby-plugin-material-ui`,
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-sharp`,
     `gatsby-remark-images`,
+    `gatsby-transformer-sharp`,
+    `gatsby-transformer-remark`,
     {
       resolve: 'gatsby-plugin-react-svg',
       options: {
@@ -55,54 +56,35 @@ module.exports = {
         path: `${__dirname}/src/pages/docs`,
       },
     },
-    // {
-    //   resolve: `gatsby-source-filesystem`,
-    //   options: {
-    //     name: `help`,
-    //     path: `${__dirname}/src/pages/help`,
-    //   },
-    // },
-    // {
-    //   resolve: `gatsby-source-filesystem`,
-    //   options: {
-    //     name: `partners`,
-    //     path: `${__dirname}/src/pages/partners`,
-    //   },
-    // },
-    // {
-    //   resolve: `gatsby-source-filesystem`,
-    //   options: {
-    //     name: `press`,
-    //     path: `${__dirname}/src/pages/press`,
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        useMozJpeg: false,
+        stripMetadata: true,
+        defaultQuality: 75,
+      },
+    },
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: ['.mdx'],
         defaultLayouts: {
-          // about: require.resolve('./src/ui/templates/AboutTpl.js'),
           default: require.resolve('./src/ui/templates/DefaultTpl.js'),
-          // docs: require.resolve('./src/ui/templates/DocsTpl.js'),
         },
-        // defaultLayouts: {
-        // about: require.resolve('./src/ui/templates/AboutTpl.js'),
-        // docs: require.resolve('./src/ui/templates/DocsTpl.js'),
-        // help: require.resolve('./src/ui/templates/HelpTpl.js'),
-        // partners: require.resolve('./src/ui/templates/PartnersTpl.js'),
-        // press: require.resolve('./src/ui/templates/PressTpl.js'),
-        // },
         remarkPlugins: [remarkNormalizeHeadings, remarkSqueezeParagraphs],
         gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 1035,
+              maxWidth: 1000,
               sizeByPixelDensity: true,
             },
           },
         ],
       },
+    },
+    {
+      resolve: 'gatsby-plugin-mdx-frontmatter',
     },
   ],
 };

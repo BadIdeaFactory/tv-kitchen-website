@@ -3,7 +3,6 @@ title: About
 about:
   title: TV What?
   intro: TV Kitchen is an open source tool to get data out of local TV streams–starting with captions, and in the future political ads, chyrons, talking points, and more. Participants will be able to develop, share, and use free software tools to extract data from TV and share metadata safely with a wider community. The more people who use TV Kitchen, the more plentiful and rich our information and collaborations.
-  text: TV Kitchen is an open source tool to [get data](https://hello.com) out of local TV streams–starting with captions, and in the future political ads, chyrons, talking points, and more. Participants will be able to develop, share, and use free software tools to extract data from TV and share metadata safely with a wider community. The more people who use TV Kitchen, the more plentiful and rich our information and collaborations.
 team:
   title: Team
   intro: Some intro about our fantastic team
@@ -45,5 +44,27 @@ funding:
 import AboutTpl from '@ui/templates/AboutTpl';
 
 export default AboutTpl
+
+export const query = graphql`
+  query PostQuery {
+    mdx {
+      frontmatter {
+        team {
+          members {
+            dan {
+              photo {
+                childImageSharp {
+                  fluid(maxWidth: 800) {
+                  ...GatsbyImageSharpFluid
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
 
 <!-- Further edits allowed in src/ui/templates/AbouTpl.js -->

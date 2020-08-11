@@ -25,7 +25,7 @@ export default function Layout(props) {
     <>
       <Head {...props} />
       <CssBaseline />
-      <Container maxWidth="lg">
+      <Container maxWidth={false}>
         <Topbar {...props} />
         <div className={classes.toolbar} />
         {children}

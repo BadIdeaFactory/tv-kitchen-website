@@ -120,8 +120,8 @@ export default createMuiTheme({
     h6: { ...setType(400), fontFamily: fonts.head, fontWeight: '600' },
     overline: { ...setType(100), fontFamily: fonts.foot, fontWeight: '500', letterSpacing: '0.4em' },
     caption: { ...setType(200), fontFamily: fonts.foot, fontWeight: '500' },
-    subtitle1: { ...setType(400), fontFamily: fonts.head, fontWeight: '600' },
-    subtitle2: { ...setType(400), fontFamily: fonts.head, fontWeight: '600' },
+    subtitle1: { ...setType(500), fontFamily: fonts.head, fontWeight: '500' },
+    subtitle2: { ...setType(400), fontFamily: fonts.head, fontWeight: '500' },
     code: { fontSize: 'inherit', fontFamily: fonts.foot, fontWeight: 400 },
   },
 });
