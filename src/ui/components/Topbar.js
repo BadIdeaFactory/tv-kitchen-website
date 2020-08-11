@@ -95,7 +95,7 @@ export default function Topbar({ location: { pathname }, ...props }) {
               direction="row"
               justify="space-between"
               spacing={4}>
-              <Grid item className={`${classes.logo} ${classes.inner}`} xs={3} md={2}>
+              <Grid item className={`${classes.logo} ${classes.inner}`} xs={6} md={2}>
                 <Link component={GatsbyLink} variant="h6" to="/" className={classes.brandlink}>
                   <TVKitchenLogo className={classes.brandmark} />
                 </Link>
@@ -106,7 +106,6 @@ export default function Topbar({ location: { pathname }, ...props }) {
                 container
                 item
                 justify="center"
-                xs={6}
                 md={8}>
                 {_.orderBy(sections, o => o.order).map(section => {
                   const { id, slug, title } = section;
@@ -122,7 +121,7 @@ export default function Topbar({ location: { pathname }, ...props }) {
                   );
                 })}
               </Grid>
-              <Grid item container className={`${classes.social} ${classes.inner}`} xs={3} md={2} justify="flex-end">
+              <Grid item container className={`${classes.social} ${classes.inner}`} xs={6} md={2} justify="flex-end">
                 <Tooltip title="Follow us on Twitter">
                   <IconButton color="inherit" href="https://twitter.com/biffud" className={classes.socialButton}>
                     <TwitterIcon fontSize="small" />
