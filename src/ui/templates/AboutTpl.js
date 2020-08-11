@@ -1,31 +1,68 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
 import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import makeStyles from '@material-ui/core/styles/makeStyles';
+import { ThemeProvider } from '@material-ui/core/styles';
 
 import Copy from '@ui/components/Copy';
 import Layout from '@ui/components/Layout';
+import darkTheme from '@ui/themes/darkTheme';
 import sections from '@ui/config/sections';
 import withTheme from '@ui/themes/withTheme';
 
 const useStyles = makeStyles(theme => ({
   toolbar: theme.mixins.toolbar,
+  title: { marginBottom: theme.spacing(6) },
+  team: {
+    padding: theme.spacing(8),
+    background: theme.palette.text.primary,
+    color: theme.palette.background.paper,
+  },
+  memberName: {
+    marginBottom: theme.spacing(1),
+  },
+  memberTitle: {
+    marginBottom: theme.spacing(2),
+  },
+  memberBio: {},
+  card: {
+    height: '100%',
+    display: 'flex',
+    position: 'relative',
+  },
+  about: {},
+  funding: {},
 }));
 
-const AboutTpl = ({ children, pageContext, ...props }) => {
+const AboutTpl = ({ _frontmatter, pageContext, ...props }) => {
   const classes = useStyles();
+
+  const { team, about, funding } = _frontmatter;
+
+  console.group('AboutTpl.js');
+  console.log({ _frontmatter });
+  console.log({ pageContext });
+  console.log({ props });
+  console.groupEnd();
 
   return (
     <Layout {...props}>
       <Helmet>
-        <title>{pageContext.frontmatter.title}</title>
+        <title>{_frontmatter.title}</title>
       </Helmet>
       <main>
-        <Container maxWidth="sm">
-          <Typography align="center" gutterBottom variant="h1">
-            TV What?
+        <Container maxWidth="sm" className={classes.about}>
+          <Typography align="center" className={classes.title} variant="h1">
+            {_frontmatter.about.title}
+          </Typography>
+          <Typography align="center" className={classes.intro} variant="h2">
+            {about.intro}
           </Typography>
           <Copy>
             <p>
@@ -76,23 +113,85 @@ const AboutTpl = ({ children, pageContext, ...props }) => {
           </Copy>
         </Container>
         <div className={classes.toolbar} />
-        <Container maxWidth="lg">
-          <Typography align="center" component="h2" variant="h1">
-            Team
-          </Typography>
-          <Copy>
-            <p>
+        <ThemeProvider theme={darkTheme}>
+          <Container maxWidth={false} className={classes.team}>
+            <Typography align="center" className={classes.title} component="h2" variant="h1">
+              {team.title}
+            </Typography>
+            <Typography align="center" className={classes.intro} variant="h2">
+              {team.intro}
+            </Typography>
+            <Typography align="center" className={classes.title} component="p" variant="h4">
               TV Kitchen is a project of the <a href="https://biffud.com/">Bad Idea Factory</a>, a collective of chaotic
-              creatives using technology to make people thinking face emoji. BIF has only existed for a few years, but
-              our members have been developing software for journalists for the better part of a collective century.
-            </p>
-          </Copy>
-        </Container>
+              creatives using technology to make people thinking face emoji.
+            </Typography>
+            <Typography align="center" className={classes.title} component="p" variant="h5">
+              BIF has only existed for a few years, but our members have been developing software for journalists for
+              the better part of a collective century.
+            </Typography>
+            <Grid container spacing={8} alignContent="stretch">
+              {Object.keys(team.members).map(key => {
+                const member = team.members[key];
+                return (
+                  <Grid item xs={12} md={6} key={key}>
+                    <Card className={classes.card}>
+                      <CardContent>
+                        <Typography className={classes.memberName} variant="h5" component="h3">
+                          {member.fname} {member.lname}
+                        </Typography>
+                        <Typography className={classes.memberTitle} variant="overline" component="p">
+                          {member.title}
+                        </Typography>
+                        <Typography className={classes.memberBio} variant="body2" component="p">
+                          {member.bio}
+                        </Typography>
+                      </CardContent>
+                      <CardMedia
+                        // className={classes.cover}
+                        // image="/static/images/cards/live-from-space.jpg"
+                        title="Live from space album cover">
+                        WIP
+                      </CardMedia>
+                    </Card>
+                  </Grid>
+                );
+              })}
+            </Grid>
+          </Container>
+        </ThemeProvider>
         <div className={classes.toolbar} />
-        <Container maxWidth="lg">
-          <Typography align="center" component="h2" variant="h1">
-            Funding
+        <Container maxWidth="lg" className={classes.funding}>
+          <Typography align="center" className={classes.title} component="h2" variant="h1">
+            {funding.title}
           </Typography>
+          <Typography align="center" className={classes.intro} variant="h2">
+            {funding.intro}
+          </Typography>
+          <Grid container spacing={8} alignContent="stretch">
+            {Object.keys(funding.funders).map(key => {
+              const funder = funding.funders[key];
+              return (
+                <Grid item xs={12} md={6} key={key}>
+                  <Card className={classes.card}>
+                    <CardContent>
+                      <Typography className={classes.memberName} variant="h5" component="h3">
+                        {funder.name}
+                      </Typography>
+                      <Typography className={classes.memberBio} variant="body2" component="p">
+                        {funder.text}
+                      </Typography>
+                    </CardContent>
+                    <CardMedia
+                      // className={classes.cover}
+                      // image="/static/images/cards/live-from-space.jpg"
+                      title="Live from space album cover">
+                      WIP
+                    </CardMedia>
+                  </Card>
+                </Grid>
+              );
+            })}
+          </Grid>
         </Container>
       </main>
     </Layout>

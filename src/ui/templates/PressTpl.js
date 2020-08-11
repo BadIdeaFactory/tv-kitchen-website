@@ -28,18 +28,20 @@ const useStyles = makeStyles(theme => ({
   action: { marginTop: theme.spacing(3) },
 }));
 
-const PressTpl = ({ children, pageContext, data: { allMediumPost }, ...props }) => {
+const PressTpl = ({ _frontmatter, children, data: { allMediumPost }, ...props }) => {
   const classes = useStyles();
 
-  // console.group('PressTpl');
-  // console.log({ allMediumPost });
-  // console.log({ props });
-  // console.groupEnd();
+  console.group('PressTpl');
+  console.log({ _frontmatter });
+  console.log({ allMediumPost });
+  console.log({ children });
+  console.log({ props });
+  console.groupEnd();
 
   return (
     <Layout {...props}>
       <Helmet>
-        <title>{pageContext.frontmatter.title}</title>
+        <title>{_frontmatter.title}</title>
       </Helmet>
       <Container component="main" maxWidth="sm">
         {allMediumPost.edges.map(
@@ -84,6 +86,7 @@ const PressTpl = ({ children, pageContext, data: { allMediumPost }, ...props }) 
                   className={classes.action}
                   href={url}
                   variant="contained"
+                  color="primary"
                   target="_blank"
                   endIcon={<OpenInNewIcon fontSize="small" />}>
                   Continue on Medium

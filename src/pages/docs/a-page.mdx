@@ -1,8 +1,12 @@
 ---
-score: # leave blank if should be ordered by pathname
+score: 0 # leave 0 unless you want to rank up this page
 section: # leave blank if page should appear at root level
 title: Hello, world of MDX!
 ---
+
+import DocsTpl from '@ui/templates/DocsTpl.js'
+
+export default DocsTpl
 
 # <span children={props.pageContext.frontmatter.title} />
 

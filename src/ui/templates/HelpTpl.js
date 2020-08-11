@@ -10,13 +10,13 @@ import withTheme from '@ui/themes/withTheme';
 
 // const useStyles = makeStyles(theme => ({}));
 
-const HelpTpl = ({ children, pageContext, ...props }) => {
+const HelpTpl = ({ _frontmatter, children, ...props }) => {
   // const classes = useStyles();
 
   return (
     <Layout {...props}>
       <Helmet>
-        <title>{pageContext.frontmatter.title}</title>
+        <title>{_frontmatter.title}</title>
       </Helmet>
       <Container component="main" maxWidth="md">
         {children}

@@ -10,8 +10,12 @@ import withTheme from '@ui/themes/withTheme';
 
 // const useStyles = makeStyles(theme => ({}));
 
-const PartnersTpl = ({ _frontmatter, children, ...props }) => {
+const HomeTpl = ({ _frontmatter, children, ...props }) => {
   // const classes = useStyles();
+
+  console.group('HomeTpl.js');
+  console.log(props);
+  console.groupEnd();
 
   return (
     <Layout {...props}>
@@ -25,4 +29,4 @@ const PartnersTpl = ({ _frontmatter, children, ...props }) => {
   );
 };
 
-export default withTheme(PartnersTpl, sections.partners.color);
+export default withTheme(HomeTpl, sections.partners.color);

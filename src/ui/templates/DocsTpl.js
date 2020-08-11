@@ -19,19 +19,9 @@ import Layout from '@ui/components/Layout';
 import sections from '@ui/config/sections';
 import withTheme from '@ui/themes/withTheme';
 
-const drawerWidth = 240;
-
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
-  },
-  drawer: {
-    flexShrink: 0,
-    width: drawerWidth,
-    zIndex: 0,
-  },
-  drawerPaper: {
-    width: drawerWidth,
   },
   toolbar: theme.mixins.toolbar,
   nested: {
@@ -39,10 +29,16 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const DocsTpl = ({ children, pageContext, ...props }) => {
+const DocsTpl = ({ _frontmatter, children, ...props }) => {
   const classes = useStyles();
 
-  const [open, setOpen] = useState(pageContext.frontmatter.section || null);
+  const [open, setOpen] = useState(_frontmatter.section || null);
+
+  console.group('DocsTpl.js');
+  console.log({ _frontmatter });
+  console.log({ children });
+  console.log({ props });
+  console.groupEnd();
 
   return (
     <StaticQuery
@@ -96,7 +92,7 @@ const DocsTpl = ({ children, pageContext, ...props }) => {
         return (
           <Layout {...props}>
             <Helmet>
-              <title>{`${_.find(sections, o => o.id === 'docs')?.title}: ${pageContext.frontmatter.title}`}</title>
+              <title>{`${_.find(sections, o => o.id === 'docs')?.title}: ${_frontmatter.title}`}</title>
             </Helmet>
             <div className={classes.root}>
               <Container component="main" maxWidth="md">
@@ -161,23 +157,6 @@ const DocsTpl = ({ children, pageContext, ...props }) => {
                     </List>
                   </Grid>
                   <Grid item xs={8}>
-                    {/* <Breadcrumbs aria-label="breadcrumb">
-                      <Link component={GatsbyLink} color="inherit" to="/">
-                        {allSite[0].node.siteMetadata.title}
-                      </Link>
-                      <Link component={GatsbyLink} color="inherit" to={rootPage.node.path}>
-                        Docs
-                      </Link>
-                      {pageContext.frontmatter.section ? (
-                        <Link
-                          component={GatsbyLink}
-                          color="inherit"
-                          to={order(chapters[pageContext.frontmatter.section])[0].node.path}>
-                          {pageContext.frontmatter.section}
-                        </Link>
-                      ) : null}
-                      <Typography color="textPrimary">{pageContext.frontmatter.title}</Typography>
-                    </Breadcrumbs> */}
                     <Copy>{children}</Copy>
                   </Grid>
                 </Grid>

@@ -2,6 +2,11 @@
 title: Press
 ---
 
+import { graphql } from 'gatsby'
+import PressTpl from '@ui/templates/PressTpl'
+
+export default PressTpl
+
 export const pageQuery = graphql`
   query {
     allMediumPost {
@@ -23,3 +28,5 @@ export const pageQuery = graphql`
     }
   }
 `
+
+<!-- No content edits allowed as all data gets fetched from Medium.com -->

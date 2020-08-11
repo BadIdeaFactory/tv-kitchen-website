@@ -4,19 +4,19 @@ import { Helmet } from 'react-helmet';
 import Container from '@material-ui/core/Container';
 // import makeStyles from '@material-ui/core/styles/makeStyles';
 
+import colors from '@ui/themes/colors';
 import Layout from '@ui/components/Layout';
-import sections from '@ui/config/sections';
 import withTheme from '@ui/themes/withTheme';
 
 // const useStyles = makeStyles(theme => ({}));
 
-const PartnersTpl = ({ _frontmatter, children, ...props }) => {
+const DefaultTpl = ({ children, pageContext, ...props }) => {
   // const classes = useStyles();
 
   return (
     <Layout {...props}>
       <Helmet>
-        <title>{_frontmatter.title}</title>
+        <title>{pageContext.frontmatter.title}</title>
       </Helmet>
       <Container component="main" maxWidth="md">
         {children}
@@ -25,4 +25,4 @@ const PartnersTpl = ({ _frontmatter, children, ...props }) => {
   );
 };
 
-export default withTheme(PartnersTpl, sections.partners.color);
+export default withTheme(DefaultTpl, colors.blue);
