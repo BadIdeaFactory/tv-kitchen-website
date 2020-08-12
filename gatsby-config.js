@@ -4,19 +4,45 @@ const remarkSqueezeParagraphs = require('remark-squeeze-paragraphs');
 
 module.exports = {
   siteMetadata: {
-    title: `TV Kitchen`,
+    description: 'TV Kitchen is an awesome media toolkit yada yada yada',
   },
   plugins: [
     `gatsby-plugin-material-ui`,
     `gatsby-plugin-react-helmet`,
-    `gatsby-remark-images`,
+    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 600,
+            },
+          },
+        ],
+      },
+    },
     `gatsby-transformer-sharp`,
-    `gatsby-transformer-remark`,
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 600,
+              sizeByPixelDensity: true,
+            },
+          },
+        ],
+      },
+    },
     {
       resolve: 'gatsby-plugin-react-svg',
       options: {
         rule: {
-          include: path.resolve(__dirname, 'src/ui/assets'),
+          include: path.resolve(__dirname, 'src/assets'),
         },
       },
     },
@@ -34,57 +60,20 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'content',
+        path: `${__dirname}/src/content`,
+      },
+    },
+    {
       resolve: `gatsby-plugin-alias-imports`,
       options: {
         alias: {
-          '@ui': path.resolve(__dirname, 'src/ui'),
+          '@src': path.resolve(__dirname, 'src'),
         },
         extensions: [],
       },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `about`,
-        path: `${__dirname}/src/pages/about`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `docs`,
-        path: `${__dirname}/src/pages/docs`,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-sharp`,
-      options: {
-        useMozJpeg: false,
-        stripMetadata: true,
-        defaultQuality: 75,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-mdx`,
-      options: {
-        extensions: ['.mdx'],
-        defaultLayouts: {
-          default: require.resolve('./src/ui/templates/DefaultTpl.js'),
-        },
-        remarkPlugins: [remarkNormalizeHeadings, remarkSqueezeParagraphs],
-        gatsbyRemarkPlugins: [
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 1000,
-              sizeByPixelDensity: true,
-            },
-          },
-        ],
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-mdx-frontmatter',
     },
   ],
 };
