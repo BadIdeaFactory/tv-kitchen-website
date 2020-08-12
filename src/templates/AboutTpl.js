@@ -53,7 +53,7 @@ const useStyles = makeStyles(theme => ({
 
 const AboutTpl = ({
   data: {
-    root: { frontmatter, body },
+    mdx: { frontmatter, body },
     members,
     funders,
   },
@@ -76,7 +76,7 @@ const AboutTpl = ({
       </Helmet>
 
       <main>
-        <Container maxWidth="lg" disableGutters>
+        <Container disableGutters>
           <Container className={classes.head} maxWidth="md">
             <Typography align="center" className={classes.title} variant="h1">
               {frontmatter.head.title}
@@ -110,11 +110,11 @@ const AboutTpl = ({
 
             <Container>
               <Grid container spacing={5} alignContent="stretch">
-                {members.edges.map(({ node }, i) => {
-                  const { fname, lname, photo, title } = node.frontmatter;
-                  const { text } = node;
+                {members.edges.map(({ node }) => {
+                  const { frontmatter, id, text } = node;
+                  const { fname, lname, photo, title } = frontmatter;
                   return (
-                    <Grid item xs={12} md={6} key={`${i}${fname}`}>
+                    <Grid item xs={12} md={6} key={id}>
                       <Grid container spacing={3} alignContent="stretch" alignItems="center">
                         <Grid item className={classes.image}>
                           <Img fixed={photo.childImageSharp.fixed} alt={`Photo of ${fname} ${lname}`} />
@@ -145,13 +145,13 @@ const AboutTpl = ({
             </Typography>
           </Container>
 
-          <Container>
+          <Container disableGutters>
             <Grid alignContent="stretch" container spacing={5}>
-              {funders.edges.map(({ node }, i) => {
-                const { name, logo } = node.frontmatter;
-                const { text } = node;
+              {funders.edges.map(({ node }) => {
+                const { frontmatter, id, text } = node;
+                const { name, logo } = frontmatter;
                 return (
-                  <Grid item xs={12} md={4} key={`${i}${name}`}>
+                  <Grid item xs={12} md={4} key={id}>
                     <Grid container spacing={3} alignContent="stretch" direction="column">
                       <Grid item className={classes.image}>
                         <Img fixed={logo.childImageSharp.fixed} alt={`Photo of ${name}`} />
@@ -178,7 +178,7 @@ export default withTheme(AboutTpl, sections.about.color);
 
 export const pageQuery = graphql`
   query AboutTplQuery($id: String) {
-    root: mdx(id: { eq: $id }) {
+    mdx(id: { eq: $id }) {
       frontmatter {
         title
         head {
@@ -202,6 +202,7 @@ export const pageQuery = graphql`
     ) {
       edges {
         node {
+          id
           frontmatter {
             fname
             lname
@@ -230,6 +231,7 @@ export const pageQuery = graphql`
     ) {
       edges {
         node {
+          id
           frontmatter {
             name
             logo {

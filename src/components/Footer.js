@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
 export default function Footer(props) {
   const classes = useStyles();
   return (
-    <Container component="footer" className={classes.root}>
+    <Container component="footer" className={classes.root} disableGutters>
       <Grid
         alignContent="stretch"
         alignItems="flex-start"
