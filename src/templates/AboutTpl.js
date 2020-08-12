@@ -24,9 +24,9 @@ const useStyles = makeStyles(theme => ({
     },
   },
   title: {
-    marginBottom: theme.spacing(3),
+    marginBottom: theme.spacing(2),
     [theme.breakpoints.up('md')]: {
-      marginBottom: theme.spacing(6),
+      marginBottom: theme.spacing(4),
     },
   },
   team: {
