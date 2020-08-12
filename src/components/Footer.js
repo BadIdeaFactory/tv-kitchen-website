@@ -8,7 +8,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    borderTop: `10px solid ${theme.palette.divider}`,
+    borderTop: `5px solid ${theme.palette.divider}`,
     paddingTop: theme.spacing(12),
   },
   button: {

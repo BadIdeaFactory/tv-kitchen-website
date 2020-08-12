@@ -65,10 +65,15 @@ export default function Head(props) {
           }
           button:focus,
           a:focus {
-            background: ${theme.palette.text.primary};
-            box-shadow: 0 0 0 2px ${theme.palette.text.primary};
-            color: ${theme.palette.background.paper};
+            background-color: ${theme.palette.divider} !important;
+            border-color: ${theme.palette.divider} !important;
+            box-shadow: 0 0 0 2px ${theme.palette.divider} !important;
+            color: ${theme.palette.background.paper} !important;
             outline: none;
+            transition:
+              box-shadow ${theme.transitions.duration.standard},
+              background-color ${theme.transitions.duration.standard},
+              border-color ${theme.transitions.duration.standard}s;
           }
         `}
       </style>

@@ -13,7 +13,7 @@ import sections from '@src/config/sections';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    borderTop: `10px solid ${theme.palette.divider}`,
+    borderTop: `5px solid ${theme.palette.divider}`,
     bottom: 0,
     left: 0,
     margin: 0,

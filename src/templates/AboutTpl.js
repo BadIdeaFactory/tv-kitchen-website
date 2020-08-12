@@ -24,16 +24,20 @@ const useStyles = makeStyles(theme => ({
     },
   },
   title: {
-    marginBottom: theme.spacing(4),
+    marginBottom: theme.spacing(3),
     [theme.breakpoints.up('md')]: {
-      marginBottom: theme.spacing(8),
+      marginBottom: theme.spacing(6),
     },
   },
   team: {
-    border: `10px solid ${theme.palette.divider}`,
-    padding: theme.spacing(6),
+    border: `5px solid ${theme.palette.divider}`,
+    marginBottom: theme.spacing(8),
+    marginTop: theme.spacing(8),
+    padding: theme.spacing(4),
     [theme.breakpoints.up('md')]: {
-      padding: theme.spacing(10),
+      marginBottom: theme.spacing(12),
+      marginTop: theme.spacing(12),
+      padding: theme.spacing(12),
     },
   },
   image: {
@@ -72,8 +76,8 @@ const AboutTpl = ({
       </Helmet>
 
       <main>
-        <Container maxWidth="lg">
-          <Container className={classes.head} disableGutters maxWidth="md">
+        <Container maxWidth="lg" disableGutters>
+          <Container className={classes.head} maxWidth="md">
             <Typography align="center" className={classes.title} variant="h1">
               {frontmatter.head.title}
             </Typography>
@@ -83,59 +87,56 @@ const AboutTpl = ({
               variant="subtitle1"
             />
           </Container>
-          <Container disableGutters maxWidth="sm">
-            <Copy>
-              <MDXProvider>
+
+          <Container maxWidth="sm">
+            <MDXProvider>
+              <Copy>
                 <MDXRenderer>{body}</MDXRenderer>
-              </MDXProvider>
-            </Copy>
+              </Copy>
+            </MDXProvider>
           </Container>
-        </Container>
 
-        <div className={classes.toolbar} />
+          <div className={classes.team}>
+            <Container className={classes.head} maxWidth="md">
+              <Typography align="center" className={classes.title} component="h2" variant="h1">
+                {frontmatter.team.title}
+              </Typography>
+              <Typography
+                align="center"
+                dangerouslySetInnerHTML={{ __html: frontmatter.team.text }}
+                variant="subtitle1"
+              />
+            </Container>
 
-        <Container maxWidth="lg" className={classes.team}>
-          <Container className={classes.head} disableGutters maxWidth={false}>
-            <Typography align="center" className={classes.title} component="h2" variant="h1">
-              {frontmatter.team.title}
-            </Typography>
-            <Typography
-              align="center"
-              variant="subtitle1"
-              dangerouslySetInnerHTML={{ __html: frontmatter.team.text }}></Typography>
-          </Container>
-          <Container disableGutters maxWidth={false}>
-            <Grid container spacing={5} alignContent="stretch">
-              {members.edges.map(({ node }, i) => {
-                const { fname, lname, photo, title } = node.frontmatter;
-                const { text } = node;
-                return (
-                  <Grid item xs={12} md={6} key={`${i}${fname}`}>
-                    <Grid container spacing={3} alignContent="stretch" alignItems="center">
-                      <Grid item className={classes.image}>
-                        <Img fixed={photo.childImageSharp.fixed} alt={`Photo of ${fname} ${lname}`} />
+            <Container>
+              <Grid container spacing={5} alignContent="stretch">
+                {members.edges.map(({ node }, i) => {
+                  const { fname, lname, photo, title } = node.frontmatter;
+                  const { text } = node;
+                  return (
+                    <Grid item xs={12} md={6} key={`${i}${fname}`}>
+                      <Grid container spacing={3} alignContent="stretch" alignItems="center">
+                        <Grid item className={classes.image}>
+                          <Img fixed={photo.childImageSharp.fixed} alt={`Photo of ${fname} ${lname}`} />
+                        </Grid>
+                        <Grid item xs>
+                          <Typography className={classes.memberName} variant="h5" component="h3">
+                            {fname} {lname}
+                          </Typography>
+                          <Typography variant="overline" component="p">
+                            {title}
+                          </Typography>
+                        </Grid>
                       </Grid>
-                      <Grid item xs>
-                        <Typography className={classes.memberName} variant="h5" component="h3">
-                          {fname} {lname}
-                        </Typography>
-                        <Typography variant="overline" component="p">
-                          {title}
-                        </Typography>
-                      </Grid>
+                      <Copy className={classes.memberText} dangerouslySetInnerHTML={{ __html: text }}></Copy>
                     </Grid>
-                    <Copy className={classes.memberText} dangerouslySetInnerHTML={{ __html: text }}></Copy>
-                  </Grid>
-                );
-              })}
-            </Grid>
-          </Container>
-        </Container>
+                  );
+                })}
+              </Grid>
+            </Container>
+          </div>
 
-        <div className={classes.toolbar} />
-
-        <Container maxWidth="lg">
-          <Container className={classes.head} disableGutters maxWidth={false}>
+          <Container className={classes.head}>
             <Typography align="center" className={classes.title} component="h2" variant="h1">
               {frontmatter.funding.title}
             </Typography>
@@ -143,13 +144,14 @@ const AboutTpl = ({
               {frontmatter.funding.text}
             </Typography>
           </Container>
-          <Container disableGutters maxWidth={false}>
-            <Grid container spacing={8} alignContent="stretch">
+
+          <Container>
+            <Grid alignContent="stretch" container spacing={5}>
               {funders.edges.map(({ node }, i) => {
                 const { name, logo } = node.frontmatter;
                 const { text } = node;
                 return (
-                  <Grid item xs={12} md={6} key={`${i}${name}`}>
+                  <Grid item xs={12} md={4} key={`${i}${name}`}>
                     <Grid container spacing={3} alignContent="stretch" direction="column">
                       <Grid item className={classes.image}>
                         <Img fixed={logo.childImageSharp.fixed} alt={`Photo of ${name}`} />
@@ -195,7 +197,7 @@ export const pageQuery = graphql`
       body
     }
     members: allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "content/about/team/.*.md/" } }
+      filter: { fileAbsolutePath: { regex: "content/about/members/.*.md/" } }
       sort: { fields: [frontmatter___score, frontmatter___fname], order: [DESC, ASC] }
     ) {
       edges {

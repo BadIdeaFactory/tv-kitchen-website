@@ -20,7 +20,7 @@ import sections from '@src/config/sections';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    borderBottom: `10px solid ${theme.palette.divider}`,
+    borderBottom: `5px solid ${theme.palette.divider}`,
   },
   toolbar: theme.mixins.toolbar,
   inner: {
