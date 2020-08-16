@@ -59,22 +59,9 @@ export default function Head(props) {
       <style>
         {`
           html, body { background: ${theme.palette.background.paper} !important }
-          button:active,
-          a:active {
-            color: inherit !important;
-          }
           button:focus,
           a:focus {
-            background-color: ${theme.palette.divider} !important;
-            border-color: ${theme.palette.divider} !important;
-            box-shadow: 0 0 0 2px ${theme.palette.divider} !important;
-            color: ${theme.palette.background.paper} !important;
             outline: none;
-            fill: ${theme.palette.background.paper} !important;
-            transition:
-              box-shadow ${theme.transitions.duration.standard},
-              background-color ${theme.transitions.duration.standard},
-              border-color ${theme.transitions.duration.standard}s;
           }
         `}
       </style>

@@ -76,7 +76,7 @@ export default function Topbar({ location: { pathname }, ...props }) {
               justify="space-between"
               spacing={4}>
               <Grid item className={`${classes.logo} ${classes.inner}`} xs={6} md={2}>
-                <Link component={GatsbyLink} variant="h6" to="/" className={classes.brandlink}>
+                <Link component={GatsbyLink} to="/" className={classes.brandlink}>
                   <TVKitchenLogo className={classes.brandmark} />
                 </Link>
               </Grid>

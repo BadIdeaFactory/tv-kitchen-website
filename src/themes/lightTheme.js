@@ -26,11 +26,34 @@ export default createMuiTheme({
     },
   },
   overrides: {
+    MuiBottomNavigation: {
+      root: { height: 'auto' },
+    },
+    MuiBottomNavigationAction: {
+      root: {
+        paddingTop: mui.spacing(1.5, 0, 1.5, 0),
+        '&$selected': {
+          paddingTop: 'auto',
+        },
+      },
+      label: {
+        ...mui.typography.caption,
+        '&$selected': {
+          ...mui.typography.caption,
+        },
+      },
+    },
     MuiButton: {
       root: {
-        transition: mui.transitions.create(['background-color', 'box-shadow', 'border', 'color'], {
+        transition: mui.transitions.create(['background-color', 'box-shadow', 'border', 'color', 'fill'], {
           duration: mui.transitions.duration.standard,
         }),
+        '&:focus': {
+          backgroundColor: colors.mono[900],
+          color: colors.mono[100],
+          fill: colors.mono[100],
+          outline: 'none',
+        },
       },
       outlined: {
         padding: `${mui.spacing(1)}px ${mui.spacing(2)}px`,
@@ -55,23 +78,32 @@ export default createMuiTheme({
         },
       },
     },
-    MuiDrawer: {
-      paperAnchorDockedLeft: {
-        borderRight: `4px solid ${colors.black}`,
-      },
-      paperAnchorDockedTop: {
-        borderBottom: `4px solid ${colors.black}`,
-      },
-      paperAnchorDockedRight: {
-        borderLeft: `4px solid ${colors.black}`,
-      },
-      paperAnchorDockedBottom: {
-        borderTop: `4px solid ${colors.black}`,
-      },
-    },
     MuiIconButton: {
       root: {
         borderRadius: 'none',
+        transition: mui.transitions.create(['background-color', 'box-shadow', 'border', 'color', 'fill'], {
+          duration: mui.transitions.duration.standard,
+        }),
+        '&:focus': {
+          backgroundColor: colors.mono[900],
+          color: colors.mono[100],
+          fill: colors.mono[100],
+          outline: 'none',
+        },
+      },
+    },
+    MuiLink: {
+      root: {
+        transition: mui.transitions.create(['background-color', 'box-shadow', 'border', 'color', 'fill'], {
+          duration: mui.transitions.duration.standard,
+        }),
+        '&:focus': {
+          backgroundColor: colors.mono[900],
+          boxShadow: `0 0 0 2px ${colors.mono[900]}`,
+          color: colors.mono[100],
+          fill: colors.mono[100],
+          outline: 'none',
+        },
       },
     },
     MuiPaper: {
@@ -81,7 +113,7 @@ export default createMuiTheme({
         transition: mui.transitions.create('box-shadow'),
       },
       outlined: {
-        border: `4px solid ${mui.palette.divider}`,
+        border: `5px solid ${colors.mono[900]}`,
       },
     },
     MuiTooltip: {

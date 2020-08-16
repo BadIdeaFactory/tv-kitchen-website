@@ -5,6 +5,7 @@ import { graphql } from 'gatsby';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 
@@ -27,7 +28,6 @@ const useStyles = makeStyles(theme => ({
     },
   },
   tile: {
-    border: `5px solid ${theme.palette.divider}`,
     height: '100%',
     padding: theme.spacing(4),
     position: 'relative',
@@ -90,7 +90,7 @@ const HelpTpl = ({
           <Container>
             <Grid container spacing={8} alignContent="stretch">
               <Grid item xs={12} md={4}>
-                <div className={classes.tile}>
+                <Paper className={classes.tile} variant="outlined">
                   <Typography className={classes.tileTitle} variant="h4" component="h3">
                     {frontmatter.slack.title}
                   </Typography>
@@ -100,10 +100,10 @@ const HelpTpl = ({
                   <Button className={classes.tileCta} variant="contained" color="primary">
                     {frontmatter.slack.cta}
                   </Button>
-                </div>
+                </Paper>
               </Grid>
               <Grid item xs={12} md={4}>
-                <div className={classes.tile}>
+                <Paper className={classes.tile} variant="outlined">
                   <Typography className={classes.tileTitle} variant="h4" component="h3">
                     {frontmatter.github.title}
                   </Typography>
@@ -113,10 +113,10 @@ const HelpTpl = ({
                   <Button className={classes.tileCta} variant="contained" color="primary">
                     {frontmatter.github.cta}
                   </Button>
-                </div>
+                </Paper>
               </Grid>
               <Grid item xs={12} md={4}>
-                <div className={classes.tile}>
+                <Paper className={classes.tile} variant="outlined">
                   <Typography className={classes.tileTitle} variant="h4" component="h3">
                     {frontmatter.docs.title}
                   </Typography>
@@ -126,7 +126,7 @@ const HelpTpl = ({
                   <Button className={classes.tileCta} variant="contained" color="primary">
                     {frontmatter.docs.cta}
                   </Button>
-                </div>
+                </Paper>
               </Grid>
             </Grid>
           </Container>

@@ -1,3 +1,6 @@
+import React from 'react';
+import Link from '@material-ui/core/Link';
+
 import HelpIcon from '@material-ui/icons/Help';
 import InfoIcon from '@material-ui/icons/Info';
 import LocalLibraryIcon from '@material-ui/icons/LocalLibrary';
@@ -37,5 +40,8 @@ export default {
     press: { id: 'press', order: 2, title: 'Press', slug: '/press', Icon: SubjectIcon, color: colors.green },
     docs: { id: 'docs', order: 3, title: 'Docs', slug: '/docs', Icon: LocalLibraryIcon, color: colors.purple },
     help: { id: 'help', order: 4, title: 'Help', slug: '/help', Icon: HelpIcon, color: colors.red },
+  },
+  mdComponents: {
+    a: props => <Link component="a" {...props} />,
   },
 };

@@ -1,9 +1,9 @@
 import Img from 'gatsby-image';
 import React from 'react';
+import rehypeReact from 'rehype-react';
 import { Helmet } from 'react-helmet';
-import { graphql } from 'gatsby';
-import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
+import { graphql } from 'gatsby';
 
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
@@ -12,41 +12,81 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 
 import Copy from '@src/components/Copy';
 import Layout from '@src/components/Layout';
+import Separator from '@src/components/Separator';
+import antenna from '@src/ornaments/antenna.svg';
 import config from '@src/config';
+import grid from '@src/ornaments/grid-light.svg';
+import signalBarVertical from '@src/ornaments/signal-bar-vertical.svg';
 import withTheme from '@src/themes/withTheme';
 
+const renderAst = new rehypeReact({
+  createElement: React.createElement,
+  components: config.mdComponents,
+}).Compiler;
+
 const useStyles = makeStyles(theme => ({
-  toolbar: theme.mixins.toolbar,
   head: {
-    marginBottom: theme.spacing(6),
-    [theme.breakpoints.up('md')]: {
-      marginBottom: theme.spacing(12),
-    },
-  },
-  title: {
     marginBottom: theme.spacing(5),
     [theme.breakpoints.up('md')]: {
       marginBottom: theme.spacing(10),
     },
   },
-  team: {
-    border: `5px solid ${theme.palette.divider}`,
-    marginBottom: theme.spacing(8),
-    marginTop: theme.spacing(8),
-    padding: theme.spacing(4),
+  intro: {
+    backgroundImage: `url(${antenna})`,
+    backgroundPosition: 'center bottom',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: '75% auto',
+    padding: theme.spacing(0, 0, 15, 0),
     [theme.breakpoints.up('md')]: {
-      marginBottom: theme.spacing(12),
-      marginTop: theme.spacing(12),
-      padding: theme.spacing(12),
+      backgroundSize: '45% auto',
+      padding: theme.spacing(0, 0, 25, 0),
     },
   },
-  image: {
+  masterTitle: {
+    marginBottom: theme.spacing(5),
+    [theme.breakpoints.up('md')]: {
+      marginBottom: theme.spacing(10),
+    },
+  },
+  title: {
+    marginBottom: theme.spacing(2.5),
+    [theme.breakpoints.up('md')]: {
+      marginBottom: theme.spacing(5),
+    },
+  },
+  team: {
+    border: `5px solid ${theme.palette.divider}`,
+    padding: theme.spacing(5, 2.5),
+    [theme.breakpoints.up('md')]: {
+      padding: theme.spacing(10, 5),
+    },
+  },
+  funders: {
+    backgroundImage: `url(${signalBarVertical})`,
+    backgroundPosition: 'right top',
+    backgroundRepeat: 'repeat-y',
+    backgroundSize: '10px auto',
+    [theme.breakpoints.up('md')]: {
+      backgroundSize: '15px auto',
+    },
+  },
+  fundersOrnamentRef: {
+    backgroundImage: `url(${grid})`,
+    backgroundPosition: '-10px center',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: '66% auto',
+    [theme.breakpoints.up('md')]: {
+      backgroundSize: '33% auto',
+    },
+  },
+  imageHolder: {
     lineHeight: 0,
   },
-  memberName: {
+  nameHolder: {
     marginBottom: theme.spacing(1),
   },
-  memberText: {
+  titleHolder: {},
+  textHolder: {
     marginTop: theme.spacing(1),
   },
 }));
@@ -61,13 +101,13 @@ const AboutTpl = ({
 }) => {
   const classes = useStyles();
 
-  console.group('AboutTpl.js');
-  console.log({ members });
-  console.log({ funders });
-  console.log({ frontmatter });
-  console.log({ body });
-  console.log({ props });
-  console.groupEnd();
+  // console.group('AboutTpl.js');
+  // console.log({ members });
+  // console.log({ funders });
+  // console.log({ frontmatter });
+  // console.log({ body });
+  // console.log({ props });
+  // console.groupEnd();
 
   return (
     <Layout {...props}>
@@ -78,7 +118,7 @@ const AboutTpl = ({
       <main>
         <Container disableGutters>
           <Container className={classes.head} maxWidth="md">
-            <Typography align="center" className={classes.title} variant="h1">
+            <Typography align="center" className={classes.masterTitle} variant="h1">
               {frontmatter.head.title}
             </Typography>
             <Typography
@@ -88,13 +128,13 @@ const AboutTpl = ({
             />
           </Container>
 
-          <Container maxWidth="sm">
-            <MDXProvider>
+          <div className={classes.intro}>
+            <Container maxWidth="sm">
               <Copy>
                 <MDXRenderer>{body}</MDXRenderer>
               </Copy>
-            </MDXProvider>
-          </Container>
+            </Container>
+          </div>
 
           <div className={classes.team}>
             <Container className={classes.head} maxWidth="md">
@@ -109,26 +149,26 @@ const AboutTpl = ({
             </Container>
 
             <Container>
-              <Grid container spacing={5} alignContent="stretch">
+              <Grid alignContent="stretch" container spacing={5}>
                 {members.edges.map(({ node }) => {
                   const { frontmatter, id, text } = node;
                   const { fname, lname, photo, title } = frontmatter;
                   return (
-                    <Grid item xs={12} md={6} key={id}>
-                      <Grid container spacing={3} alignContent="stretch" alignItems="center">
-                        <Grid item className={classes.image}>
+                    <Grid item key={id} md={6} xs={12}>
+                      <Grid alignContent="stretch" alignItems="center" container spacing={3}>
+                        <Grid className={classes.imageHolder} item>
                           <Img fixed={photo.childImageSharp.fixed} alt={`Photo of ${fname} ${lname}`} />
                         </Grid>
                         <Grid item xs>
-                          <Typography className={classes.memberName} variant="h5" component="h3">
+                          <Typography className={classes.nameHolder} component="h3" variant="h5">
                             {fname} {lname}
                           </Typography>
-                          <Typography variant="overline" component="p">
+                          <Typography className={classes.titleHolder} component="p" variant="overline">
                             {title}
                           </Typography>
                         </Grid>
                       </Grid>
-                      <Copy className={classes.memberText} dangerouslySetInnerHTML={{ __html: text }}></Copy>
+                      <Copy className={classes.textHolder}>{renderAst(text)}</Copy>
                     </Grid>
                   );
                 })}
@@ -136,38 +176,41 @@ const AboutTpl = ({
             </Container>
           </div>
 
-          <Container className={classes.head}>
-            <Typography align="center" className={classes.title} component="h2" variant="h1">
-              {frontmatter.funding.title}
-            </Typography>
-            <Typography align="center" variant="subtitle1">
-              {frontmatter.funding.text}
-            </Typography>
-          </Container>
+          <Separator silent />
 
-          <Container disableGutters>
-            <Grid alignContent="stretch" container spacing={5}>
-              {funders.edges.map(({ node }) => {
-                const { frontmatter, id, text } = node;
-                const { name, logo } = frontmatter;
-                return (
-                  <Grid item xs={12} md={4} key={id}>
-                    <Grid container spacing={3} alignContent="stretch" direction="column">
-                      <Grid item className={classes.image}>
-                        <Img fixed={logo.childImageSharp.fixed} alt={`Photo of ${name}`} />
+          <div className={classes.funders}>
+            <Container className={classes.head}>
+              <Typography align="center" className={classes.title} component="h2" variant="h1">
+                {frontmatter.funding.title}
+              </Typography>
+              <Typography align="center" variant="subtitle1">
+                {frontmatter.funding.text}
+              </Typography>
+            </Container>
+            <Container className={classes.fundersOrnamentRef}>
+              <Grid alignContent="stretch" container spacing={5}>
+                {funders.edges.map(({ node }) => {
+                  const { frontmatter, id, text } = node;
+                  const { name, logo } = frontmatter;
+                  return (
+                    <Grid item xs={12} md={4} key={id}>
+                      <Grid container spacing={3} alignContent="stretch" direction="column">
+                        <Grid item className={classes.imageHolder}>
+                          <Img fixed={logo.childImageSharp.fixed} alt={`Photo of ${name}`} />
+                        </Grid>
+                        <Grid item>
+                          <Typography className={classes.nameHolder} variant="h5" component="h3">
+                            {name}
+                          </Typography>
+                        </Grid>
                       </Grid>
-                      <Grid item>
-                        <Typography variant="h5" component="h3">
-                          {name}
-                        </Typography>
-                      </Grid>
+                      <Copy className={classes.textHolder}>{renderAst(text)}</Copy>
                     </Grid>
-                    <Copy className={classes.funderText} dangerouslySetInnerHTML={{ __html: text }}></Copy>
-                  </Grid>
-                );
-              })}
-            </Grid>
-          </Container>
+                  );
+                })}
+              </Grid>
+            </Container>
+          </div>
         </Container>
       </main>
     </Layout>
@@ -221,7 +264,7 @@ export const pageQuery = graphql`
             }
             title
           }
-          text: html
+          text: htmlAst
         }
       }
     }
@@ -246,7 +289,7 @@ export const pageQuery = graphql`
               }
             }
           }
-          text: html
+          text: htmlAst
         }
       }
     }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { MDXProvider } from '@mdx-js/react';
 
 import Container from '@material-ui/core/Container';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -10,6 +11,7 @@ import Head from '@src/components/Head';
 import Navbar from '@src/components/Navbar';
 import Separator from '@src/components/Separator';
 import Topbar from '@src/components/Topbar';
+import config from '@src/config';
 
 const useStyles = makeStyles(theme => ({
   toolbar: theme.mixins.toolbar,
@@ -28,14 +30,16 @@ export default function Layout(props) {
       <Head {...props} />
       <CssBaseline />
       <Container>
-        <div className={classes.toolbar} />
-        <Topbar {...props} />
-        {children}
-        <Separator />
-        <Contact {...props} />
-        <Separator />
-        <Footer {...props} />
-        <div className={classes.toolbar} />
+        <MDXProvider components={config.mdComponents}>
+          <div className={classes.toolbar} />
+          <Topbar {...props} />
+          {children}
+          <Separator silent />
+          <Contact {...props} />
+          <Separator silent />
+          <Footer {...props} />
+          <Separator silent />
+        </MDXProvider>
       </Container>
       <Navbar {...props} />
     </>

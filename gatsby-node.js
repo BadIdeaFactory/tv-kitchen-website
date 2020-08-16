@@ -105,7 +105,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   /* Create pages */
   creators.forEach(creator => {
-    const { prefix, src, tpl } = creator;
+    const { src, tpl } = creator;
     src.data.allMdx.edges.forEach(({ node: { slug, id } }) => {
       createPage({
         path: slug || '/',

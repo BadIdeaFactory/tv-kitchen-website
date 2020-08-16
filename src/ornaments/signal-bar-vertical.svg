@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="65px" viewBox="0 0 48 65" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>signal-bar-hor</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="signal-bar-hor" transform="translate(-0.449500, -0.550500)" fill-rule="nonzero">
+            <rect id="Rectangle" fill="#CCCCCC" transform="translate(24.076000, 48.896500) rotate(90.000000) translate(-24.076000, -48.896500) " x="8" y="25.27" width="32.152" height="47.253"></rect>
+            <rect id="Rectangle" fill="#000000" transform="translate(24.076000, 16.626500) rotate(90.000000) translate(-24.076000, -16.626500) " x="8" y="-7" width="32.152" height="47.253"></rect>
+        </g>
+    </g>
+</svg>
