@@ -1,66 +1,69 @@
 import React from 'react';
 
+import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
-import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
+import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 
+import BIFLogo from '@src/assets/bif-logo.svg';
+import Elsewhere from '@src/components/Elsewhere';
+
 const useStyles = makeStyles(theme => ({
-  root: {
-    borderTop: `5px solid ${theme.palette.divider}`,
-    paddingTop: theme.spacing(12),
+  root: {},
+  elsewhere: {
+    justifyContent: 'center',
+    [theme.breakpoints.up('md')]: {
+      justifyContent: 'flex-end',
+    },
   },
-  button: {
-    marginTop: theme.spacing(2),
+  license: {},
+  motherhood: {
+    justifyContent: 'center',
+    [theme.breakpoints.up('md')]: {
+      justifyContent: 'flex-start',
+    },
+  },
+  logo: {
+    height: theme.spacing(7),
+    [theme.breakpoints.up('md')]: {
+      height: theme.spacing(6),
+    },
   },
 }));
 
 export default function Footer(props) {
   const classes = useStyles();
   return (
-    <Container component="footer" className={classes.root} disableGutters>
-      <Grid
-        alignContent="stretch"
-        alignItems="flex-start"
-        container
-        direction="row"
-        justify="space-between"
-        spacing={4}>
-        <Grid item xs={12} md={4}>
-          <Typography variant="h4" component="h2" gutterBottom>
-            Get our newsletter
-          </Typography>
-          <Typography variant="body1" gutterBottom>
-            Occasionally we send out emails to our faithful followers. Sign up to our newsletter bla bla.
-          </Typography>
-          <Button href="https://tinyletter.com/tvkitchen" variant="outlined" className={classes.button}>
-            Tune in
+    <Grid
+      alignContent="stretch"
+      alignItems="center"
+      className={classes.root}
+      component="footer"
+      container
+      direction="row"
+      justify="space-between"
+      spacing={4}>
+      <Grid className={classes.motherhood} container item md={4} xs={12}>
+        <Tooltip title="Visit Bad Idea Factory">
+          <Button href="https://biffud.com" title="Visit Bad Idea Factory">
+            <BIFLogo className={classes.logo} alt="Bad Idea Factory Logo" />
           </Button>
-        </Grid>
-        <Grid item xs={12} md={4}>
-          <Typography variant="h4" component="h2" gutterBottom>
-            Join us on Slack
-          </Typography>
-          <Typography variant="body1" gutterBottom>
-            Join us chatting about this, this and that across a variety of entertaining and useful channels.
-          </Typography>
-          <Button variant="outlined" className={classes.button}>
-            Join Slack
-          </Button>
-        </Grid>
-        <Grid item xs={12} md={4}>
-          <Typography variant="h4" component="h2" gutterBottom>
-            Email us
-          </Typography>
-          <Typography variant="body1" gutterBottom>
-            For business enquiries or casual chatter—do drop us a line at. We ♥︎ emails.
-          </Typography>
-          <Button variant="outlined" className={classes.button}>
-            Email us
-          </Button>
-        </Grid>
+        </Tooltip>
       </Grid>
-    </Container>
+      <Grid className={classes.license} item md={4} xs={12}>
+        <Typography align="center" component="p" variant="caption" color="textSecondary">
+          TV Kitchen is a project by <Link href="https://biffud.com">Bad Idea Factory</Link>.
+        </Typography>
+        <Typography align="center" component="p" variant="caption" color="textSecondary">
+          This project is licensed under XYZ, meaning you can do this this and that. Feel free to{' '}
+          <Link href="mailto:tvkitchen@biffud.com">reach to us</Link> for more details.
+        </Typography>
+      </Grid>
+      <Grid className={classes.elsewhere} container item md={4} xs={12}>
+        <Elsewhere />
+      </Grid>
+    </Grid>
   );
 }

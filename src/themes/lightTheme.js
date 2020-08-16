@@ -27,6 +27,11 @@ export default createMuiTheme({
   },
   overrides: {
     MuiButton: {
+      root: {
+        transition: mui.transitions.create(['background-color', 'box-shadow', 'border', 'color'], {
+          duration: mui.transitions.duration.standard,
+        }),
+      },
       outlined: {
         padding: `${mui.spacing(1)}px ${mui.spacing(2)}px`,
         border: `2px solid ${mui.palette.type === 'light' ? colors.mono[900] : colors.mono[100]}`,
@@ -93,9 +98,9 @@ export default createMuiTheme({
       default: colors.mono[100],
       paper: colors.white,
     },
-    divider: colors.black,
+    divider: colors.mono[900],
     text: {
-      primary: colors.black,
+      primary: colors.mono[900],
     },
     primary: {
       contrastText: mui.palette.getContrastText(colors.blue),
@@ -135,7 +140,7 @@ export default createMuiTheme({
     h5: { ...setType(500), fontFamily: fonts.head, fontWeight: '600' },
     h6: { ...setType(400), fontFamily: fonts.head, fontWeight: '600' },
     overline: { ...setType(100), fontFamily: fonts.foot, fontWeight: '500', letterSpacing: '0.4em' },
-    caption: { ...setType(200), fontFamily: fonts.foot, fontWeight: '500' },
+    caption: { ...setType(100), fontFamily: fonts.body, fontWeight: '400' },
     subtitle1: { ...setType(500), fontFamily: fonts.head, fontWeight: '500' },
     subtitle2: { ...setType(400), fontFamily: fonts.head, fontWeight: '500' },
     code: { fontSize: 'inherit', fontFamily: fonts.foot, fontWeight: 400 },

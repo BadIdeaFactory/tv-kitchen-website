@@ -9,22 +9,11 @@ import Typography from '@material-ui/core/Typography';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 
 import Layout from '@src/components/Layout';
-import sections from '@src/config/sections';
+import config from '@src/config';
 import withTheme from '@src/themes/withTheme';
 
 const useStyles = makeStyles(theme => ({
   toolbar: theme.mixins.toolbar,
-  divider: {
-    borderColor: theme.palette.divider,
-    borderStyle: 'solid',
-    borderWidth: `5px 0 0 0`,
-    marginBottom: theme.spacing(8),
-    marginTop: theme.spacing(8),
-    [theme.breakpoints.up('md')]: {
-      marginBottom: theme.spacing(12),
-      marginTop: theme.spacing(12),
-    },
-  },
   head: {
     marginBottom: theme.spacing(6),
     [theme.breakpoints.up('md')]: {
@@ -32,9 +21,9 @@ const useStyles = makeStyles(theme => ({
     },
   },
   title: {
-    marginBottom: theme.spacing(2),
+    marginBottom: theme.spacing(3),
     [theme.breakpoints.up('md')]: {
-      marginBottom: theme.spacing(4),
+      marginBottom: theme.spacing(6),
     },
   },
   tile: {
@@ -86,19 +75,20 @@ const HelpTpl = ({
       </Helmet>
       <main>
         <Container disableGutters>
-          <Container className={classes.head} maxWidth="sm">
+          <Container className={classes.head} maxWidth="md">
             <Typography align="center" className={classes.title} variant="h1">
               {frontmatter.head.title}
             </Typography>
             <Typography
               align="center"
               dangerouslySetInnerHTML={{ __html: frontmatter.head.text }}
-              variant="subtitle1"
+              variant="h4"
+              component="p"
             />
           </Container>
 
-          <Container disableGutters>
-            <Grid container spacing={5} alignContent="stretch">
+          <Container>
+            <Grid container spacing={8} alignContent="stretch">
               <Grid item xs={12} md={4}>
                 <div className={classes.tile}>
                   <Typography className={classes.tileTitle} variant="h4" component="h3">
@@ -141,41 +131,34 @@ const HelpTpl = ({
             </Grid>
           </Container>
 
-          <div className={classes.faq}>
-            <Container className={classes.head} maxWidth="md">
-              <Typography align="center" className={classes.title} variant="h2">
-                {frontmatter.faq.title}
-              </Typography>
-              <Typography
-                align="center"
-                dangerouslySetInnerHTML={{ __html: frontmatter.faq.text }}
-                variant="subtitle1"
-              />
-            </Container>
-            <Container disableGutters>
-              <Grid alignContent="stretch" container spacing={5}>
-                {faq.edges.map(({ node }) => {
-                  const { id, frontmatter, answer } = node;
-                  const { question } = frontmatter;
-                  return (
-                    <Grid item xs={12} md={6} key={id}>
-                      <Typography variant="h5" component="h3">
-                        {question}
-                      </Typography>
-                      <Typography variant="body2" dangerouslySetInnerHTML={{ __html: answer }} />
-                    </Grid>
-                  );
-                })}
-              </Grid>
-            </Container>
-          </div>
+          <Container className={classes.head} maxWidth="md">
+            <Typography align="center" className={classes.title} variant="h2">
+              {frontmatter.faq.title}
+            </Typography>
+          </Container>
+          <Container disableGutters>
+            <Grid alignContent="stretch" container spacing={8}>
+              {faq.edges.map(({ node }) => {
+                const { id, frontmatter, answer } = node;
+                const { question } = frontmatter;
+                return (
+                  <Grid item xs={12} md={6} key={id}>
+                    <Typography variant="h5" component="h3">
+                      {question}
+                    </Typography>
+                    <Typography variant="body2" dangerouslySetInnerHTML={{ __html: answer }} />
+                  </Grid>
+                );
+              })}
+            </Grid>
+          </Container>
         </Container>
       </main>
     </Layout>
   );
 };
 
-export default withTheme(HelpTpl, sections.help.color);
+export default withTheme(HelpTpl, config.sections.help.color);
 
 export const pageQuery = graphql`
   query HelpTplQuery($id: String) {
@@ -203,7 +186,6 @@ export const pageQuery = graphql`
         }
         faq {
           title
-          text
         }
       }
     }

@@ -12,7 +12,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 
 import Copy from '@src/components/Copy';
 import Layout from '@src/components/Layout';
-import sections from '@src/config/sections';
+import config from '@src/config';
 import withTheme from '@src/themes/withTheme';
 
 const useStyles = makeStyles(theme => ({
@@ -24,9 +24,9 @@ const useStyles = makeStyles(theme => ({
     },
   },
   title: {
-    marginBottom: theme.spacing(2),
+    marginBottom: theme.spacing(5),
     [theme.breakpoints.up('md')]: {
-      marginBottom: theme.spacing(4),
+      marginBottom: theme.spacing(10),
     },
   },
   team: {
@@ -174,7 +174,7 @@ const AboutTpl = ({
   );
 };
 
-export default withTheme(AboutTpl, sections.about.color);
+export default withTheme(AboutTpl, config.sections.about.color);
 
 export const pageQuery = graphql`
   query AboutTplQuery($id: String) {

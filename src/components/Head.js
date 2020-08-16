@@ -70,6 +70,7 @@ export default function Head(props) {
             box-shadow: 0 0 0 2px ${theme.palette.divider} !important;
             color: ${theme.palette.background.paper} !important;
             outline: none;
+            fill: ${theme.palette.background.paper} !important;
             transition:
               box-shadow ${theme.transitions.duration.standard},
               background-color ${theme.transitions.duration.standard},

@@ -3,9 +3,6 @@ const remarkNormalizeHeadings = require('remark-normalize-headings');
 const remarkSqueezeParagraphs = require('remark-squeeze-paragraphs');
 
 module.exports = {
-  siteMetadata: {
-    description: 'TV Kitchen is an awesome media toolkit yada yada yada',
-  },
   plugins: [
     `gatsby-plugin-material-ui`,
     `gatsby-plugin-react-helmet`,

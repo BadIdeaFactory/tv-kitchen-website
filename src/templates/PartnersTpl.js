@@ -6,7 +6,7 @@ import Container from '@material-ui/core/Container';
 // import makeStyles from '@material-ui/core/styles/makeStyles';
 
 import Layout from '@src/components/Layout';
-import sections from '@src/config/sections';
+import config from '@src/config';
 import withTheme from '@src/themes/withTheme';
 
 // const useStyles = makeStyles(theme => ({}));
@@ -31,7 +31,7 @@ const PartnersTpl = ({
   );
 };
 
-export default withTheme(PartnersTpl, sections.partners.color);
+export default withTheme(PartnersTpl, config.sections.partners.color);
 
 export const pageQuery = graphql`
   query PartnersTplQuery($id: String) {

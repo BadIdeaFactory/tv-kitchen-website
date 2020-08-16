@@ -9,7 +9,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 
 import lightTheme from '@src/themes/lightTheme';
-import sections from '@src/config/sections';
+import config from '@src/config';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -52,13 +52,13 @@ export default function Navbar({ uri, ...props }) {
   // console.log(props);
   // console.groupEnd();
 
-  const color = _.find(sections, o => uri.startsWith(o.slug))?.color || lightTheme.palette.primary.main;
+  const color = _.find(config.sections, o => uri.startsWith(o.slug))?.color || lightTheme.palette.primary.main;
 
   return (
     <>
       <div className={classes.toolbar} />
       <BottomNavigation className={classes.root} component="nav" showLabels>
-        {_.orderBy(sections, o => o.order).map(section => {
+        {_.orderBy(config.sections, o => o.order).map(section => {
           const { id, title, slug, Icon } = section;
           return (
             <BottomNavigationAction

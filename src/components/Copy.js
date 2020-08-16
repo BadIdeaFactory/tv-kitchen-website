@@ -19,11 +19,11 @@ const useStyles = makeStyles(theme => ({
     '& code': theme.typography.code,
     '& pre': {
       ...theme.typography.code,
-      background: theme.palette.background.default,
+      background: theme.palette.text.primary,
       border: `2px solid ${theme.palette.divider}`,
       overflow: 'auto',
       padding: theme.spacing(3),
-      color: theme.palette.primary.dark,
+      color: theme.palette.background.default,
     },
     '& ul > li': {
       ...theme.typography.body1,

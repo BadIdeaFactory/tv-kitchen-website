@@ -11,7 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 
 import Layout from '@src/components/Layout';
-import sections from '@src/config/sections';
+import config from '@src/config';
 import withTheme from '@src/themes/withTheme';
 
 const useStyles = makeStyles(theme => ({
@@ -22,12 +22,7 @@ const useStyles = makeStyles(theme => ({
       marginBottom: theme.spacing(12),
     },
   },
-  title: {
-    marginBottom: theme.spacing(2),
-    [theme.breakpoints.up('md')]: {
-      marginBottom: theme.spacing(4),
-    },
-  },
+  title: {},
   article: {
     '&:not(:last-child)': {
       marginBottom: theme.spacing(16),
@@ -60,15 +55,10 @@ const PressTpl = ({
 
       <main>
         <Container maxWidth="lg">
-          <Container className={classes.head} disableGutters maxWidth={false}>
+          <Container className={classes.head} disableGutters maxWidth="md">
             <Typography align="center" className={classes.title} variant="h1">
               {frontmatter.head.title}
             </Typography>
-            <Typography
-              align="center"
-              dangerouslySetInnerHTML={{ __html: frontmatter.head.text }}
-              variant="subtitle1"
-            />
           </Container>
 
           <Container disableGutters maxWidth="sm">
@@ -113,7 +103,7 @@ const PressTpl = ({
                     <Button
                       className={classes.action}
                       href={url}
-                      variant="contained"
+                      variant="outlined"
                       color="inherit"
                       target="_blank"
                       endIcon={<OpenInNewIcon fontSize="small" />}>
@@ -130,7 +120,7 @@ const PressTpl = ({
   );
 };
 
-export default withTheme(PressTpl, sections.press.color);
+export default withTheme(PressTpl, config.sections.press.color);
 
 export const pageQuery = graphql`
   query PressTplQuery($id: String) {
@@ -139,7 +129,6 @@ export const pageQuery = graphql`
         title
         head {
           title
-          text
         }
       }
     }
