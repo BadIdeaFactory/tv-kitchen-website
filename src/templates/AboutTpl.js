@@ -32,6 +32,12 @@ const useStyles = makeStyles(theme => ({
       marginBottom: theme.spacing(10),
     },
   },
+  masterTitle: {
+    marginBottom: theme.spacing(4),
+    [theme.breakpoints.up('md')]: {
+      marginBottom: theme.spacing(8),
+    },
+  },
   intro: {
     backgroundImage: `url(${antenna})`,
     backgroundPosition: 'center bottom',
@@ -41,18 +47,6 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('md')]: {
       backgroundSize: '45% auto',
       padding: theme.spacing(0, 0, 25, 0),
-    },
-  },
-  masterTitle: {
-    marginBottom: theme.spacing(5),
-    [theme.breakpoints.up('md')]: {
-      marginBottom: theme.spacing(10),
-    },
-  },
-  title: {
-    marginBottom: theme.spacing(2.5),
-    [theme.breakpoints.up('md')]: {
-      marginBottom: theme.spacing(5),
     },
   },
   team: {
@@ -85,15 +79,18 @@ const useStyles = makeStyles(theme => ({
       backgroundSize: '33% auto',
     },
   },
-  imageHolder: {
+  title: {
+    marginBottom: theme.spacing(2.5),
+    [theme.breakpoints.up('md')]: {
+      marginBottom: theme.spacing(5),
+    },
+  },
+  image: {
     lineHeight: 0,
+    margin: theme.spacing(0, 0, 2),
   },
-  nameHolder: {
+  name: {
     marginBottom: theme.spacing(1),
-  },
-  titleHolder: {},
-  textHolder: {
-    marginTop: theme.spacing(1),
   },
 }));
 
@@ -160,21 +157,19 @@ const AboutTpl = ({
                   const { frontmatter, id, text } = node;
                   const { fname, lname, photo, title } = frontmatter;
                   return (
-                    <Grid item key={id} md={6} xs={12}>
-                      <Grid alignContent="stretch" alignItems="center" container spacing={3}>
-                        <Grid className={classes.imageHolder} item>
-                          <Img fixed={photo.childImageSharp.fixed} alt={`Photo of ${fname} ${lname}`} />
-                        </Grid>
-                        <Grid item xs>
-                          <Typography className={classes.nameHolder} component="h3" variant="h5">
-                            {fname} {lname}
-                          </Typography>
-                          <Typography className={classes.titleHolder} component="p" variant="overline">
-                            {title}
-                          </Typography>
-                        </Grid>
-                      </Grid>
-                      <Copy className={classes.textHolder}>{renderAst(text)}</Copy>
+                    <Grid item xs={12} sm={6} md={4} key={id}>
+                      <Img
+                        alt={`Photo of ${fname} ${lname}`}
+                        className={classes.image}
+                        fixed={photo.childImageSharp.fixed}
+                      />
+                      <Typography className={classes.name} variant="h5" component="h3">
+                        {fname} {lname}
+                      </Typography>
+                      <Typography component="p" variant="overline">
+                        {title}
+                      </Typography>
+                      <Copy>{renderAst(text)}</Copy>
                     </Grid>
                   );
                 })}
@@ -200,17 +195,11 @@ const AboutTpl = ({
                   const { name, logo } = frontmatter;
                   return (
                     <Grid item xs={12} md={4} key={id}>
-                      <Grid container spacing={3} alignContent="stretch" direction="column">
-                        <Grid item className={classes.imageHolder}>
-                          <Img fixed={logo.childImageSharp.fixed} alt={`Photo of ${name}`} />
-                        </Grid>
-                        <Grid item>
-                          <Typography className={classes.nameHolder} variant="h5" component="h3">
-                            {name}
-                          </Typography>
-                        </Grid>
-                      </Grid>
-                      <Copy className={classes.textHolder}>{renderAst(text)}</Copy>
+                      <Img alt={`Photo of ${name}`} className={classes.image} fixed={logo.childImageSharp.fixed} />
+                      <Typography className={classes.name} variant="h5" component="h3">
+                        {name}
+                      </Typography>
+                      <Copy>{renderAst(text)}</Copy>
                     </Grid>
                   );
                 })}

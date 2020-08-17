@@ -108,11 +108,12 @@ export default createMuiTheme({
     },
     MuiPaper: {
       root: {
-        backgroundColor: mui.palette.background.paper,
+        background: colors.mono[100],
         color: mui.palette.text.primary,
         transition: mui.transitions.create('box-shadow'),
       },
       outlined: {
+        backgroundColor: mui.palette.background.paper,
         border: `5px solid ${colors.mono[900]}`,
       },
     },
@@ -171,7 +172,7 @@ export default createMuiTheme({
     h4: { ...setType(600), fontFamily: fonts.head, fontWeight: '600' },
     h5: { ...setType(500), fontFamily: fonts.head, fontWeight: '600' },
     h6: { ...setType(400), fontFamily: fonts.head, fontWeight: '600' },
-    overline: { ...setType(100), fontFamily: fonts.foot, fontWeight: '500', letterSpacing: '0.4em' },
+    overline: { ...setType(200), fontFamily: fonts.foot, fontWeight: '500', letterSpacing: '0.4em' },
     caption: { ...setType(100), fontFamily: fonts.body, fontWeight: '400' },
     subtitle1: { ...setType(500), fontFamily: fonts.head, fontWeight: '500' },
     subtitle2: { ...setType(400), fontFamily: fonts.head, fontWeight: '500' },

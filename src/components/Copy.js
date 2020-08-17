@@ -10,7 +10,7 @@ const useStyles = makeStyles(theme => ({
     '& > h3': theme.typography.h5,
     '& > h4': theme.typography.h6,
     '& > h5': theme.typography.subtitle1,
-    '& > p': theme.typography.body1,
+    '& p': theme.typography.body1,
     '& a': {
       background: theme.palette.primary.light,
       color: 'inherit',

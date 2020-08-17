@@ -18,6 +18,10 @@ export default {
       url: 'https://medium.com/storycopter-news/',
       tip: 'Read our latest on Medium',
     },
+    slack: {
+      url: 'https://slack.com/something',
+      tip: 'Join our Slack channel',
+    },
     twitter: {
       url: 'https://twitter.com/biffud',
       tip: 'Follow us on Twitter',
