@@ -31,9 +31,11 @@ const useStyles = makeStyles(theme => ({
     backgroundPosition: '-5% top',
     backgroundRepeat: 'repeat-y',
     backgroundSize: '50px auto',
+    [theme.breakpoints.up('md')]: {
+      backgroundPosition: '-2% top',
+    },
     '&:not(:last-child)': {
       marginBottom: theme.spacing(16),
-      backgroundPosition: '-2% top',
     },
   },
   date: { marginTop: theme.spacing(1.5) },

@@ -42,21 +42,21 @@ export default function Footer(props) {
   const classes = useStyles();
   return (
     <Grid alignContent="stretch" alignItems="center" className={classes.root} component="footer" container spacing={8}>
-      <Grid className={`${classes.item} ${classes.motherhood} `} container item md={4} xs={12}>
+      <Grid className={`${classes.item} ${classes.motherhood} `} container item md={3} xs={12}>
         <Tooltip title="Visit Bad Idea Factory">
           <Button href="https://biffud.com">
             <BIFLogo className={classes.logo} alt="Bad Idea Factory Logo" />
           </Button>
         </Tooltip>
       </Grid>
-      <Grid className={`${classes.item}`} item md={4} xs={12}>
+      <Grid className={`${classes.item}`} item md={6} xs={12}>
         <Typography align="center" component="p" variant="caption" color="textSecondary">
           TV Kitchen is a project by <Link href="https://biffud.com">Bad Idea Factory</Link>. This project is licensed
           under XYZ, meaning you can do this this and that. Feel free to{' '}
           <Link href="mailto:tvkitchen@biffud.com">reach to us</Link> for more details.
         </Typography>
       </Grid>
-      <Grid className={`${classes.item} ${classes.elsewhere}`} container item md={4} xs={12}>
+      <Grid className={`${classes.item} ${classes.elsewhere}`} container item md={3} xs={12}>
         <Elsewhere />
       </Grid>
     </Grid>
