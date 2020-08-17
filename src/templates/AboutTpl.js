@@ -27,6 +27,12 @@ const renderAst = new rehypeReact({
 }).Compiler;
 
 const useStyles = makeStyles(theme => ({
+  head: {
+    marginBottom: theme.spacing(5),
+    [theme.breakpoints.up('md')]: {
+      marginBottom: theme.spacing(10),
+    },
+  },
   intro: {
     backgroundImage: `url(${antenna})`,
     backgroundPosition: 'center bottom',
@@ -169,6 +175,7 @@ const AboutTpl = ({
                 {frontmatter.funding.text}
               </Typography>
             </Container>
+
             <Container className={classes.fundersOrnamentRef}>
               <Grid alignContent="stretch" container spacing={5}>
                 {funders.edges.map(({ node }) => {

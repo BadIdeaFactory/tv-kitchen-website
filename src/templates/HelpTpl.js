@@ -28,6 +28,12 @@ const renderAst = new rehypeReact({
 }).Compiler;
 
 const useStyles = makeStyles(theme => ({
+  head: {
+    marginBottom: theme.spacing(5),
+    [theme.breakpoints.up('md')]: {
+      marginBottom: theme.spacing(10),
+    },
+  },
   title: {
     marginBottom: theme.spacing(3),
     [theme.breakpoints.up('md')]: {
