@@ -30,6 +30,10 @@ export default {
       url: 'https://github.com/tvkitchen',
       tip: 'Visit TV Kitchen Github',
     },
+    tinyletter: {
+      url: 'https://tinyletter.com/tvkitchen',
+      tip: 'Sign up to our tiny letter',
+    },
   },
   sections: {
     about: { id: 'about', order: 0, title: 'About', slug: '/about', Icon: InfoIcon, color: colors.yellow },

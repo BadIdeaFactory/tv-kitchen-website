@@ -10,6 +10,7 @@ import { ThemeProvider } from '@material-ui/core/styles';
 
 import darkTheme from '@src/themes/darkTheme';
 import grid from '@src/ornaments/grid-dark.svg';
+import config from '@src/config';
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -50,7 +51,7 @@ export default function Contact(props) {
             <Typography variant="body1" gutterBottom>
               Occasionally we send out emails to our faithful followers. Sign up to our newsletter bla bla.
             </Typography>
-            <Button className={classes.button} href="https://tinyletter.com/tvkitchen" variant="outlined">
+            <Button className={classes.button} href={config.elsewhere.tinyletter.url} variant="outlined">
               Tune in
             </Button>
           </Grid>
@@ -61,7 +62,7 @@ export default function Contact(props) {
             <Typography variant="body1" gutterBottom>
               Join us chatting about this, this and that across a variety of entertaining and useful channels.
             </Typography>
-            <Button className={classes.button} variant="outlined">
+            <Button className={classes.button} href={config.elsewhere.slack.url} variant="outlined">
               Join Slack
             </Button>
           </Grid>

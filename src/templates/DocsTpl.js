@@ -174,7 +174,7 @@ const DocsTpl = ({
       </Helmet>
       <main>
         <Container disableGutters>
-          <Grid container spacing={10} wrap="nowrap">
+          <Grid container spacing={8}>
             <Grid item xs={12} md={4}>
               <DocsMenu
                 chapters={chapters}
