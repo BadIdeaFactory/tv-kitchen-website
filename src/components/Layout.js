@@ -12,14 +12,24 @@ import Navbar from '@src/components/Navbar';
 import Separator from '@src/components/Separator';
 import Topbar from '@src/components/Topbar';
 import config from '@src/config';
+import glitch from '@src/ornaments/glitch-horizontal.svg';
 
 const useStyles = makeStyles(theme => ({
+  root: {
+    backgroundImage: `url(${glitch})`,
+    backgroundPosition: 'center 100px',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: '80% auto',
+    [theme.breakpoints.up('md')]: {
+      backgroundPosition: 'center 75px',
+      backgroundSize: '100% auto',
+    },
+  },
   toolbar: theme.mixins.toolbar,
 }));
 
-export default function Layout(props) {
+export default function Layout({ children, ...props }) {
   const classes = useStyles();
-  const { children } = props;
 
   // console.group('Layout.js');
   // console.log({ props });
@@ -29,7 +39,7 @@ export default function Layout(props) {
     <>
       <Head {...props} />
       <CssBaseline />
-      <Container>
+      <Container className={classes.root}>
         <MDXProvider components={config.mdComponents}>
           <div className={classes.toolbar} />
           <Topbar {...props} />
