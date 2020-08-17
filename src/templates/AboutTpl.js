@@ -16,6 +16,7 @@ import Separator from '@src/components/Separator';
 import antenna from '@src/ornaments/antenna.svg';
 import config from '@src/config';
 import grid from '@src/ornaments/grid-light.svg';
+import grill from '@src/ornaments/grill-horizontal.svg';
 import signalBarVertical from '@src/ornaments/signal-bar-vertical.svg';
 import withTheme from '@src/themes/withTheme';
 
@@ -55,10 +56,15 @@ const useStyles = makeStyles(theme => ({
     },
   },
   team: {
+    backgroundImage: `url(${grill})`,
+    backgroundPosition: '-1% -1%',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: '25% auto',
     border: `5px solid ${theme.palette.divider}`,
     padding: theme.spacing(5, 2.5),
     [theme.breakpoints.up('md')]: {
       padding: theme.spacing(10, 5),
+      backgroundSize: '12% auto',
     },
   },
   funders: {
