@@ -11,14 +11,16 @@ import Typography from '@material-ui/core/Typography';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 
 import Copy from '@src/components/Copy';
+import Headline from '@src/components/Headline';
 import Layout from '@src/components/Layout';
+import Separator from '@src/components/Separator';
+import antenna from '@src/ornaments/antenna.svg';
 import config from '@src/config';
-import grid from '@src/ornaments/grid-light.svg';
 import glitch from '@src/ornaments/glitch-vertical.svg';
+import grid from '@src/ornaments/grid-light.svg';
 import grill from '@src/ornaments/grill-horizontal.svg';
 import signalBarVertical from '@src/ornaments/signal-bar-vertical.svg';
 import withTheme from '@src/themes/withTheme';
-import antenna from '@src/ornaments/antenna.svg';
 
 const renderAst = new rehypeReact({
   createElement: React.createElement,
@@ -26,19 +28,6 @@ const renderAst = new rehypeReact({
 }).Compiler;
 
 const useStyles = makeStyles(theme => ({
-  toolbar: theme.mixins.toolbar,
-  head: {
-    marginBottom: theme.spacing(6),
-    [theme.breakpoints.up('md')]: {
-      marginBottom: theme.spacing(12),
-    },
-  },
-  masterTitle: {
-    marginBottom: theme.spacing(4),
-    [theme.breakpoints.up('md')]: {
-      marginBottom: theme.spacing(8),
-    },
-  },
   title: {
     marginBottom: theme.spacing(3),
     [theme.breakpoints.up('md')]: {
@@ -149,16 +138,8 @@ const HelpTpl = ({
 
       <main>
         <Container disableGutters>
-          <Container className={classes.head} maxWidth="md">
-            <Typography align="center" className={classes.masterTitle} variant="h1">
-              {frontmatter.head.title}
-            </Typography>
-            <Typography
-              align="center"
-              dangerouslySetInnerHTML={{ __html: frontmatter.head.text }}
-              variant="subtitle1"
-            />
-          </Container>
+          <Headline title={frontmatter.head.title} text={frontmatter.head.text} />
+          <Separator silent />
 
           <Container disableGutters>
             <Grid container spacing={4} alignContent="stretch">

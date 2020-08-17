@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 
 import Copy from '@src/components/Copy';
+import Headline from '@src/components/Headline';
 import Layout from '@src/components/Layout';
 import Separator from '@src/components/Separator';
 import antenna from '@src/ornaments/antenna.svg';
@@ -26,18 +27,6 @@ const renderAst = new rehypeReact({
 }).Compiler;
 
 const useStyles = makeStyles(theme => ({
-  head: {
-    marginBottom: theme.spacing(5),
-    [theme.breakpoints.up('md')]: {
-      marginBottom: theme.spacing(10),
-    },
-  },
-  masterTitle: {
-    marginBottom: theme.spacing(4),
-    [theme.breakpoints.up('md')]: {
-      marginBottom: theme.spacing(8),
-    },
-  },
   intro: {
     backgroundImage: `url(${antenna})`,
     backgroundPosition: 'center bottom',
@@ -120,16 +109,8 @@ const AboutTpl = ({
 
       <main>
         <Container disableGutters>
-          <Container className={classes.head} maxWidth="md">
-            <Typography align="center" className={classes.masterTitle} variant="h1">
-              {frontmatter.head.title}
-            </Typography>
-            <Typography
-              align="center"
-              dangerouslySetInnerHTML={{ __html: frontmatter.head.text }}
-              variant="subtitle1"
-            />
-          </Container>
+          <Headline title={frontmatter.head.title} text={frontmatter.head.text} />
+          <Separator silent />
 
           <div className={classes.intro}>
             <Container maxWidth="sm">

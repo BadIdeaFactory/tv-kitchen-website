@@ -10,7 +10,10 @@ import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 
+import Headline from '@src/components/Headline';
 import Layout from '@src/components/Layout';
+import Separator from '@src/components/Separator';
+import grill from '@src/ornaments/grill-horizontal-light.svg';
 import config from '@src/config';
 import withTheme from '@src/themes/withTheme';
 
@@ -24,8 +27,13 @@ const useStyles = makeStyles(theme => ({
   },
   title: {},
   article: {
+    backgroundImage: `url(${grill})`,
+    backgroundPosition: '-5% top',
+    backgroundRepeat: 'repeat-y',
+    backgroundSize: '50px auto',
     '&:not(:last-child)': {
       marginBottom: theme.spacing(16),
+      backgroundPosition: '-2% top',
     },
   },
   date: { marginTop: theme.spacing(1.5) },
@@ -54,34 +62,31 @@ const PressTpl = ({
       </Helmet>
 
       <main>
-        <Container maxWidth="lg">
-          <Container className={classes.head} disableGutters maxWidth="md">
-            <Typography align="center" className={classes.title} variant="h1">
-              {frontmatter.head.title}
-            </Typography>
-          </Container>
+        <Container disableGutters>
+          <Headline title={frontmatter.head.title} text={frontmatter.head.text} />
+          <Separator silent />
 
-          <Container disableGutters maxWidth="sm">
-            {allMediumPost.edges.map(
-              ({
-                node: {
-                  id,
-                  title,
-                  previewContent2: {
-                    bodyModel: { paragraphs },
-                  },
-                  firstPublishedAt,
-                  uniqueSlug,
+          {allMediumPost.edges.map(
+            ({
+              node: {
+                id,
+                title,
+                previewContent2: {
+                  bodyModel: { paragraphs },
                 },
-              }) => {
-                const date = Intl.DateTimeFormat('en-US', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
-                }).format(Date.parse(firstPublishedAt));
-                const url = `https://medium.com/storycopter-news/${uniqueSlug}`;
-                return (
-                  <article className={classes.article} key={id}>
+                firstPublishedAt,
+                uniqueSlug,
+              },
+            }) => {
+              const date = Intl.DateTimeFormat('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              }).format(Date.parse(firstPublishedAt));
+              const url = `https://medium.com/storycopter-news/${uniqueSlug}`;
+              return (
+                <Container className={classes.article} key={id} maxWidth="sm">
+                  <article>
                     <Tooltip title="Continue on Medium…">
                       <Link className={classes.articleTitle} display="block" href={url}>
                         <Typography component="span" variant="h2">
@@ -110,10 +115,10 @@ const PressTpl = ({
                       Continue on Medium
                     </Button>
                   </article>
-                );
-              }
-            )}
-          </Container>
+                </Container>
+              );
+            }
+          )}
         </Container>
       </main>
     </Layout>
@@ -129,6 +134,7 @@ export const pageQuery = graphql`
         title
         head {
           title
+          text
         }
       }
     }

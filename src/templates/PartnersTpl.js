@@ -5,7 +5,9 @@ import { graphql } from 'gatsby';
 import Container from '@material-ui/core/Container';
 // import makeStyles from '@material-ui/core/styles/makeStyles';
 
+import Headline from '@src/components/Headline';
 import Layout from '@src/components/Layout';
+import Separator from '@src/components/Separator';
 import config from '@src/config';
 import withTheme from '@src/themes/withTheme';
 
@@ -24,9 +26,13 @@ const PartnersTpl = ({
       <Helmet>
         <title>{frontmatter.title}</title>
       </Helmet>
-      <Container component="main" maxWidth="md">
-        Hello Partners Page
-      </Container>
+
+      <main>
+        <Container disableGutters>
+          <Headline title={frontmatter.head.title} text={frontmatter.head.text} />
+          <Separator silent />
+        </Container>
+      </main>
     </Layout>
   );
 };
@@ -37,7 +43,10 @@ export const pageQuery = graphql`
   query PartnersTplQuery($id: String) {
     mdx(id: { eq: $id }) {
       frontmatter {
-        title
+        head {
+          title
+          text
+        }
       }
     }
   }
