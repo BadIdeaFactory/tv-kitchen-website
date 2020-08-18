@@ -22,6 +22,7 @@ export default function Headline({ text, title, ...props }) {
           {title}
         </Typography>
       ) : null}
+      {props.children}
       {text ? <Typography align="center" dangerouslySetInnerHTML={{ __html: text }} variant="subtitle1" /> : null}
     </Container>
   );

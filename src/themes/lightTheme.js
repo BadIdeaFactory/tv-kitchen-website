@@ -69,6 +69,14 @@ export default createMuiTheme({
           backgroundColor: 'transparent',
         },
       },
+      containedSizeLarge: {
+        padding: mui.spacing(2, 4),
+        ...setType(400),
+      },
+      outlinedSizeLarge: {
+        padding: mui.spacing(2, 4),
+        ...setType(400),
+      },
     },
     MuiCardContent: {
       root: {
