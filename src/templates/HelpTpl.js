@@ -159,7 +159,7 @@ const HelpTpl = ({
                       {frontmatter.slack.text}
                     </Typography>
                   </div>
-                  <Button href={config.elsewhere.slack.url} variant="outlined">
+                  <Button href={config.elsewhere.slack.url} variant="contained" color="primary">
                     {frontmatter.slack.cta}
                   </Button>
                 </Paper>
@@ -174,7 +174,9 @@ const HelpTpl = ({
                       {frontmatter.github.text}
                     </Typography>
                   </div>
-                  <Button variant="outlined">{frontmatter.github.cta}</Button>
+                  <Button variant="contained" color="primary">
+                    {frontmatter.github.cta}
+                  </Button>
                 </Paper>
               </Grid>
               <Grid container direction="column" item justify="space-between" md={4} xs={12}>
@@ -187,7 +189,9 @@ const HelpTpl = ({
                       {frontmatter.docs.text}
                     </Typography>
                   </div>
-                  <Button variant="outlined">{frontmatter.docs.cta}</Button>
+                  <Button variant="contained" color="primary">
+                    {frontmatter.docs.cta}
+                  </Button>
                 </Paper>
               </Grid>
             </Grid>

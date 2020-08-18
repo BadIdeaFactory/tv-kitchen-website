@@ -18,6 +18,7 @@ export default function Head(props) {
 
       {/* <link href="/assets/images/favicon.ico" type="image/png" rel="icon"> */}
       <link rel="canonical" href={meta.url} />
+      <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
       <meta name="author" content="Mogli Studio — https://moglistudio.com" />
       <meta name="charset" content="utf-8" />

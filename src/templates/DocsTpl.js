@@ -31,9 +31,9 @@ const useStyles = makeStyles(theme => ({
     background: '#EAE9E8',
     padding: theme.spacing(2),
     backgroundImage: `url(${signalBarVertical})`,
-    backgroundPosition: '-10px top',
-    backgroundRepeat: 'repeat-y',
-    backgroundSize: '15px auto',
+    backgroundPosition: 'right top',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'auto 20px',
   },
   toolbar: theme.mixins.toolbar,
   head: {
@@ -67,15 +67,12 @@ const DocsMenu = ({ chapters, section, loosePages, rootPage, uri, ...props }) =>
 
   const [open, setOpen] = useState(section || null);
 
-  console.log('uri: ', uri);
-  console.log('rootPage: ', rootPage);
-
   const listItemProps = {
     button: true,
     classes: { selected: classes.selectedListItem },
   };
   const listItemTextProps = {
-    primaryTypographyProps: { color: 'textPrimary', noWrap: true, variant: 'h6' },
+    primaryTypographyProps: { color: 'primary', noWrap: true, variant: 'h6' },
   };
 
   return (

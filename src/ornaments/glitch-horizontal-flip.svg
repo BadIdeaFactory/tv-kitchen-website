@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1890px" height="94px" viewBox="0 0 1890 94" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>glitch-horizontal-flip</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="glitch-horizontal-flip" fill-rule="nonzero">
+            <g transform="translate(945.000000, 47.000000) scale(-1, 1) rotate(-180.000000) translate(-945.000000, -47.000000) ">
+                <rect id="Rectangle_187" fill="#6AC32D" x="147.567" y="84.1767793" width="550.847" height="9.70892019"></rect>
+                <polygon id="Path_312" fill="#EAE9E8" points="0 84.2138498 234.48 84.2138498 234.48 89.2527793 0 89.2527793"></polygon>
+                <rect id="Rectangle_189" fill="#FFBE07" x="232.181" y="84.2138498" width="234.48" height="5.03892958"></rect>
+                <polygon id="Path_311" fill="#6CD5D5" points="459.764 84.2138498 694.244 84.2138498 694.244 89.2527793 459.764 89.2527793"></polygon>
+                <polygon id="Path_310" fill="#D672AF" points="921.827 84.2138498 1156.307 84.2138498 1156.307 89.2527793 921.827 89.2527793"></polygon>
+                <rect id="Rectangle_192" fill="#E33D49" x="1154.008" y="84.2138498" width="234.48" height="5.03892958"></rect>
+                <rect id="Rectangle_193" fill="#193EB7" x="1381.591" y="84.2138498" width="234.48" height="5.03892958"></rect>
+                <rect id="Rectangle_194" fill="#6AC32D" x="594.585" y="0" width="550.847" height="70.1690141"></rect>
+                <rect id="Rectangle_195" fill="#6100DE" x="273.398" y="0.323042254" width="234.48" height="44.0317183"></rect>
+                <rect id="Rectangle_196" fill="#FFBE07" x="505.578" y="0.323042254" width="234.48" height="44.0317183"></rect>
+                <polygon id="Path_309" fill="#6CD5D5" points="733.161 0.323042254 967.641 0.323042254 967.641 44.3547606 733.161 44.3547606"></polygon>
+                <polygon id="Path_308" fill="#D672AF" points="1195.224 0.323042254 1429.704 0.323042254 1429.704 44.3547606 1195.224 44.3547606"></polygon>
+                <rect id="Rectangle_199" fill="#E33D49" x="1427.405" y="0.323042254" width="234.48" height="44.0317183"></rect>
+                <rect id="Rectangle_200" fill="#193EB7" x="1654.988" y="0.323042254" width="234.48" height="44.0317183"></rect>
+            </g>
+        </g>
+    </g>
+</svg>
