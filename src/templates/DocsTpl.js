@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import _ from 'lodash';
 import { Helmet } from 'react-helmet';
 import { Link as GatsbyLink } from 'gatsby';
-import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { graphql } from 'gatsby';
 
@@ -192,9 +191,7 @@ const DocsTpl = ({
                   </Typography>
                 </Container>
                 <Copy>
-                  <MDXProvider>
-                    <MDXRenderer>{body}</MDXRenderer>
-                  </MDXProvider>
+                  <MDXRenderer>{body}</MDXRenderer>
                 </Copy>
               </div>
             </Grid>

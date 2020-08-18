@@ -27,6 +27,18 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `);
+  const error = await graphql(`
+    {
+      allMdx(filter: { fileAbsolutePath: { regex: "/content/404.mdx/" } }) {
+        edges {
+          node {
+            id
+            slug
+          }
+        }
+      }
+    }
+  `);
   const help = await graphql(`
     {
       allMdx(filter: { fileAbsolutePath: { regex: "/content/help/.*.mdx/" } }) {
@@ -84,6 +96,10 @@ exports.createPages = async ({ graphql, actions }) => {
     {
       src: docs,
       tpl: path.resolve('src/templates/DocsTpl.js'),
+    },
+    {
+      src: error,
+      tpl: path.resolve('src/templates/ErrorTpl.js'),
     },
     {
       src: help,

@@ -34,11 +34,11 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function Navbar({ uri, ...props }) {
+export default function Navbar({ location: { pathname }, ...props }) {
   const classes = useStyles();
 
   // console.group('Navbar.js');
-  // console.log(uri, props);
+  // console.log(pathname, props);
   // console.groupEnd();
 
   return (
@@ -46,7 +46,7 @@ export default function Navbar({ uri, ...props }) {
       className={classes.root}
       component="nav"
       showLabels
-      value={_.find(config.sections, o => uri.startsWith(o.slug))?.slug || uri}>
+      value={_.find(config.sections, o => pathname.startsWith(o.slug))?.slug || pathname}>
       {_.orderBy(config.sections, o => o.order).map(section => {
         const { id, title, slug, Icon } = section;
         return (

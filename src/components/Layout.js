@@ -31,9 +31,9 @@ const useStyles = makeStyles(theme => ({
 export default function Layout({ children, ...props }) {
   const classes = useStyles();
 
-  // console.group('Layout.js');
-  // console.log({ props });
-  // console.groupEnd();
+  console.group('Layout.js');
+  console.log({ props });
+  console.groupEnd();
 
   return (
     <>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { lighten } from 'polished';
 
 import makeStyles from '@material-ui/core/styles/makeStyles';
 
@@ -12,8 +13,12 @@ const useStyles = makeStyles(theme => ({
     '& > h5': theme.typography.subtitle1,
     '& p': theme.typography.body1,
     '& a': {
-      background: theme.palette.primary.light,
+      background: lighten(0.1, theme.palette.primary.light),
       color: 'inherit',
+      textDecoration: 'none',
+    },
+    '& a:hover': {
+      background: theme.palette.primary.light,
       textDecoration: 'none',
     },
     '& code': theme.typography.code,

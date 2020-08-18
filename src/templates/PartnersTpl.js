@@ -43,6 +43,7 @@ export const pageQuery = graphql`
   query PartnersTplQuery($id: String) {
     mdx(id: { eq: $id }) {
       frontmatter {
+        title
         head {
           title
           text

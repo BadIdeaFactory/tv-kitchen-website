@@ -60,7 +60,7 @@ export default function Topbar({ location: { pathname }, ...props }) {
 
   // console.group('Topbar.js');
   // console.log({ props });
-  // console.log({ trigger });
+  // console.log({ pathname });
   // console.groupEnd();
 
   return (
