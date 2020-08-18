@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 
 import useTheme from '@material-ui/core/styles/useTheme';
 
-import meta from '@src/config';
+import config from '@src/config';
 
 export default function Head(props) {
   // console.group('Head.js');
@@ -13,26 +13,26 @@ export default function Head(props) {
   const theme = useTheme();
 
   return (
-    <Helmet encodeSpecialCharacters={true} titleTemplate={`%s ⋅ ${meta.title}`} defaultTitle={meta.title}>
+    <Helmet encodeSpecialCharacters={true} titleTemplate={`%s ⋅ ${config.title}`} defaultTitle={config.title}>
       <html lang="en" />
 
       {/* <link href="/assets/images/favicon.ico" type="image/png" rel="icon"> */}
-      <link rel="canonical" href={meta.url} />
+      <link rel="canonical" href={config.url} />
       <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
       <meta name="author" content="Mogli Studio — https://moglistudio.com" />
       <meta name="charset" content="utf-8" />
       <meta name="coverage" content="Worldwide" />
-      <meta name="description" content={meta.description} />
+      <meta name="description" content={config.description} />
       <meta name="designer" content="Mogli Studio — https://moglistudio.com" />
       <meta name="distribution" content="Global" />
       <meta name="google" content="nositelinkssearchbox" />
-      <meta name="keywords" content={meta.keywords} />
+      <meta name="keywords" content={config.keywords} />
       <meta name="language" content="en" />
       <meta name="rating" content="General" />
       <meta name="revist-after" content="after 1 days" />
       <meta name="robots" content="index,follow" />
-      <meta name="title" content={meta.title} />
+      <meta name="title" content={config.title} />
       <meta
         name="viewport"
         content="width=device-width, minimum-scale = 1.0, initial-scale = 1.0, maximum-scale = 1.0, user-scalable=yes, shrink-to-fit=no"
@@ -43,11 +43,11 @@ export default function Head(props) {
       <meta name="twitter:creator" content="@biffud" />
 
       {/* og metadata */}
-      <meta property="og:description" content={meta.description} />
+      <meta property="og:description" content={config.description} />
       <meta property="og:locale" content="en" />
-      <meta property="og:site_name" content={meta.title} />
-      <meta property="og:title" content={meta.title} />
-      <meta property="og:url" content={meta.url} />
+      <meta property="og:site_name" content={config.title} />
+      <meta property="og:title" content={config.title} />
+      <meta property="og:url" content={config.url} />
       {/* <meta
         property="og:image"
         content="<?php echo thumb($site->coverimage()->toFile(), array('width' => 1200, 'height' => 630, 'crop' => true ))->url() ?>"

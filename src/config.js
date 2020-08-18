@@ -10,6 +10,7 @@ import SupervisedUserCircleIcon from '@material-ui/icons/SupervisedUserCircle';
 import colors from '@src/themes/colors';
 
 export default {
+  description: 'TV Kitchen is THIS THIS AND THAT',
   keywords: 'kitchen, tv, media, api',
   title: 'TV Kitchen',
   url: 'https://tv.kitchen/',
