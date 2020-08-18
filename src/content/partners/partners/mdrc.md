@@ -1,6 +1,6 @@
 ---
 name: M-DRC
-logo: # leave blank for no logo
+logo: mdrc.png # leave blank for no logo
 url:
 score: 1  # leave 1 if you don’t wish to make this item stand out
 ---
