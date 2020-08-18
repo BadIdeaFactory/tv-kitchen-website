@@ -6,7 +6,6 @@ import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 
-import Headline from '@src/components/Headline';
 import Layout from '@src/components/Layout';
 import error from '@src/ornaments/error.svg';
 import withTheme from '@src/themes/withTheme';
