@@ -44,6 +44,7 @@ export default function Head(props) {
       {/* og metadata */}
       <meta property="og:description" content={config.description} />
       <meta property="og:image" content="/cover.png" />
+      <meta property="og:image:alt" content={config.title} />
       <meta property="og:image:height" content="627" />
       <meta property="og:image:secure_url" content="/cover.png" />
       <meta property="og:image:width" content="1200" />
