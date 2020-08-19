@@ -16,9 +16,8 @@ export default function Head(props) {
     <Helmet encodeSpecialCharacters={true} titleTemplate={`%s ⋅ ${config.title}`} defaultTitle={config.title}>
       <html lang="en" />
 
-      {/* <link href="/assets/images/favicon.ico" type="image/png" rel="icon"> */}
       <link rel="canonical" href={config.url} />
-      <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+      <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 
       <meta name="author" content="Mogli Studio — https://moglistudio.com" />
       <meta name="charset" content="utf-8" />
@@ -44,18 +43,14 @@ export default function Head(props) {
 
       {/* og metadata */}
       <meta property="og:description" content={config.description} />
+      <meta property="og:image" content="/cover.png" />
+      <meta property="og:image:height" content="627" />
+      <meta property="og:image:secure_url" content="/cover.png" />
+      <meta property="og:image:width" content="1200" />
       <meta property="og:locale" content="en" />
       <meta property="og:site_name" content={config.title} />
       <meta property="og:title" content={config.title} />
       <meta property="og:url" content={config.url} />
-      {/* <meta
-        property="og:image"
-        content="<?php echo thumb($site->coverimage()->toFile(), array('width' => 1200, 'height' => 630, 'crop' => true ))->url() ?>"
-      />
-      <meta
-        property="og:image:secure_url"
-        content="<?php echo thumb($site->coverimage()->toFile(), array('width' => 1200, 'height' => 630, 'crop' => true ))->url() ?>"
-      /> */}
 
       <style>
         {`
