@@ -34,7 +34,7 @@ export default function Head(props) {
       <meta name="title" content={config.title} />
       <meta
         name="viewport"
-        content="width=device-width, minimum-scale = 1.0, initial-scale = 1.0, maximum-scale = 1.0, user-scalable=yes, shrink-to-fit=no"
+        content="width=device-width, minimum-scale = 1.0, initial-scale = 1.0, maximum-scale = 1.0, user-scalable=no, shrink-to-fit=no"
       />
 
       {/* twitter metadata */}
@@ -56,6 +56,7 @@ export default function Head(props) {
       <style>
         {`
           html, body { background: ${theme.palette.background.paper} !important }
+          html, body { width: 100%; overflow-x: hidden; }
           button:focus,
           a:focus {
             outline: none;
