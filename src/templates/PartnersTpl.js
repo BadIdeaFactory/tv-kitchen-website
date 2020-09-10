@@ -71,7 +71,10 @@ const useStyles = makeStyles(theme => ({
   ctas: {
     textAlign: 'center',
     '& > *': {
-      margin: theme.spacing(5, 2.5, 2.5),
+      margin: theme.spacing(2.5, 1),
+      [theme.breakpoints.up('sm')]: {
+        margin: theme.spacing(5, 1),
+      },
       [theme.breakpoints.up('md')]: {
         margin: theme.spacing(7.5, 2.5, 2.5),
       },

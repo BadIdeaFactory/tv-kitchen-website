@@ -35,12 +35,19 @@ const useStyles = makeStyles(theme => ({
   },
   ctas: {
     textAlign: 'center',
+    marginTop: theme.spacing(5),
+    [theme.breakpoints.up('md')]: {
+      marginTop: theme.spacing(10),
+    },
     [theme.breakpoints.down('sm')]: {
       display: 'flex',
       flexDirection: 'column',
     },
     '& > *': {
       margin: theme.spacing(1, 0),
+      [theme.breakpoints.up('sm')]: {
+        margin: theme.spacing(1, 1),
+      },
       [theme.breakpoints.up('md')]: {
         margin: theme.spacing(0, 2.5),
       },
@@ -85,7 +92,6 @@ const HomeTpl = ({
               </div>
             </Headline>
           </Container>
-          <Separator silent />
           <Container disableGutters className={classes.ctas}>
             <Button color="primary" component={GatsbyLink} to={'/about'} size="large" variant="contained">
               Learn more
@@ -95,7 +101,6 @@ const HomeTpl = ({
             </Button>
           </Container>
         </div>
-        <Separator silent />
       </main>
     </Layout>
   );
