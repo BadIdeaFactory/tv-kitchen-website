@@ -1,6 +1,8 @@
 # TV Kitchen Website
 
-TV Kitchen website runs on GatsbyJS, while most of its front-end is based on Material UI w/ custom theme. Available commands:
+TV Kitchen website runs on GatsbyJS, while most of its front-end is based on Material UI w/ custom theme.
+
+## Available commands:
 
 - Running local dev server:
 
