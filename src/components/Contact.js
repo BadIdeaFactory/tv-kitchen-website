@@ -84,8 +84,7 @@ export default function Contact(props) {
                 Email us
               </Typography>
               <Typography variant="body1" gutterBottom>
-                For business enquiries or casual chatter—do drop us a line at{' '}
-                <Link href="mailto:tvkitchen@biffud.com">tvkitchen@biffud.com</Link>. We ♥︎ emails.
+                For business enquiries or casual chatter—do drop us a line at tvkitchen@biffud.com. We ♥︎ emails.
               </Typography>
             </div>
             <Button className={classes.button} href="mailto:tvkitchen@biffud.com" variant="outlined">

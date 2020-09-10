@@ -80,6 +80,11 @@ const useStyles = makeStyles(theme => ({
       marginBottom: theme.spacing(5),
     },
   },
+  subtitle: {
+    '& > a': {
+      color: 'inherit',
+    },
+  },
   image: {
     lineHeight: 0,
     margin: theme.spacing(0, 0, 2),
@@ -133,6 +138,7 @@ const AboutTpl = ({
               </Typography>
               <Typography
                 align="center"
+                className={classes.subtitle}
                 dangerouslySetInnerHTML={{ __html: frontmatter.team.text }}
                 variant="subtitle1"
               />
