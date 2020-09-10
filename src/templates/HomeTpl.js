@@ -8,7 +8,6 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 
 import Headline from '@src/components/Headline';
 import Layout from '@src/components/Layout';
-import Separator from '@src/components/Separator';
 import grid from '@src/ornaments/grid-light.svg';
 import grill from '@src/ornaments/grill-horizontal-light.svg';
 import pot from '@src/ornaments/pot.svg';
