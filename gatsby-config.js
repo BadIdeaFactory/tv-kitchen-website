@@ -56,7 +56,7 @@ module.exports = {
     {
       resolve: `gatsby-source-medium`,
       options: {
-        username: `storycopter-news`,
+        username: `todays-menu`,
       },
     },
     {
