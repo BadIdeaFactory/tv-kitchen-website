@@ -85,7 +85,7 @@ const PressTpl = ({
                 month: 'long',
                 day: 'numeric',
               }).format(Date.parse(firstPublishedAt));
-              const url = `https://medium.com/storycopter-news/${uniqueSlug}`;
+              const url = `https://medium.com/todays-menu/${uniqueSlug}`;
               return (
                 <Container className={classes.article} key={id} maxWidth="sm">
                   <article>

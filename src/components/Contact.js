@@ -57,7 +57,7 @@ export default function Contact(props) {
                 Join newsletter
               </Typography>
               <Typography variant="body1" gutterBottom>
-                Occasionally we send out emails to our faithful followers. Sign up to our newsletter bla bla.
+                Occasionally we send out emails with news about the project. Sign up to receive our newsletter.
               </Typography>
             </div>
             <Button className={classes.button} href={config.elsewhere.tinyletter.url} variant="outlined">
@@ -67,10 +67,10 @@ export default function Contact(props) {
           <Grid className={classes.gridItem} item xs={12} md={4}>
             <div>
               <Typography variant="h4" component="h2" gutterBottom>
-                Catch on Slack
+                Catch us on Slack
               </Typography>
               <Typography variant="body1" gutterBottom>
-                Join us chatting about this, this and that across a variety of entertaining and useful channels.
+                Stop by to say hello, ask a question, or share a creation.
               </Typography>
             </div>
             <Button className={classes.button} href={config.elsewhere.slack.url} variant="outlined">
@@ -83,7 +83,7 @@ export default function Contact(props) {
                 Email us
               </Typography>
               <Typography variant="body1" gutterBottom>
-                For business enquiries or casual chatter—do drop us a line at tvkitchen@biffud.com. We ♥︎ emails.
+                Avoid the overwhelming pressures of real time chat and send a note directly to tvkitchen@biffud.com.
               </Typography>
             </div>
             <Button className={classes.button} href="mailto:tvkitchen@biffud.com" variant="outlined">

@@ -16,7 +16,7 @@ export default {
   url: 'https://tv.kitchen/',
   elsewhere: {
     medium: {
-      url: 'https://medium.com/storycopter-news/',
+      url: 'https://medium.com/todays-menu/',
       tip: 'Read our latest on Medium',
     },
     slack: {
