@@ -118,9 +118,9 @@ const PartnersTpl = ({
                     ) : (
                       <div className={classes.placeholder} />
                     )}
-                    <Typography className={classes.name} variant="h5" component="h3">
+                    <Link className={classes.name} display="block" href={url} variant="h5">
                       {name}
-                    </Typography>
+                    </Link>
                     <Copy>{renderAst(text)}</Copy>
                   </Grid>
                 );
