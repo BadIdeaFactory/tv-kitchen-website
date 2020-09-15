@@ -1,6 +1,7 @@
 import React from 'react';
 import { lighten } from 'polished';
 
+import setType from '@src/utils/setType';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 
 const useStyles = makeStyles(theme => ({
@@ -23,18 +24,20 @@ const useStyles = makeStyles(theme => ({
     },
     '& code': theme.typography.code,
     '& pre': {
+      ...setType(200),
       ...theme.typography.code,
-      background: theme.palette.text.primary,
-      border: `2px solid ${theme.palette.divider}`,
-      overflow: 'auto',
-      padding: theme.spacing(3),
+      background: theme.palette.divider,
       color: theme.palette.background.default,
+      overflow: 'auto',
+      padding: theme.spacing(2.5),
     },
     '& ul > li': {
       ...theme.typography.body1,
       listStyleType: 'square',
     },
-    '& ol > li': {},
+    '& ol > li': {
+      listStyleType: 'decimal',
+    },
     '& > *:not(:last-child)': {
       marginBottom: theme.spacing(3),
     },
