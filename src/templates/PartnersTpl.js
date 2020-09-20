@@ -66,6 +66,7 @@ const useStyles = makeStyles(theme => ({
     lineHeight: 0,
   },
   name: {
+    display: 'inline-block',
     marginBottom: theme.spacing(1),
   },
   ctas: {
@@ -111,14 +112,16 @@ const PartnersTpl = ({
 
                 return (
                   <Grid item xs={12} md={6} key={id}>
-                    {logo?.childImageSharp?.fixed ? (
-                      <Link href={url} className={classes.logoLink}>
-                        <Img alt={`Photo of ${name}`} className={classes.image} fixed={logo.childImageSharp.fixed} />
-                      </Link>
-                    ) : (
-                      <div className={classes.placeholder} />
-                    )}
-                    <Link className={classes.name} display="block" href={url} variant="h5">
+                    <div>
+                      {logo?.childImageSharp?.fixed ? (
+                        <Link href={url} className={classes.logoLink}>
+                          <Img alt={`Photo of ${name}`} className={classes.image} fixed={logo.childImageSharp.fixed} />
+                        </Link>
+                      ) : (
+                        <div className={classes.placeholder} />
+                      )}
+                    </div>
+                    <Link className={classes.name} href={url} variant="h5">
                       {name}
                     </Link>
                     <Copy>{renderAst(text)}</Copy>
