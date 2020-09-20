@@ -94,7 +94,7 @@ const DocsMenu = ({ chapters, section, loosePages, rootPage, uri, ...props }) =>
             </ListItem>
           );
         })}
-        {Object.keys(chapters).map((key, i) => {
+        {_.orderBy(Object.keys(chapters, val => val)).map((key, i) => {
           if (key === 'null') return null;
           const chapterPages = chapters[key];
           const list = (
@@ -126,7 +126,7 @@ const DocsMenu = ({ chapters, section, loosePages, rootPage, uri, ...props }) =>
                   return prevState === key ? null : key;
                 })
               }>
-              <ListItemText {...listItemTextProps} primary={`${i}. ${key}`} />
+              <ListItemText {...listItemTextProps} primary={`${key}`} />
               {open === key ? <ExpandLess /> : <ExpandMore />}
             </ListItem>,
             <Collapse in={open === key} timeout="auto" unmountOnExit key={`${key}y`}>
