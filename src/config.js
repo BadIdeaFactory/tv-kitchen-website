@@ -1,5 +1,6 @@
-import React from 'react';
 import Link from '@material-ui/core/Link';
+import React from 'react';
+import { Link as GatsbyLink } from 'gatsby';
 
 import HelpIcon from '@material-ui/icons/Help';
 import InfoIcon from '@material-ui/icons/Info';
@@ -51,6 +52,6 @@ export default {
     help: { id: 'help', order: 4, title: 'Help', slug: '/help', Icon: HelpIcon, color: colors.red },
   },
   mdComponents: {
-    a: props => <Link component="a" {...props} />,
+    a: props => <Link component={GatsbyLink} {...props} />,
   },
 };
