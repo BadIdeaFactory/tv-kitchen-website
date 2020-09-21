@@ -1,6 +1,6 @@
 ---
-question: What it’s like to ask a rather long question that could go onto two lines if not more?
-score: 0 # number (higher the score, higher the rank on the list)
+question: Is it just for TV?
+score: 7
 ---
 
-Idk, you tell me. But lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+No! We think TV is particularly interesting, but TV Kitchen recipes can be easily tweaked to work with other kinds of video as well. We already make it easy to ingest video files, but YouTube and Instagram political ads are another type of media we have our eyes on.

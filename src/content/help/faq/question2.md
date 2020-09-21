@@ -1,6 +1,10 @@
 ---
-question: Yet another question maybe, because why not?
-score: 0 # number (higher the score, higher the rank on the list)
+question: Why is community important for TV Kitchen?
+score: 9
 ---
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+TV Kitchen is built on the philosophy that the more people who get involved – developers, reporters, researchers – the more creative the recipes will become, and the richer the ingredients.
+
+Rather than sinking all development costs and ownership in one organization that creates a bespoke architecture and is is then responsible for creating every iteration of every use, participants benefit from open source resources
+  
+We hope that participants will also join in lively conversation via the Slack community and in other ways, because the more we communicate, the better the ideas.

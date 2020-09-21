@@ -17,7 +17,7 @@ import TableRow from '@material-ui/core/TableRow';
 import colors from '@src/themes/colors';
 
 export default {
-  description: 'TV Kitchen is THIS THIS AND THAT',
+  description: 'TV Kitchen is an open source tool making it easy to create, collect, and share new ways to understand the impact of media.',
   keywords: 'kitchen, tv, media, api',
   title: 'TV Kitchen',
   url: 'https://tv.kitchen/',
@@ -31,7 +31,7 @@ export default {
       tip: 'Join our Slack channel',
     },
     twitter: {
-      url: 'https://twitter.com/biffud',
+      url: 'https://twitter.com/tvkitchenhq',
       tip: 'Follow us on Twitter',
     },
     github: {
