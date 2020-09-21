@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="199px" height="166px" viewBox="0 0 199 166" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="pot" fill-rule="nonzero">
+            <polygon id="Path" fill="#6AC32D" points="90.932 30.187 108.117 30.187 108.117 59.01 90.932 59.01"></polygon>
+            <polygon id="Path" fill="#EBEAE6" points="40.052 22.905 57.068 22.905 57.068 42.365 40.052 42.365"></polygon>
+            <polygon id="Path" fill="#FFBE07" points="57.069 0.306 73.748 0.306 73.748 59.018 57.069 59.018"></polygon>
+            <polygon id="Path" fill="#6CD5D5" points="73.748 12.503 90.933 12.503 90.933 42.366 73.748 42.366"></polygon>
+            <polygon id="Path" fill="#D672AF" points="108.117 22.905 125.302 22.905 125.302 42.365 108.117 42.365"></polygon>
+            <polygon id="Path" fill="#E33D49" points="125.302 0 141.481 0 141.481 42.365 125.302 42.365"></polygon>
+            <polygon id="Path" fill="#193EB7" points="141.481 12.503 158.666 12.503 158.666 42.366 141.481 42.366"></polygon>
+            <polygon id="Path" fill="#6100DE" points="40.052 42.365 57.068 42.365 57.068 59.017 40.052 59.017"></polygon>
+            <polygon id="Path" fill="#D672AF" points="73.748 42.365 90.933 42.365 90.933 59.017 73.748 59.017"></polygon>
+            <polygon id="Path" fill="#6CD5D5" points="108.117 42.365 125.302 42.365 125.302 59.01 108.117 59.01"></polygon>
+            <polygon id="Path" fill="#E8E8E4" points="141.481 42.365 158.666 42.365 158.666 59.017 141.481 59.017"></polygon>
+            <path d="M198.386,76.557 L176.725,76.557 C176.731,75.505 176.725,59.027 176.725,59.027 C176.725,59.027 21.537,59 21.539,59.035 C21.539,59.035 21.534,66.175 21.534,76.557 L0,76.557 L0,97.981 L21.535,97.981 C21.535,124.167 21.541,154.099 21.535,155.162 C20.943,158.954 25.785,166.113 31.809,165.737 C32.156,165.785 163.209,165.683 166.167,165.737 C169.242,166.482 177.313,161.66 176.753,155.461 C176.829,155.24 176.743,122.033 176.714,97.98 L198.384,97.98 L198.386,76.557 L198.386,76.557 Z" id="Path" fill="#000000"></path>
+        </g>
+    </g>
+</svg>
