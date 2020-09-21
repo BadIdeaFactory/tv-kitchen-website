@@ -1,12 +1,18 @@
-import Link from '@material-ui/core/Link';
 import React from 'react';
 import { Link as GatsbyLink } from 'gatsby';
 
 import HelpIcon from '@material-ui/icons/Help';
 import InfoIcon from '@material-ui/icons/Info';
+import Link from '@material-ui/core/Link';
 import LocalLibraryIcon from '@material-ui/icons/LocalLibrary';
 import SubjectIcon from '@material-ui/icons/Subject';
 import SupervisedUserCircleIcon from '@material-ui/icons/SupervisedUserCircle';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableFooter from '@material-ui/core/TableFooter';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
 
 import colors from '@src/themes/colors';
 
@@ -53,5 +59,12 @@ export default {
   },
   mdComponents: {
     a: props => <Link component={GatsbyLink} {...props} />,
+    table: props => <Table {...props} />,
+    tbody: props => <TableBody {...props} />,
+    td: props => <TableCell {...props} />,
+    tfoot: props => <TableFooter {...props} />,
+    th: props => <TableCell {...props} />,
+    thead: props => <TableHead {...props} />,
+    tr: props => <TableRow {...props} />,
   },
 };
