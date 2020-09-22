@@ -63,6 +63,7 @@ export default function Head(props) {
           }
         `}
       </style>
+      <script async defer data-domain="tv.kitchen" src="https://plausible.io/js/plausible.js"></script>
     </Helmet>
   );
 }
