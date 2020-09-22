@@ -14,7 +14,8 @@
     "serve": "gatsby serve",
     "stage": "gatsby build && netlify deploy --dir=public --prod",
     "start": "gatsby develop",
-    "deploy": "gatsby build && gh-pages -d public"
+    "deploy": "gatsby build && gh-pages -d public",
+    "test": "true"
   },
   "dependencies": {
     "@material-ui/core": "4.11.0",
