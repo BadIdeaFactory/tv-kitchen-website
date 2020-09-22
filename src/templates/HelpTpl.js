@@ -54,7 +54,7 @@ const useStyles = makeStyles(theme => ({
       padding: theme.spacing(6),
     },
   },
-  slackTile: {
+  chatTile: {
     backgroundImage: `url(${signalBarVertical})`,
     backgroundPosition: 'left top',
     backgroundRepeat: 'repeat-y',
@@ -150,17 +150,17 @@ const HelpTpl = ({
           <Container disableGutters>
             <Grid container spacing={4} alignContent="stretch">
               <Grid container direction="column" item justify="space-between" md={4} xs={12}>
-                <Paper className={`${classes.tile} ${classes.slackTile}`} variant="elevation">
+                <Paper className={`${classes.tile} ${classes.chatTitle}`} variant="elevation">
                   <div>
                     <Typography className={classes.tileTitle} component="h3" variant="h4">
-                      {frontmatter.slack.title}
+                      {frontmatter.chat.title}
                     </Typography>
                     <Typography className={classes.tileText} component="p" variant="body1">
-                      {frontmatter.slack.text}
+                      {frontmatter.chat.text}
                     </Typography>
                   </div>
-                  <Button href={config.elsewhere.slack.url} variant="contained" color="primary">
-                    {frontmatter.slack.cta}
+                  <Button href={config.elsewhere.chat.url} variant="contained" color="primary">
+                    {frontmatter.chat.cta}
                   </Button>
                 </Paper>
               </Grid>
@@ -237,7 +237,7 @@ export const pageQuery = graphql`
           title
           text
         }
-        slack {
+        chat {
           title
           text
           cta
