@@ -4,7 +4,7 @@ node_js:
 install: yarn && yarn build
 deploy:
   provider: pages
-  cleanup: false
+  skip-cleanup: true
   github-token: $GITHUB_TOKEN  # Set in travis-ci.org dashboard, marked secure
   keep-history: true
   fqdn: tv.kitchen
@@ -12,5 +12,3 @@ deploy:
   email: robots@biffud.com
   committer-from-gh: true
   target-branch: gh-pages
-  on:
-    branch: master
