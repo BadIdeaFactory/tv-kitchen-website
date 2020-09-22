@@ -67,14 +67,14 @@ export default function Contact(props) {
           <Grid className={classes.gridItem} item xs={12} md={4}>
             <div>
               <Typography variant="h4" component="h2" gutterBottom>
-                Catch us on Slack
+                Catch us on chat
               </Typography>
               <Typography variant="body1" gutterBottom>
                 Stop by to say hello, ask a question, or share a creation.
               </Typography>
             </div>
-            <Button className={classes.button} href={config.elsewhere.slack.url} variant="outlined">
-              Join Slack
+            <Button className={classes.button} href={config.elsewhere.chat.url} variant="outlined">
+              Join Channel
             </Button>
           </Grid>
           <Grid className={classes.gridItem} item xs={12} md={4}>

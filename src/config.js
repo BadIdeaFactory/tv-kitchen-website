@@ -26,9 +26,9 @@ export default {
       url: 'https://medium.com/todays-menu/',
       tip: 'Read our latest on Medium',
     },
-    slack: {
-      url: 'https://slack.com/something',
-      tip: 'Join our Slack channel',
+    chat: {
+      url: 'https://gitter.im/tvkitchen/community',
+      tip: 'Join our live chat',
     },
     twitter: {
       url: 'https://twitter.com/tvkitchenhq',
