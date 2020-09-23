@@ -174,7 +174,7 @@ const HelpTpl = ({
                       {frontmatter.github.text}
                     </Typography>
                   </div>
-                  <Button variant="contained" color="primary">
+                  <Button href={config.elsewhere.github.url} variant="contained" color="primary">
                     {frontmatter.github.cta}
                   </Button>
                 </Paper>
@@ -189,7 +189,7 @@ const HelpTpl = ({
                       {frontmatter.docs.text}
                     </Typography>
                   </div>
-                  <Button variant="contained" color="primary">
+                  <Button href="/docs" variant="contained" color="primary">
                     {frontmatter.docs.cta}
                   </Button>
                 </Paper>
