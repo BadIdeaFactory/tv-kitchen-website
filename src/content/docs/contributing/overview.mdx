@@ -1,0 +1,30 @@
+---
+score: 1
+section: 2. Contributing
+title: Overview
+---
+
+TV Kitchen is a [Bad Idea Factory](https://biffud.com) project. It is open source and development takes place in the open [on GitHub](https://github.com/tvkitchen). We are grateful to the community for bug fixes, new [appliances](/docs/building-appliances), and other contributions.
+
+Please submit bugs and ideas via [github issues](https://github.com/tvkitchen/meta/issues/new/choose).  If you want to get involved, please look at our [contributor resources](resources) and consider [joining the conversation](https://gitter.im/tvkitchen/community).
+
+## How to Contribute
+
+Contributions are made on GitHub via [pull requests](https://github.com/tvkitchen/.github/blob/master/CONTRIBUTING.md#submitting-and-reviewing-code).  
+
+## Contribution Types
+### 1. TV Kitchen Improvements
+
+If you want to improve TV Kitchen's underlying tooling, please visit these repositories:
+
+* [tvkitchen/countertop](https://github.com/tvkitchen/countertop): The code responsible for managing data flow between appliances.
+
+* [tvkitchen/base](https://github.com/tvkitchen/base): Interface-level abstract definitions, DTOs, type definitions for use across the TV Kitchen. 
+
+### 2. Creating Appliances
+
+If you want to contribute a new way to extract data from video, you will probably want to [create a new appliance](/docs/building-appliances).  Please visit this repository for inspiration:
+
+* [tvkitchen/appliances](https://github.com/tvkitchen/appliances): This monorepo houses community supported TV Kitchen Appliances.
+
+**Note:** Anybody can create a new appliance without having to release it through our repository.  Appliances are just packages that conform to [the Appliance API](https://github.com/tvkitchen/base/blob/master/packages/interfaces/src/IAppliance.js).

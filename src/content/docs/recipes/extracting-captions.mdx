@@ -1,132 +1,166 @@
 ---
-score: 0 # leave 0 unless you want to rank up this page
+score: 1
 section: 1. Recipes
-title: Extracting captions
+title: Extracting Captions
 ---
 
-You can import your components from other third party libraries, like [`theme-ui`](https://theme-ui.com/components). Use cases for external libraries could be charting libraries for adding rich data visualizations, form components for adding email signups, styled portions of content like pullquotes, or call to action buttons throughout your pages. You can also import and reuse _your own_ React components and MDX documents.
-
-1) Preparation (e.g. 'have X Y Z tool installed')
-2) Appliances (the modules involved) and hardware
-3) Data involved / (aka Ingredients) -- this would include example payloads and other byproducts.
-4) Instructions (this will have code and context)
-6) Troubleshooting (this would maybe be collapsed by default? idk.)
+Many videos have closed captions baked into the data itself. This recipe shows how you can use the TV Kitchen to turn these hidden captions into a stream of text.
 
 ## Components
 ### Packages
-- [@tvkitchen/countertop]https://www.npmjs.com/package/@tvkitchen/countertop)
-- [@tvkitchen/appliance-ccextractor]https://www.npmjs.com/package/@tvkitchen/appliance-ccextractor)
 
-### Hardware
-- N/A
+| **Package** | **Description** |
+| :-- | :-- |
+| [@tvkitchen/countertop](https://www.npmjs.com/package/@tvkitchen/countertop) | The entry point for developers who want to set up a TV Kitchen. |
+| [@tvkitchen/appliance-video-file-ingestion](https://www.npmjs.com/package/@tvkitchen/appliance-video-file-ingestion) | Converts a video file into MPEG-TS Payloads. |
+| [@tvkitchen/appliance-ccextractor](https://www.npmjs.com/package/@tvkitchen/appliance-ccextractor) | Extracts captions from MPEG-TS Payloads using CCExtractor. |
 
-## Data
-- STREAM.CONTAINER
-- TEXT.ATOM
+### Output Streams
 
-## Instructions
+| **Type** | **Description** |
+| :-- | :-- |
+| [STREAM.CONTAINER]() | Chunks of MPEG-TS data. |
+| [TEXT.ATOM]() | A stream of characters. |
 
-## Troubleshooting
+## The Recipe
+Estimated Cook Time: 5 minutes
 
-## Implementation repo...
-- https://github.com/tvkitchen/cookbook/tree/master/recipes/extracting-captions
+### Preparation
+You will need:
 
-```mdx
----
-title: Importing Components Example
----
+- [ccextractor](https://www.ccextractor.org/)
+- [ffmpeg](https://ffmpeg.org/)
+- A [running kafka instance](running-kafka).
 
-import { Message } from "theme-ui" // highlight-line
+### Instructions
+#### Step 1: Set up a new project
 
-You can import your own components.
-
-<Message>MDX gives you JSX in Markdown!</Message> // highlight-line
+```
+mkdir my-recipe
+cd my-recipe
+yarn init
 ```
 
-**Note**: steps for importing custom components or MDX documents from a relative location in your project are also covered in the [Writing Pages in MDX guide](/docs/mdx/writing-pages/).
+#### Step 2: Install TV Kitchen components
 
-## Make components available globally as shortcodes
-
-To avoid having to import the same component inside of every MDX document you author, you can add components to an `MDXProvider` to make them globally available in MDX pages. This pattern is sometimes referred to as shortcodes.
-
-```js:title=src/components/layout.js
-import React from "react"
-// highlight-start
-import { MDXProvider } from "@mdx-js/react"
-import { Chart, Pullquote } from "./ui"
-import { Message } from "theme-ui"
-// highlight-end
-
-const shortcodes = { Chart, Pullquote, Message } // highlight-line
-
-export default ({ children }) => (
-  <MDXProvider components={shortcodes}>{children}</MDXProvider> // highlight-line
-)
+```
+yarn add @tvkitchen/countertop
+yarn add @tvkitchen/appliance-ccextractor
+yarn add @tvkitchen/appliance-video-file-ingestion
 ```
 
-All MDX components passed into the `components` prop of the `MDXProvider` will be made available to MDX documents that are nested under the provider. The `MDXProvider` in this example is in a layout component that wraps all MDX pages, you can read about this pattern in [the layout section of the `gatsby-plugin-mdx` README](/packages/gatsby-plugin-mdx/#default-layouts).
+#### Step 3: Write some code
 
-Now, you can include components in your MDX without importing them:
+Open a file called `index.js` and import the TV Kitchen packages.
 
-```mdx
----
-title: Shortcode Components Example
----
-
-Now, if you want to include the Message component, it's available in all MDX documents!
-
-<Message>MDX gives you JSX in Markdown!</Message> // highlight-line
-
-The Chart is also available since it was passed into the MDXProvider:
-
-<Chart /> // highlight-line
+```javascript
+const { Countertop } = require('@tvkitchen/countertop');
+const { CCExtractorAppliance } = require('@tvkitchen/appliance-ccextractor');
+const { VideoFileIngestionAppliance } = require('@tvkitchen/appliance-video-file-ingestion');
 ```
 
-Because the `<Message />` and `<Chart />` components were passed into the provider, they are available for use in all MDX documents.
+From here, create your [Countertop](https://www.npmjs.com/package/@tvkitchen/countertop).
 
-
-## Lazy-loading components
-
-When you use components in your `.mdx` files, Gatsby will bundle them into the main application bundle. This can cause performance problems.
-
-In the future, [`gatsby-plugin-mdx`](/packages/gatsby-plugin-mdx) will address this. In the meantime, it can be prudent to lazy-load very large dependencies. The following snippet provides an example for lazy-loading an imaginary `Thing` component:
-
-```jsx:title=src/components/LazyThing.js
-import React from "react"
-
-const Placeholder = () => null
-
-const LazyThing = props => {
-  // While the component is loading, we'll render a fallback placeholder.
-  // (The Placeholder is a component that renders nothing).
-  const [Component, setComponent] = React.useState(() => Placeholder)
-
-  // After the initial render, kick off a dynamic import to fetch
-  // the real component, and set it into our state.
-  React.useEffect(() => {
-    import("./Thing.js").then(Thing => setComponent(() => Thing.default))
-  }, [])
-
-  return <Component {...props} />
-}
-
-export default LazyThing
+```
+const countertop = new Countertop();
 ```
 
-Inside your MDX, swap out any references to `Thing` with `LazyThing`:
+We have to give the countertop some video to process. This is done by adding a video ingestion appliance. This recipe will use the [VideoFileIngestionAppliance](https://www.npmjs.com/package/@tvkitchen/appliance-video-file-ingestion), but you can actually use any appliance that produces `STREAM.CONTAINER` data.
 
-```diff
--import Thing from "../components/Thing/Thing.js"
-+import LazyThing from "../components/Thing/LazyThing.js"
+For instance, you could use the [VideoHttpIngestionAppliance](https://www.npmjs.com/package/@tvkitchen/appliance-video-http-ingestion).
 
-## Introducing Things
+The `VideoFileIngestionAppliance` has one required parameter: `filePath`. If you don't have a sample video file that contains closed captions, you can use [this one](https://github.com/tvkitchen/cookbook/blob/master/recipes/extracting-captions/data/sample.ts). Just put it in your recipe directory in a file called `sample.ts`.
 
-Here is a demo:
-
--<Thing hi={5} />
-+<LazyThing hi={5} />
+```javascript
+countertop.addAppliance(
+  VideoFileIngestionAppliance,
+  {
+    filePath: './sample.ts'
+  }
+);
 ```
 
-### Additional resources
+Next, set up the [CCExtractorAppliance](https://www.npmjs.com/package/@tvkitchen/appliance-ccextractor), which will watch for video data and turn it into captions.
 
-- Follow this detailed [example on using MDX](/examples/using-MDX) to import and render components.
+```
+countertop.addAppliance(CCExtractorAppliance);
+```
+
+Everything is set up, but we should do something with the resulting captions.  For this recipe we'll just output them to the console, but there are plenty of more interesting possibilities.
+
+```javascript
+countertop.on('payload', (payload) => {
+  if (payload.type === 'TEXT.ATOM') {
+    process.stdout.write(payload.data);
+  }
+});
+```
+
+Add some code to start the countertop.
+
+```javascript
+countertop.start();
+```
+
+Finally, run your script!
+
+```bash
+yarn node index.js
+```
+
+You should see a stream of captions within a few seconds.
+
+### The Result
+
+**index.js**
+```javascript
+const { Countertop } = require('@tvkitchen/countertop');
+const { CCExtractorAppliance } = require('@tvkitchen/appliance-ccextractor');
+const { VideoFileIngestionAppliance } = require('@tvkitchen/appliance-video-file-ingestion');
+
+const countertop = new Countertop();
+
+countertop.addAppliance(
+  VideoFileIngestionAppliance,
+  {
+    filePath: './sample.ts'
+  }
+);
+
+countertop.addAppliance(CCExtractorAppliance);
+
+countertop.on('payload', (payload) => {
+  if (payload.type === 'TEXT.ATOM') {
+    process.stdout.write(payload.data);
+  }
+});
+
+countertop.start();
+```
+
+### Troubleshooting
+
+#### Kafka
+Remember that for any recipe to work you need a running instance of Kafka. By default, TV Kitchen assumes Kafka will be available locally (`127.0.0.1`) on port `9092`. If you want to use an existing Kafka server somewhere else, you can pass `kafkaSettings` to the countertop to pass a different configuration value. TV Kitchen is using [KafkaJS](https://kafka.js.org/docs/configuration).
+
+#### Something Else?
+If you're stuck, check out the [help page!](/help)
+
+### A Precooked Version
+
+Don't want to implement this recipe yourself?
+
+[Clone the cookbook](https://github.com/tvkitchen/cookbook).
+
+```bash
+git clone https://github.com/tvkitchen/cookbook.git
+```
+
+and run:
+
+```bash
+yarn kafka
+yarn start extracting-captions
+```
+
+The code can be [found here](https://github.com/tvkitchen/cookbook/blob/master/recipes/extracting-captions/src/index.js).
