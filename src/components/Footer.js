@@ -51,9 +51,9 @@ export default function Footer(props) {
       </Grid>
       <Grid className={`${classes.item}`} item md={6} xs={12}>
         <Typography align="center" component="p" variant="caption" color="textSecondary">
-          TV Kitchen is a project by <Link href="https://biffud.com">Bad Idea Factory</Link>. This project is licensed
-          under XYZ, meaning you can do this this and that. Feel free to{' '}
-          <Link href="mailto:tvkitchen@biffud.com">reach to us</Link> for more details.
+          TV Kitchen is a project by <Link href="https://biffud.com">Bad Idea Factory</Link>. Most of this project is licensed
+          under LGPLv3, meaning you can use it to freely create. Please{' '}
+          <Link href="mailto:tvkitchen@biffud.com">reach out</Link> if you have any questions.
         </Typography>
       </Grid>
       <Grid className={`${classes.item} ${classes.elsewhere}`} container item md={3} xs={12}>
