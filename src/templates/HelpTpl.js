@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { graphql } from 'gatsby';
+import { Link as GatsbyLink, graphql } from 'gatsby';
 import rehypeReact from 'rehype-react';
 
 import Button from '@material-ui/core/Button';
@@ -189,7 +189,7 @@ const HelpTpl = ({
                       {frontmatter.docs.text}
                     </Typography>
                   </div>
-                  <Button href="/docs" variant="contained" color="primary">
+                  <Button to="/docs" component={GatsbyLink} variant="contained" color="primary">
                     {frontmatter.docs.cta}
                   </Button>
                 </Paper>
