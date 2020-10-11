@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs>
+    <style>
+      .pot {
+        fill: #000;
+      }
+      .letters {
+        fill: #fff;
+      }
+      @media (prefers-color-scheme: dark) {
+        .pot {
+          fill: #fff;
+        }
+        .letters {
+          fill: #000;
+        }
+      }
+    </style>
+  </defs>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="Layer_1-2" data-name="Layer 1">
+      <path fill="#ffbe07" d="M2 3h2v2H2z"/>
+      <path d="M0 8h2v2H0zM14 8h2v2h-2zM2 6h12v7a1 1 0 01-1 1H3a1 1 0 01-1-1V6z" class="pot" />
+      <path fill="#6cd5d5" d="M4 4h2v2H4z"/>
+      <path fill="#6ac32d" d="M6 2h2v2H6z"/>
+      <path fill="#d672af" d="M8 4h2v2H8z"/>
+      <path fill="#e51515" d="M10 2h2v2h-2z"/>
+      <path fill="#193eb7" d="M12 3h2v2h-2z"/>
+      <path id="Path_292" data-name="Path 292" class="letters" d="M5 9H4V8h3v1H6v3H5z"/>
+      <path id="Path_293" data-name="Path 293" class="letters" d="M8 8h1l1 3 1-3h1l-1.5 4h-1z"/>
+    </g>
+  </g>
+</svg>
