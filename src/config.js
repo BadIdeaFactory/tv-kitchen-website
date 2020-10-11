@@ -17,7 +17,8 @@ import TableRow from '@material-ui/core/TableRow';
 import colors from '@src/themes/colors';
 
 export default {
-  description: 'TV Kitchen is an open source tool making it easy to create, collect, and share new ways to understand the impact of media.',
+  description:
+    'TV Kitchen is an open source tool making it easy to create, collect, and share new ways to understand the impact of media.',
   keywords: 'kitchen, tv, media, api',
   title: 'TV Kitchen',
   url: 'https://tv.kitchen/',
@@ -58,7 +59,7 @@ export default {
     help: { id: 'help', order: 4, title: 'Help', slug: '/help', Icon: HelpIcon, color: colors.red },
   },
   mdComponents: {
-    a: props => <Link component={GatsbyLink} {...props} />,
+    a: props => <Link component={GatsbyLink} {...props} to={props.href} />,
     table: props => <Table {...props} />,
     tbody: props => <TableBody {...props} />,
     td: props => <TableCell {...props} />,
