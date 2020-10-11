@@ -17,7 +17,8 @@ export default function Head(props) {
       <html lang="en" />
 
       <link rel="canonical" href={config.url} />
-      <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+      <link rel="icon" href="/favicon.svg" />
 
       <meta name="author" content="Mogli Studio — https://moglistudio.com" />
       <meta name="charset" content="utf-8" />
