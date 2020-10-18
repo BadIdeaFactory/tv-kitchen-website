@@ -89,7 +89,7 @@ countertop.addAppliance(CCExtractorAppliance);
 Everything is set up, but we should do something with the resulting captions.  For this recipe we'll just output them to the console, but there are plenty of more interesting possibilities.
 
 ```javascript
-countertop.on('payload', (payload) => {
+countertop.on('data', (payload) => {
   if (payload.type === 'TEXT.ATOM') {
     process.stdout.write(payload.data);
   }
@@ -129,7 +129,7 @@ countertop.addAppliance(
 
 countertop.addAppliance(CCExtractorAppliance);
 
-countertop.on('payload', (payload) => {
+countertop.on('data', (payload) => {
   if (payload.type === 'TEXT.ATOM') {
     process.stdout.write(payload.data);
   }
