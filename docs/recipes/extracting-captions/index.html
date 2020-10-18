@@ -22,7 +22,7 @@ const { VideoFileIngestionAppliance } = require(&#x27;@tvkitchen/appliance-video
   }
 );
 </code></pre><p>Next, set up the <a href="https://www.npmjs.com/package/@tvkitchen/appliance-ccextractor" class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary">CCExtractorAppliance</a>, which will watch for video data and turn it into captions.</p><pre><code>countertop.addAppliance(CCExtractorAppliance);
-</code></pre><p>Everything is set up, but we should do something with the resulting captions.  For this recipe we&#x27;ll just output them to the console, but there are plenty of more interesting possibilities.</p><pre><code class="language-javascript">countertop.on(&#x27;payload&#x27;, (payload) =&gt; {
+</code></pre><p>Everything is set up, but we should do something with the resulting captions.  For this recipe we&#x27;ll just output them to the console, but there are plenty of more interesting possibilities.</p><pre><code class="language-javascript">countertop.on(&#x27;data&#x27;, (payload) =&gt; {
   if (payload.type === &#x27;TEXT.ATOM&#x27;) {
     process.stdout.write(payload.data);
   }
@@ -44,7 +44,7 @@ countertop.addAppliance(
 
 countertop.addAppliance(CCExtractorAppliance);
 
-countertop.on(&#x27;payload&#x27;, (payload) =&gt; {
+countertop.on(&#x27;data&#x27;, (payload) =&gt; {
   if (payload.type === &#x27;TEXT.ATOM&#x27;) {
     process.stdout.write(payload.data);
   }
