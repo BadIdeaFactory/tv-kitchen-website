@@ -3,7 +3,7 @@
   "private": true,
   "description": "TV Kitchen Site",
   "version": "0.1.0",
-  "license": "Apache License, version 2.0",
+  "license": "AGPL-3.0",
   "author": "Bad Idea Factory <biffuddotcom@biffud.com>",
   "contributors": [
     "Piotr F. <github@piotrf.pl>"
