@@ -26,10 +26,10 @@ const useStyles = makeStyles(theme => ({
     backgroundImage: `url(${glitches[Math.floor(Math.random() * glitches.length)]})`,
     backgroundPosition: 'center 100px',
     backgroundRepeat: 'no-repeat',
-    backgroundSize: '80% auto',
+    backgroundSize: '100% auto',
     [theme.breakpoints.up('md')]: {
       backgroundPosition: 'center 75px',
-      backgroundSize: '100% auto',
+      backgroundSize: '90% auto',
     },
   },
   toolbar: theme.mixins.toolbar,
