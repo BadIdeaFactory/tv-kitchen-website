@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1530px" height="213px" viewBox="0 0 1530 213" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>glitch-horizontal</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="glitch-horizontal" fill-rule="nonzero">
+            <rect id="Rectangle_187" fill="#6AC32D" x="941.575" y="190.741" width="550.847" height="22"></rect>
+            <polygon id="Path_312" fill="#EAE9E8" points="794.008 190.825 1028.488 190.825 1028.488 202.243 794.008 202.243"></polygon>
+            <rect id="Rectangle_189" fill="#FFBE07" x="1026.189" y="190.825" width="234.48" height="11.418"></rect>
+            <polygon id="Path_311" fill="#6CD5D5" points="1253.772 190.825 1488.252 190.825 1488.252 202.243 1253.772 202.243"></polygon>
+            <polygon id="Path_310" fill="#D672AF" points="561.827 190.825 796.307 190.825 796.307 202.243 561.827 202.243"></polygon>
+            <rect id="Rectangle_192" fill="#E33D49" x="794.008" y="190.825" width="234.48" height="11.418"></rect>
+            <rect id="Rectangle_193" fill="#193EB7" x="1021.591" y="190.825" width="234.48" height="11.418"></rect>
+            <rect id="Rectangle_194" fill="#6AC32D" x="94" y="0" width="550.847" height="159"></rect>
+            <rect id="Rectangle_195" fill="#6100DE" x="0" y="0.732" width="234.48" height="99.774"></rect>
+            <rect id="Rectangle_196" fill="#FFBE07" x="232.18" y="0.732" width="234.48" height="99.774"></rect>
+            <polygon id="Path_309" fill="#6CD5D5" points="459.763 0.732 694.243 0.732 694.243 100.506 459.763 100.506"></polygon>
+            <polygon id="Path_308" fill="#D672AF" points="835.224 0.732 1069.704 0.732 1069.704 100.506 835.224 100.506"></polygon>
+            <rect id="Rectangle_199" fill="#E33D49" x="1067.405" y="0.732" width="234.48" height="99.774"></rect>
+            <rect id="Rectangle_200" fill="#193EB7" x="1294.988" y="0.732" width="234.48" height="99.774"></rect>
+        </g>
+    </g>
+</svg>

@@ -12,11 +12,18 @@ import Navbar from '@src/components/Navbar';
 import Separator from '@src/components/Separator';
 import Topbar from '@src/components/Topbar';
 import config from '@src/config';
-import glitch from '@src/ornaments/glitch-horizontal.svg';
+import glitchA from '@src/ornaments/glitch-horizontal.svg';
+import glitchB from '@src/ornaments/glitch-horizontal-b.svg';
+import glitchC from '@src/ornaments/glitch-horizontal-c.svg';
+import glitchD from '@src/ornaments/glitch-horizontal-d.svg';
+import glitchE from '@src/ornaments/glitch-horizontal-e.svg';
+import glitchF from '@src/ornaments/glitch-horizontal-f.svg';
+
+const glitches = [glitchA, glitchB, glitchC, glitchD, glitchE, glitchF];
 
 const useStyles = makeStyles(theme => ({
   root: {
-    backgroundImage: `url(${glitch})`,
+    backgroundImage: `url(${glitches[Math.floor(Math.random() * glitches.length)]})`,
     backgroundPosition: 'center 100px',
     backgroundRepeat: 'no-repeat',
     backgroundSize: '80% auto',
@@ -31,9 +38,9 @@ const useStyles = makeStyles(theme => ({
 export default function Layout({ children, ...props }) {
   const classes = useStyles();
 
-  console.group('Layout.js');
-  console.log({ props });
-  console.groupEnd();
+  // console.group('Layout.js');
+  // console.log({ props });
+  // console.groupEnd();
 
   return (
     <>
