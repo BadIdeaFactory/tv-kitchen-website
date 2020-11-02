@@ -24,9 +24,9 @@ const glitches = [glitchA, glitchB, glitchC, glitchD, glitchE, glitchF];
 const useStyles = makeStyles(theme => ({
   root: {
     backgroundImage: `url(${glitches[Math.floor(Math.random() * glitches.length)]})`,
-    backgroundPosition: 'center 100px',
+    backgroundPosition: 'center 90px',
     backgroundRepeat: 'no-repeat',
-    backgroundSize: '100% auto',
+    backgroundSize: '90%',
     [theme.breakpoints.up('md')]: {
       backgroundPosition: 'center 75px',
       backgroundSize: '90% auto',
