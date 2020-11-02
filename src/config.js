@@ -59,7 +59,8 @@ export default {
     help: { id: 'help', order: 4, title: 'Help', slug: '/help', Icon: HelpIcon, color: colors.red },
   },
   mdComponents: {
-    a: props => <Link component={GatsbyLink} {...props} to={props.href} />,
+    a: props =>
+      props.href.includes('http') ? <Link {...props} /> : <Link component={GatsbyLink} {...props} to={props.href} />,
     table: props => <Table {...props} />,
     tbody: props => <TableBody {...props} />,
     td: props => <TableCell {...props} />,
