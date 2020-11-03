@@ -5,11 +5,15 @@ import { Link as GatsbyLink } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { graphql } from 'gatsby';
 
+import Button from '@material-ui/core/Button';
 import Collapse from '@material-ui/core/Collapse';
 import Container from '@material-ui/core/Container';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import Grid from '@material-ui/core/Grid';
+import Hidden from '@material-ui/core/Hidden';
+import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
+import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -19,6 +23,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 
 import Copy from '@src/components/Copy';
 import Layout from '@src/components/Layout';
+import Separator from '@src/components/Separator';
 import config from '@src/config';
 import signalBarVertical from '@src/ornaments/signal-bar-vertical.svg';
 import withTheme from '@src/themes/withTheme';
@@ -52,13 +57,13 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: theme.spacing(4),
   },
   content: {
-    // padding: theme.spacing(1),
-    // [theme.breakpoints.up('md')]: {
-    //   padding: theme.spacing(2),
-    // },
+    marginBottom: theme.spacing(4),
   },
   selectedListItem: {
     background: `${theme.palette.background.default} !important`,
+  },
+  paginationButtons: {
+    padding: theme.spacing(2, 3),
   },
 }));
 
@@ -152,15 +157,25 @@ const DocsTpl = ({
   const chapters = _.groupBy(allMdx.edges, ({ node }) => node.frontmatter.section);
   const loosePages = _.filter(chapters.null, ({ node }) => !node.fileAbsolutePath.endsWith(rootPagePath));
   const rootPage = _.find(allMdx.edges, ({ node }) => node.fileAbsolutePath.endsWith(rootPagePath));
+  const chaptersArr = _.sortBy(
+    _.filter(allMdx.edges, o => o.node.frontmatter.section !== null),
+    ({ node }) => node.frontmatter.section
+  );
+  const allDocsPages = [rootPage, ...loosePages, ...chaptersArr];
+  const currentPageI = _.findIndex(allDocsPages, o => o.node.id === props.pageContext.id);
+  const nextPageI = currentPageI < allDocsPages.length ? currentPageI + 1 : null;
+  const prevPageI = currentPageI > 0 ? currentPageI - 1 : null;
+  const nextPage = allDocsPages[nextPageI] || null;
+  const prevPage = allDocsPages[prevPageI] || null;
 
   console.group('DocsTpl.js');
-  // console.log({ allMdx });
-  // console.log({ body });
-  // console.log({ chapters });
-  // console.log({ frontmatter });
-  // console.log({ loosePages });
   // console.log({ props });
-  console.log({ rootPage });
+  // console.log({ loosePages });
+  // console.log({ chapters });
+  // console.log({ allDocsPages });
+  console.log({ currentPageI });
+  console.log({ prevPage });
+  console.log({ nextPage });
   console.groupEnd();
 
   return (
@@ -191,6 +206,31 @@ const DocsTpl = ({
                   <MDXRenderer>{body}</MDXRenderer>
                 </Copy>
               </div>
+              <Separator silent />
+              <Grid container>
+                <Grid item xs={6}>
+                  <Button
+                    className={classes.paginationButtons}
+                    component={GatsbyLink}
+                    disabled={!prevPage}
+                    startIcon={<KeyboardArrowLeftIcon />}
+                    to={prevPage ? `/${prevPage?.node.slug}` : null}
+                    variant="contained">
+                    Previous <Hidden xsDown>page</Hidden>
+                  </Button>
+                </Grid>
+                <Grid item xs={6} align="right">
+                  <Button
+                    className={classes.paginationButtons}
+                    component={GatsbyLink}
+                    disabled={!nextPage}
+                    endIcon={<KeyboardArrowRightIcon />}
+                    to={nextPage ? `/${nextPage?.node.slug}` : null}
+                    variant="contained">
+                    Next <Hidden xsDown>page</Hidden>
+                  </Button>
+                </Grid>
+              </Grid>
             </Grid>
           </Grid>
         </Container>
