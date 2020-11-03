@@ -4,17 +4,18 @@ import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 
-const useStyles = makeStyles(theme => ({
-  title: {
-    marginBottom: theme.spacing(4),
-    [theme.breakpoints.up('md')]: {
-      marginBottom: theme.spacing(8),
+const useStyles = longText =>
+  makeStyles(theme => ({
+    title: {
+      marginBottom: theme.spacing(4),
+      [theme.breakpoints.up('md')]: {
+        marginBottom: theme.spacing(longText ? 8 : 4),
+      },
     },
-  },
-}));
+  }));
 
 export default function Headline({ text, title, ...props }) {
-  const classes = useStyles();
+  const classes = useStyles(text.length > 100)();
   return (
     <Container maxWidth="md">
       {title ? (
