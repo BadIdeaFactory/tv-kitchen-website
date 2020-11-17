@@ -33,8 +33,6 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
   },
   menu: {
-    background: '#EAE9E8',
-    padding: theme.spacing(2),
     backgroundImage: `url(${signalBarVertical})`,
     backgroundPosition: 'right top',
     backgroundRepeat: 'no-repeat',
@@ -173,9 +171,9 @@ const DocsTpl = ({
   // console.log({ loosePages });
   // console.log({ chapters });
   // console.log({ allDocsPages });
-  console.log({ currentPageI });
-  console.log({ prevPage });
-  console.log({ nextPage });
+  // console.log({ currentPageI });
+  // console.log({ prevPage });
+  // console.log({ nextPage });
   console.groupEnd();
 
   return (
