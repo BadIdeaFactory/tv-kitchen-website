@@ -25,19 +25,13 @@ import Copy from '@src/components/Copy';
 import Layout from '@src/components/Layout';
 import Separator from '@src/components/Separator';
 import config from '@src/config';
-import signalBarVertical from '@src/ornaments/signal-bar-vertical.svg';
 import withTheme from '@src/themes/withTheme';
 
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
   },
-  menu: {
-    backgroundImage: `url(${signalBarVertical})`,
-    backgroundPosition: 'right top',
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'auto 20px',
-  },
+  menu: {},
   toolbar: theme.mixins.toolbar,
   head: {
     marginBottom: theme.spacing(3),
