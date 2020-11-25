@@ -24,12 +24,12 @@ const glitches = [glitchA, glitchB, glitchC, glitchD, glitchE, glitchF];
 const useStyles = makeStyles(theme => ({
   root: {
     backgroundImage: `url(${glitches[Math.floor(Math.random() * glitches.length)]})`,
-    backgroundPosition: 'center 90px',
+    backgroundPosition: 'center 0',
     backgroundRepeat: 'no-repeat',
-    backgroundSize: '90%',
+    backgroundSize: 'auto 150px',
     [theme.breakpoints.up('md')]: {
       backgroundPosition: 'center 75px',
-      backgroundSize: '90% auto',
+      backgroundSize: 'auto 140px',
     },
   },
   toolbar: theme.mixins.toolbar,

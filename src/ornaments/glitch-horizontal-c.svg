@@ -1,24 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="1680px" height="213px" viewBox="0 0 1680 213" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
-    <title>glitch-horizontal</title>
-    <desc>Created with Sketch.</desc>
+<svg width="1680px" height="212px" viewBox="0 0 1680 212" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>glitch-horizontal-c</title>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="glitch-horizontal" fill-rule="nonzero">
-            <rect id="Rectangle_187" fill="#6AC32D" x="99.916" y="190.741" width="550.847" height="22"></rect>
-            <polygon id="Path_312" fill="#EAE9E8" points="985.008 190.825 1219.488 190.825 1219.488 202.243 985.008 202.243"></polygon>
-            <rect id="Rectangle_189" fill="#FFBE07" x="1217.189" y="190.825" width="234.48" height="11.418"></rect>
-            <polygon id="Path_311" fill="#6CD5D5" points="1444.772 190.825 1679.252 190.825 1679.252 202.243 1444.772 202.243"></polygon>
-            <polygon id="Path_310" fill="#D672AF" points="0 190.825 234.48 190.825 234.48 202.243 0 202.243"></polygon>
-            <rect id="Rectangle_192" fill="#E33D49" x="232.181" y="190.825" width="234.48" height="11.418"></rect>
-            <rect id="Rectangle_193" fill="#193EB7" x="459.764" y="190.825" width="234.48" height="11.418"></rect>
-            <rect id="Rectangle_194" fill="#6AC32D" x="164.397" y="0" width="550.847" height="159"></rect>
-            <rect id="Rectangle_195" fill="#6100DE" x="608" y="0.732" width="234.48" height="99.774"></rect>
-            <rect id="Rectangle_196" fill="#FFBE07" x="840.18" y="0.732" width="234.48" height="99.774"></rect>
-            <polygon id="Path_309" fill="#6CD5D5" points="1067.763 0.732 1302.243 0.732 1302.243 100.506 1067.763 100.506"></polygon>
-            <polygon id="Path_308" fill="#D672AF" points="21 0.732 255.48 0.732 255.48 100.506 21 100.506"></polygon>
-            <rect id="Rectangle_199" fill="#E33D49" x="253.181" y="0.732" width="234.48" height="99.774"></rect>
-            <rect id="Rectangle_200" fill="#193EB7" x="480.764" y="0.732" width="234.48" height="99.774"></rect>
+        <g id="glitch-horizontal-c" fill-rule="nonzero">
+            <rect id="Rectangle_187" fill="#6AC32D" x="99.916" y="189.741" width="550.847" height="22"></rect>
+            <polygon id="Path_312" fill="#EAE9E8" points="985.008 189.825 1219.488 189.825 1219.488 201.243 985.008 201.243"></polygon>
+            <rect id="Rectangle_189" fill="#FFBE07" x="1217.189" y="189.825" width="234.48" height="11.418"></rect>
+            <polygon id="Path_311" fill="#6CD5D5" points="1444.772 189.825 1679.252 189.825 1679.252 201.243 1444.772 201.243"></polygon>
+            <polygon id="Path_310" fill="#D672AF" points="0 189.825 234.48 189.825 234.48 201.243 0 201.243"></polygon>
+            <rect id="Rectangle_192" fill="#E33D49" x="232.181" y="189.825" width="234.48" height="11.418"></rect>
+            <rect id="Rectangle_193" fill="#193EB7" x="459.764" y="189.825" width="234.48" height="11.418"></rect>
+            <rect id="Rectangle_194" fill="#FFBE07" x="164.397" y="27" width="550.847" height="131"></rect>
+            <rect id="Rectangle_195" fill="#6100DE" x="608" y="0" width="234.48" height="99"></rect>
+            <rect id="Rectangle_196" fill="#FFBE07" x="840" y="0" width="234.48" height="99"></rect>
+            <polygon id="Path_309" fill="#6CD5D5" points="1068 0 1302.48 0 1302.48 99 1068 99"></polygon>
+            <polygon id="Path_308" fill="#D672AF" points="21 0 255.48 0 255.48 99 21 99"></polygon>
+            <rect id="Rectangle_199" fill="#E33D49" x="253" y="0" width="234.48" height="99"></rect>
+            <rect id="Rectangle_200" fill="#193EB7" x="481" y="0" width="234.48" height="99"></rect>
         </g>
     </g>
 </svg>
