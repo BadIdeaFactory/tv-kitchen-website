@@ -13,7 +13,7 @@ Many videos have closed captions baked into the data itself. This recipe shows h
 | :-- | :-- |
 | [@tvkitchen/countertop](https://www.npmjs.com/package/@tvkitchen/countertop) | The entry point for developers who want to set up a TV Kitchen. |
 | [@tvkitchen/appliance-video-file-ingestion](https://www.npmjs.com/package/@tvkitchen/appliance-video-file-ingestion) | Converts a video file into MPEG-TS Payloads. |
-| [@tvkitchen/appliance-ccextractor](https://www.npmjs.com/package/@tvkitchen/appliance-ccextractor) | Extracts captions from MPEG-TS Payloads using CCExtractor. |
+| [@tvkitchen/appliance-video-caption-extractor](https://www.npmjs.com/package/@tvkitchen/appliance-video-caption-extractor) | Extracts captions from MPEG-TS Payloads using CCExtractor. |
 
 ### Output Streams
 
@@ -28,9 +28,9 @@ Estimated Cook Time: 5 minutes
 ### Preparation
 You will need:
 
-- [ccextractor](https://www.ccextractor.org/)
-- [ffmpeg](https://ffmpeg.org/)
-- A [running kafka instance](running-kafka)
+- [CCExtractor](https://ccextractor.org/)
+- [FFmpeg](https://ffmpeg.org/)
+- A [running Kafka instance](running-kafka)
 
 ### Instructions
 #### Step 1: Set up a new project
@@ -45,7 +45,7 @@ yarn init
 
 ```
 yarn add @tvkitchen/countertop
-yarn add @tvkitchen/appliance-ccextractor
+yarn add @tvkitchen/appliance-video-caption-extractor
 yarn add @tvkitchen/appliance-video-file-ingestion
 ```
 
@@ -55,7 +55,7 @@ Open a file called `index.js` and import the TV Kitchen packages.
 
 ```javascript
 const { Countertop } = require('@tvkitchen/countertop');
-const { CCExtractorAppliance } = require('@tvkitchen/appliance-ccextractor');
+const { VideoCaptionExtractorAppliance } = require('@tvkitchen/appliance-video-caption-extractor');
 const { VideoFileIngestionAppliance } = require('@tvkitchen/appliance-video-file-ingestion');
 ```
 
@@ -80,10 +80,10 @@ countertop.addAppliance(
 );
 ```
 
-Next, set up the [CCExtractorAppliance](https://www.npmjs.com/package/@tvkitchen/appliance-ccextractor), which will watch for video data and turn it into captions.
+Next, set up the [VideoCaptionExtractorAppliance](https://www.npmjs.com/package/@tvkitchen/appliance-video-caption-extractor), which will watch for video data and turn it into captions.
 
 ```
-countertop.addAppliance(CCExtractorAppliance);
+countertop.addAppliance(VideoCaptionExtractorAppliance);
 ```
 
 Everything is set up, but we should do something with the resulting captions.  For this recipe we'll just output them to the console, but there are plenty of more interesting possibilities.
@@ -115,7 +115,7 @@ You should see a stream of captions within a few seconds.
 **index.js**
 ```javascript
 const { Countertop } = require('@tvkitchen/countertop');
-const { CCExtractorAppliance } = require('@tvkitchen/appliance-ccextractor');
+const { VideoCaptionExtractorAppliance } = require('@tvkitchen/appliance-video-caption-extractor');
 const { VideoFileIngestionAppliance } = require('@tvkitchen/appliance-video-file-ingestion');
 
 const countertop = new Countertop();
@@ -127,7 +127,7 @@ countertop.addAppliance(
   }
 );
 
-countertop.addAppliance(CCExtractorAppliance);
+countertop.addAppliance(VideoCaptionExtractorAppliance);
 
 countertop.on('data', (payload) => {
   if (payload.type === 'TEXT.ATOM') {
