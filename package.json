@@ -40,7 +40,7 @@
     "gatsby-source-medium": "^2.5.0",
     "gatsby-transformer-remark": "^2.11.1",
     "gatsby-transformer-sharp": "^2.7.0",
-    "lodash": "4.17.20",
+    "lodash": "4.17.21",
     "react": "16.14.0",
     "react-dom": "16.14.0",
     "polished": "^4.0.5",
