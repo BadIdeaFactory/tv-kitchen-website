@@ -12,7 +12,7 @@ Many videos have closed captions baked into the data itself. This recipe shows h
 | **Package** | **Description** |
 | :-- | :-- |
 | [@tvkitchen/countertop](https://www.npmjs.com/package/@tvkitchen/countertop) | The entry point for developers who want to set up a TV Kitchen. |
-| [@tvkitchen/appliance-video-file-ingestion](https://www.npmjs.com/package/@tvkitchen/appliance-video-file-ingestion) | Converts a video file into MPEG-TS Payloads. |
+| [@tvkitchen/appliance-video-file-receiver](https://www.npmjs.com/package/@tvkitchen/appliance-video-file-receiver) | Converts a video file into MPEG-TS Payloads. |
 | [@tvkitchen/appliance-video-caption-extractor](https://www.npmjs.com/package/@tvkitchen/appliance-video-caption-extractor) | Extracts captions from MPEG-TS Payloads using CCExtractor. |
 
 ### Output Streams
@@ -46,7 +46,7 @@ yarn init
 ```
 yarn add @tvkitchen/countertop
 yarn add @tvkitchen/appliance-video-caption-extractor
-yarn add @tvkitchen/appliance-video-file-ingestion
+yarn add @tvkitchen/appliance-video-file-receiver
 ```
 
 #### Step 3: Write some code
@@ -56,7 +56,7 @@ Open a file called `index.js` and import the TV Kitchen packages.
 ```javascript
 const { Countertop } = require('@tvkitchen/countertop');
 const { VideoCaptionExtractorAppliance } = require('@tvkitchen/appliance-video-caption-extractor');
-const { VideoFileIngestionAppliance } = require('@tvkitchen/appliance-video-file-ingestion');
+const { VideoFileReceiverAppliance } = require('@tvkitchen/appliance-video-file-receiver');
 ```
 
 From here, create your [Countertop](https://www.npmjs.com/package/@tvkitchen/countertop).
@@ -65,15 +65,15 @@ From here, create your [Countertop](https://www.npmjs.com/package/@tvkitchen/cou
 const countertop = new Countertop();
 ```
 
-We have to give the countertop some video to process. This is done by adding a video ingestion appliance. This recipe will use the [VideoFileIngestionAppliance](https://www.npmjs.com/package/@tvkitchen/appliance-video-file-ingestion), but you can actually use any appliance that produces `STREAM.CONTAINER` data.
+We have to give the countertop some video to process. This is done by adding a video receiver appliance. This recipe will use the [VideoFileReceiverAppliance](https://www.npmjs.com/package/@tvkitchen/appliance-video-file-receiver), but you can actually use any appliance that produces `STREAM.CONTAINER` data.
 
-For instance, you could use the [VideoHttpIngestionAppliance](https://www.npmjs.com/package/@tvkitchen/appliance-video-http-ingestion).
+For instance, you could use the [VideoHttpReceiverAppliance](https://www.npmjs.com/package/@tvkitchen/appliance-video-http-receiver).
 
-The `VideoFileIngestionAppliance` has one required parameter: `filePath`. If you don't have a sample video file that contains closed captions, you can use [this one](https://github.com/tvkitchen/cookbook/blob/master/recipes/extracting-captions/data/sample.ts). Just put it in your recipe directory in a file called `sample.ts`.
+The `VideoFileReceiverAppliance` has one required parameter: `filePath`. If you don't have a sample video file that contains closed captions, you can use [this one](https://github.com/tvkitchen/cookbook/blob/master/recipes/extracting-captions/data/sample.ts). Just put it in your recipe directory in a file called `sample.ts`.
 
 ```javascript
 countertop.addAppliance(
-  VideoFileIngestionAppliance,
+  VideoFileReceiverAppliance,
   {
     filePath: './sample.ts'
   }
@@ -116,12 +116,12 @@ You should see a stream of captions within a few seconds.
 ```javascript
 const { Countertop } = require('@tvkitchen/countertop');
 const { VideoCaptionExtractorAppliance } = require('@tvkitchen/appliance-video-caption-extractor');
-const { VideoFileIngestionAppliance } = require('@tvkitchen/appliance-video-file-ingestion');
+const { VideoFileReceiverAppliance } = require('@tvkitchen/appliance-video-file-receiver');
 
 const countertop = new Countertop();
 
 countertop.addAppliance(
-  VideoFileIngestionAppliance,
+  VideoFileReceiverAppliance,
   {
     filePath: './sample.ts'
   }
